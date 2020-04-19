@@ -1,18 +1,66 @@
-# TraitRELAX
-A method for association of changes in phenotype traits with changes in selection intensity at the codon level across a phylogeny
+# TraitRELAX - Association of phenotypes with selection intensity at the codon level across a phylogeny
 
-The method is develoed in Bio++ and can be used by installing the libraries from the below repositories:
+TraitRELAX is an open-source software for joint analysis of binary traits and coding sequence data that allows testing for association of the trait with changes in selection intensity at the codon level across a phylogeny. TraitRELAX is implemented in [Bio++](https://github.com/BioPP). For more information, click [here](http://biopp.univ-montp2.fr/).
 
-* https://github.com/halabikeren/bpp-core
-* https://github.com/halabikeren/bpp-seq
-* https://github.com/halabikeren/bpp-phyl
-* https://github.com/halabikeren/bpp-popgen
-* https://github.com/halabikeren/bppsuite
+## Quick Start
 
-According to the instructions [here](http://biopp.univ-montp2.fr/wiki/index.php/Installation).
+#### Install   
 
-To execute TraitRELAX:
-* Build a parameter file according to the template TraitRELAX_template.bpp
-* From your installation directory, run: ./bppsuite/bppSuite/traitrelax param=<full_path_to_your_parameters_file>
+## Building from Source
+
+#### Create source directory
+
+`bpp_dir=$HOME/local/bpp/dev/`
+`mkdir -p $bpp_dir/sources`
+
+#### Download all Bio++ libraries
+
+`cd $bpp_dir/sources`
+`git clone -b kerenDevel https://github.com/halabikeren/bpp-core.git`
+`git clone https://github.com/halabikeren/bpp-seq.git`
+`git clone -b kerenDevel https://github.com/halabikeren/bpp-phyl.git`
+`git clone https://github.com/halabikeren/bpp-popgen.git`
+`git clone -b kerenDevel https://github.com/halabikeren/bppsuite.git`
 
 
+#### Compile and install
+
+`cd bpp-core`
+`mkdir build`
+`cd build`
+`cmake -DCMAKE_INSTALL_PREFIX=$bpp_dir .. # prepare compilation`
+`make # compile`
+`make install # move files to the installation directory`
+
+`cd bpp-seq`
+`mkdir build`
+`cd build`
+`cmake -DCMAKE_INSTALL_PREFIX=$bpp_dir .. # prepare compilation`
+`make # compile`
+`make install # move files to the installation directory`
+
+`cd ../../bpp-phyl`
+`mkdir build`
+`cd build`
+`cmake -DCMAKE_INSTALL_PREFIX=$bpp_dir .. # prepare compilation`
+`make # compile`
+`make install # move files to the installation directory`
+
+`cd ../../bpp-popgen`
+`mkdir build`
+`cd build`
+`cmake -DCMAKE_INSTALL_PREFIX=$bpp_dir .. # prepare compilation`
+`make # compile`
+`make install # move files to the installation directory`
+
+`cd ../../../bppsuite`
+`mkdir build`
+`cd build`
+`cmake -DCMAKE_INSTALL_PREFIX=$bpp_dir .. # prepare compilation`
+`make # compile`
+`make install # move files to the installation directory`
+
+#### Run with Command Line Arguments
+`traitrelax param=<path_to_input_parameters_file>`  
++ _`<path_to_input_parameters_file>` is the full path to a parameters file build based on [bppSuite manual](http://biopp.univ-montp2.fr/manual/pdf/bppsuite/v0.7.0/bppsuite.pdf). An example file is available above (see TraitRELAX_template.bpp).
+or 
