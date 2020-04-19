@@ -2,10 +2,6 @@
 
 TraitRELAX is an open-source software for joint analysis of binary traits and coding sequence data that allows testing for association of the trait with changes in selection intensity at the codon level across a phylogeny. TraitRELAX is implemented in [Bio++](https://github.com/BioPP). For more information, click [here](http://biopp.univ-montp2.fr/).
 
-## Quick Start
-
-#### Install   
-
 ## Building from Source
 
 #### Create source directory
@@ -60,7 +56,7 @@ TraitRELAX is an open-source software for joint analysis of binary traits and co
 `make # compile`
 `make install # move files to the installation directory`
 
-#### Run with Command Line Arguments
+#### Run via command line
 `traitrelax param=<path_to_input_parameters_file>`  
 + _`<path_to_input_parameters_file>` is the full path to a parameters file build based on [bppSuite manual](http://biopp.univ-montp2.fr/manual/pdf/bppsuite/v0.7.0/bppsuite.pdf). An example file is available above (see TraitRELAX_template.bpp).
 or 
