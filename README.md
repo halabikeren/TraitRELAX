@@ -7,54 +7,90 @@ TraitRELAX is an open-source software for joint analysis of binary traits and co
 #### Create source directory
 
 `bpp_dir=$HOME/local/bpp/dev/`
+
 `mkdir -p $bpp_dir/sources`
 
 #### Download all Bio++ libraries
 
 `cd $bpp_dir/sources`
+
 `git clone -b kerenDevel https://github.com/halabikeren/bpp-core.git`
+
 `git clone https://github.com/halabikeren/bpp-seq.git`
+
 `git clone -b kerenDevel https://github.com/halabikeren/bpp-phyl.git`
+
 `git clone https://github.com/halabikeren/bpp-popgen.git`
+
 `git clone -b kerenDevel https://github.com/halabikeren/bppsuite.git`
 
 
 #### Compile and install
 
 `cd bpp-core`
+
 `mkdir build`
+
 `cd build`
+
 `cmake -DCMAKE_INSTALL_PREFIX=$bpp_dir .. # prepare compilation`
+
 `make # compile`
+
 `make install # move files to the installation directory`
+
 
 `cd bpp-seq`
+
 `mkdir build`
+
 `cd build`
+
 `cmake -DCMAKE_INSTALL_PREFIX=$bpp_dir .. # prepare compilation`
+
 `make # compile`
+
 `make install # move files to the installation directory`
+
 
 `cd ../../bpp-phyl`
+
 `mkdir build`
+
 `cd build`
+
 `cmake -DCMAKE_INSTALL_PREFIX=$bpp_dir .. # prepare compilation`
+
 `make # compile`
+
 `make install # move files to the installation directory`
+
 
 `cd ../../bpp-popgen`
+
 `mkdir build`
+
 `cd build`
+
 `cmake -DCMAKE_INSTALL_PREFIX=$bpp_dir .. # prepare compilation`
+
 `make # compile`
+
 `make install # move files to the installation directory`
 
+
 `cd ../../../bppsuite`
+
 `mkdir build`
+
 `cd build`
+
 `cmake -DCMAKE_INSTALL_PREFIX=$bpp_dir .. # prepare compilation`
+
 `make # compile`
+
 `make install # move files to the installation directory`
+
 
 #### Run via command line
 `traitrelax param=<path_to_input_parameters_file>`  
