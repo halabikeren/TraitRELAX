@@ -7,7 +7,7 @@ traitrelax_dir=TRAITRELAX_INSTALLATION_DIRECTORY
 #### leave as is
 
 ## install Bio++
-mkdir -p $bpp_dir
+mkdir -p $bpp_dir/sources/
 cd $bpp_dir
 git clone https://github.com/BioPP/bppsuite.git
 cd sources
