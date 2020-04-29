@@ -4,7 +4,11 @@ TraitRELAX is an open-source software for joint analysis of binary traits and co
 
 ## Building from Source
 
-#### Create source directory
+#### Installing from bash
+
+Installation script is available at install.sh. To install, modify lines 4,5 to include the desired installation directories of Bio++ and TraitRELAX.
+
+#### Create source directories
 
 `bpp_dir=$HOME/local/bpp/`
 `traitrelax_dir=$HOME/local/traitrelax/`
