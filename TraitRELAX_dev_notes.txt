@@ -1,0 +1,26 @@
+Added for TraitRELAX:
+/bpp-phyl/src/Bpp/Phyl/Model/TwoParameterBinarySubstitutionModel.h	  # binary substitution model with two free paprameters
+/bpp-phyl/src/Bpp/Phyl/Model/TwoParameterBinarySubstitutionModel.cpp
+/bpp-phyl/test/test_character_model.cpp
+/bpp-phyl/src/Bpp/Phyl/Model/Codon/RELAX.h							  # codon site-model with the RELAX impementation (https://doi.org/10.1093/molbev/msu400
+/bpp-phyl/src/Bpp/Phyl/Model/Codon/RELAX.cpp
+/bpp-phyl/test/test_relax.cpp
+/bpp-phyl/src/Bpp/Phyl/TreeIterator.h								  # impementation of tree iterators in pre-order, in-order and post-order
+/bpp-phyl/src/Bpp/Phyl/TreeIterator.cpp
+/bpp-phyl/test/test_tree_iterator.cpp
+/bpp-phyl/src/Bpp/Phyl/Mapping/StochasticMapping.h					  # implementation o stochastic mapping based on Nielsen 2002 (https://doi.org/10.1080/10635150290102393) 
+/bpp-phyl/src/Bpp/Phyl/Mapping/StochasticMapping.cpp
+/bpp-phyl/test/test_stochastic_mapping.cpp
+/bpp-phyl/src/Bpp/Phyl/Likelihood/JointLikelihoodFunction.h			  # impleentation of a joint likelihood instance that integrated both a character trait model and a branch-site sequence model
+/bpp-phyl/src/Bpp/Phyl/Likelihood/JointLikelihoodFunction.cpp
+/bpp-phyl/test/test_joint_likelihood_function.cpp
+/bpp-phyl/test/test_parsimony_solution.cpp							  # tester for impleentation of maximum parsimony solution implementation in DELTRAN approach added to DRTreeParsimonyScore instance
+
+Modified for TraitRELAX:
+/bpp-phyl/src/Bpp/Phyl/Parsimony/DRTreeParsimonyScore.h				  # impleentation of maximum parsimony solution implementation in DELTRAN approach 
+/bpp-phyl/src/Bpp/Phyl/Parsimony/DRTreeParsimonyScore.cpp
+src/Bpp/Phyl/Simulation/DetailedSiteSimulator.h						  # added function that returns the ancestral state at the root
+/bpp-phyl/src/Bpp/Phyl/Io/BppOSubstitutionModelFormat.cpp			  # addition of the new impleemnted binary model and RELAX model 
+/bpp-phyl/src/Bpp/Phyl/Io/BppOTransitionModelFormat.cpp
+/bpp-phyl/src/Bpp/Phyl/Simulation/DetailedSiteSimulator.h			  # addition of function to return the ancestral state of the root
+/bpp-phyl/src/CMakeLists.txt										  # addition of the added TraitRELAX components
