@@ -1,105 +1,87 @@
-# TraitRELAX - Association of phenotypes with selection intensity at the codon level across a phylogeny
+# TraitRELAX - a tool to associate phenotypic traits with altered selective patterns
 
-TraitRELAX is an open-source software for joint analysis of binary traits and coding sequence data that allows testing for association of the trait with changes in selection intensity at the codon level across a phylogeny. TraitRELAX is implemented in [Bio++](https://github.com/BioPP). For more information, click [here](http://biopp.univ-montp2.fr/).
+TraitRELAX is an open-source software for the joint analysis of binary traits and coding sequence data that allows testing for association of the trait with changes in selection intensity at the codon level across a phylogeny. TraitRELAX is implemented in the C++ library [Bio++](https://github.com/BioPP) and see also [Bio++ documentation](http://biopp.univ-montp2.fr/).
 
-## Building from Source
+## Publication
 
-#### Installing from bash
+Halabi K, Levy Karin E, Guéguen L, and Mayrose I. TraitRELAX - A codon model for associating phenotypic traits with altered selective patterns of sequence evolution. Soon to be submitted. A preprint is available at [bioRxiv](https://www.biorxiv.org/content/10.1101/2020.03.04.974584v1)
 
-Installation script is available at install.sh. To install, modify lines 4,5 to include the desired installation directories of Bio++ and TraitRELAX.
+## Input
 
-#### Create source directories
+The input to TraitRELAX is **a single control file**, which among others, specifies the location of the following files: 
+1. A phylogentic tree with branch lengths (Newick format).
+2. A codon multiple sequence alignment (MSA) of the sequence data of the extant species (Fasta format).
+3. The character states of the extant species coded as either '0' or '1' (Fasta format).
 
-`bpp_dir=$HOME/local/bpp/`
-`traitrelax_dir=$HOME/local/traitrelax/`
-`mkdir -p $bpp_dir/sources/`
-`mkdir -p $traitrelax_dir`
+The TraitRELAX control file is based on [bppSuite manual](http://biopp.univ-montp2.fr/manual/pdf/bppsuite/v0.7.0/bppsuite.pdf). See the provided **TraitRELAX_template.bpp** as an example for such control file.
 
-#### Download all Bio++ libraries
+## Output
 
-`cd $bpp_dir/sources`
+TraitRELAX writes the maximum-likelihood scores for the null and alternative models as well as their inferred model parameters to an output file specified in the control file.
 
-`git clone https://github.com/BioPP/bpp-core.git`
+## Running the program
 
-`git clone https://github.com/BioPP/bpp-seq.git`
+Once installed (see next section), the program can be run through the shell:
+```
+path/to/TraitRELAX/traitrelax param=<path_to_control_file>
+```
 
-`git clone -b kerenDevel https://github.com/halabikeren/bpp-phyl.git`
+## Building from source...
 
-`git clone https://github.com/BioPP/bpp-popgen.git`
+### ...by using an installation script
 
-`cd $bpp_dir`
+An installation script is available at **install.sh**. To install, modify lines 4,5 to include the desired installation directories of Bio++ and TraitRELAX.
 
-`git clone https://github.com/BioPP/bppsuite.git`
+### ...by shell commands
+#### Creating source directories
+```
+bpp_dir=$HOME/local/bpp/
+traitrelax_dir=$HOME/local/traitrelax/
+mkdir -p $bpp_dir/sources/
+mkdir -p $traitrelax_dir
+```
 
+#### Downloading the 5 Bio++ libraries
+```
+cd $bpp_dir/sources
+git clone https://github.com/BioPP/bpp-core.git
+git clone https://github.com/BioPP/bpp-seq.git
+git clone -b kerenDevel https://github.com/halabikeren/bpp-phyl.git
+git clone https://github.com/BioPP/bpp-popgen.git
+cd $bpp_dir
+git clone https://github.com/BioPP/bppsuite.git
+```
 
-#### Compile and install
-
-`cd $bpp_dir/sources/bpp-core`
-
-`mkdir build`
-
-`cd build`
-
-`cmake -DCMAKE_INSTALL_PREFIX=$bpp_dir -DCMAKE_INSTALL_RPATH_USE_LINK_PATH=TRUE .. # prepare compilation`
-
-`make # compile`
-
-`make install # move files to the installation directory`
-
-
-`cd bpp-seq`
-
-`mkdir build`
-
-`cd build`
-
-`cmake -DCMAKE_INSTALL_PREFIX=$bpp_dir -DCMAKE_INSTALL_RPATH_USE_LINK_PATH=TRUE .. # prepare compilation`
-
-`make # compile`
-
-`make install # move files to the installation directory`
-
-
-`cd ../../bpp-phyl`
-
-`mkdir build`
-
-`cd build`
-
-`cmake -DCMAKE_INSTALL_PREFIX=$bpp_dir -DCMAKE_INSTALL_RPATH_USE_LINK_PATH=TRUE .. # prepare compilation`
-
-`make # compile`
-
-`make install # move files to the installation directory`
-
-
-`cd ../../bpp-popgen`
-
-`mkdir build`
-
-`cd build`
-
-`cmake -DCMAKE_INSTALL_PREFIX=$bpp_dir -DCMAKE_INSTALL_RPATH_USE_LINK_PATH=TRUE .. # prepare compilation`
-
-`make # compile`
-
-`make install # move files to the installation directory`
-
-
-`cd ../../../bppsuite`
-
-`mkdir build`
-
-`cd build`
-
-`cmake -DCMAKE_INSTALL_PREFIX=$bpp_dir -DCMAKE_INSTALL_RPATH_USE_LINK_PATH=TRUE .. # prepare compilation`
-
-`make # compile`
-
-`make install # move files to the installation directory`
-
-
-#### Run via command line
-`$traitrelax_dir/TraitRELAX/traitrelax param=<path_to_input_parameters_file>`  
-+ _`<path_to_input_parameters_file>` is the full path to a parameters file build based on [bppSuite manual](http://biopp.univ-montp2.fr/manual/pdf/bppsuite/v0.7.0/bppsuite.pdf). An example file is available above (see TraitRELAX_template.bpp).
-or 
+#### Compiling and installing
+```
+cd $bpp_dir/sources/bpp-core
+mkdir build
+cd build
+cmake -DCMAKE_INSTALL_PREFIX=$bpp_dir -DCMAKE_INSTALL_RPATH_USE_LINK_PATH=TRUE ..
+make
+make install
+cd bpp-seq
+mkdir build
+cd build
+cmake -DCMAKE_INSTALL_PREFIX=$bpp_dir -DCMAKE_INSTALL_RPATH_USE_LINK_PATH=TRUE ..
+make
+make install
+cd ../../bpp-phyl
+mkdir build
+cd build
+cmake -DCMAKE_INSTALL_PREFIX=$bpp_dir -DCMAKE_INSTALL_RPATH_USE_LINK_PATH=TRUE ..
+make
+make install
+cd ../../bpp-popgen
+mkdir build
+cd build
+cmake -DCMAKE_INSTALL_PREFIX=$bpp_dir -DCMAKE_INSTALL_RPATH_USE_LINK_PATH=TRUE ..
+make
+make install
+cd ../../../bppsuite
+mkdir build
+cd build
+cmake -DCMAKE_INSTALL_PREFIX=$bpp_dir -DCMAKE_INSTALL_RPATH_USE_LINK_PATH=TRUE ..
+make
+make install
+```
