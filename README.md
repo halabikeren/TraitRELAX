@@ -1,6 +1,6 @@
 # TraitRELAX - a tool to associate phenotypic traits with altered selective patterns
 
-TraitRELAX is an open-source software for the joint analysis of binary traits and coding sequence data that allows testing for association of the trait with changes in selection intensity at the codon level across a phylogeny. TraitRELAX is implemented in the C++ library [Bio++](https://github.com/BioPP) and see also [Bio++ documentation](http://biopp.univ-montp2.fr/).
+TraitRELAX is an open-source software for the joint analysis of binary traits and coding sequence data that allows testing for association of the trait with changes in selection intensity at the codon level across a phylogeny. TraitRELAX is implemented in the C++ library [Bio++](https://github.com/BioPP) (see also: [Bio++ documentation](http://biopp.univ-montp2.fr/)).
 
 ## Publication
 
