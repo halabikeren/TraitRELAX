@@ -85,7 +85,7 @@ consists of full paths to the following input files:
 AIC, AICc, BIC or LRT.
 
 @item character trait data
-Matching of trait states 0 and 1 to the examined taxa in Fasta format (input.character.file).
+Matching of trait states 0 and 1 to the examined taxa (input.character.file).
 
 @item coding sequence alignment
 Codon alignment with the examined taxa (input.sequence.file).
