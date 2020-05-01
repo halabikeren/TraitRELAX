@@ -36,7 +36,7 @@ An installation script is available at **install.sh**. To install, modify lines 
 #### Creating source directories
 ```
 bpp_dir=BIOPP_INSTALLATION_DIRECTORY
-traitrelax_dir=TRAITRELAX_INSTALLATION_DIRECTORY // the directory to which you clone TraitRELAX
+traitrelax_dir=TRAITRELAX_INSTALLATION_DIRECTORY # the directory to which you clone TraitRELAX
 mkdir -p $bpp_dir/sources/
 mkdir -p $traitrelax_dir
 ```
