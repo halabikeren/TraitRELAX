@@ -9,9 +9,9 @@ Halabi K, Levy Karin E, Guéguen L, and Mayrose I. TraitRELAX - A codon model fo
 ## Input
 
 The input to TraitRELAX is **a single control file**, which among others, specifies the location of the following files: 
-1. A phylogentic tree with branch lengths (Newick format).
-2. A codon multiple sequence alignment (MSA) of the sequence data of the extant species (Fasta format).
-3. The character states of the extant species coded as either '0' or '1' (Fasta format).
+1. A phylogentic tree with branch lengths.
+2. A codon multiple sequence alignment (MSA) of the sequence data of the extant species.
+3. The character states of the extant species coded as either '0' or '1'.
 
 The TraitRELAX control file is specifies parameters as detailed in the [bppSuite manual](http://biopp.univ-montp2.fr/manual/pdf/bppsuite/v0.7.0/bppsuite.pdf). See the provided **TraitRELAX_template.bpp** as an example for such control file.
 
