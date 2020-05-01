@@ -33,6 +33,8 @@ path/to/TraitRELAX/traitrelax param=<path_to_control_file>
 An installation script is available at **install.sh**. To install, modify lines 4,5 to include the desired installation directories of Bio++ and TraitRELAX.
 
 ### ...by shell commands
+
+The compilation may take a little while (especially that of `bpp-phyl`; ~20-30 min using 16-cores) so perhaps make some tea
 #### Creating source directories
 ```
 bpp_dir=BIOPP_INSTALLATION_DIRECTORY
