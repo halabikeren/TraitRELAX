@@ -13,7 +13,7 @@ The input to TraitRELAX is **a single control file**, which among others, specif
 2. A codon multiple sequence alignment (MSA) of the sequence data of the extant species.
 3. The character states of the extant species coded as either '0' or '1'.
 
-The TraitRELAX control file is specifies parameters as detailed in the [bppSuite manual](http://biopp.univ-montp2.fr/manual/pdf/bppsuite/v0.7.0/bppsuite.pdf). See the provided **TraitRELAX_template.bpp** as an example for such control file.
+The TraitRELAX control file specifies parameters as detailed in the [bppSuite manual](http://biopp.univ-montp2.fr/manual/pdf/bppsuite/v0.7.0/bppsuite.pdf). See the provided **TraitRELAX_template.bpp** as an example for such control file.
 
 ## Output
 
