@@ -85,7 +85,7 @@ ENDIF(NO_DEP_CHECK)
 
 # Packager
 SET(CPACK_PACKAGE_NAME "traitrelax")
-SET(CPACK_PACKAGE_VENDOR "Keren Halabi, Eli Levy Kain, Laurent Guéguen, and Itay Mayrose")
+SET(CPACK_PACKAGE_VENDOR "Keren Halabi, Eli Levy Karin, Laurent Guéguen, and Itay Mayrose")
 SET(CPACK_PACKAGE_VERSION "1.0.0")
 SET(CPACK_PACKAGE_VERSION_MAJOR "1")
 SET(CPACK_PACKAGE_VERSION_MINOR "0")
