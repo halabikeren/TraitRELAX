@@ -14,7 +14,7 @@
 @copying
 This is the manual of the TraitRELAX program, version 1.0.0.
 
-Copyright @copyright{} 2020 Keren Halabi, Eli Levy Kain, Laurent Guéguen, and Itay Mayrose
+Copyright @copyright{} 2020 Keren Halabi, Eli Levy Karin, Laurent Guéguen, and Itay Mayrose
 @end copying
 
 @titlepage
