@@ -90,6 +90,8 @@ make install
 
 #### Compiling and installing TraitRELAX
 ```
+cd $traitrelax_dir/
+git clone https://github.com/halabikeren/TraitRELAX.git
 cd $traitrelax_dir/TraitRELAX/
 cmake -DCMAKE_INSTALL_PREFIX=$bpp_dir -DCMAKE_INSTALL_RPATH_USE_LINK_PATH=TRUE .
 make -j
