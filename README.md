@@ -58,31 +58,31 @@ cd $bpp_dir/sources/bpp-core
 mkdir build
 cd build
 cmake -DCMAKE_INSTALL_PREFIX=$bpp_dir -DCMAKE_INSTALL_RPATH_USE_LINK_PATH=TRUE ..
-make
+make -j
 make install
-cd bpp-seq
+cd ../../bpp-seq
 mkdir build
 cd build
 cmake -DCMAKE_INSTALL_PREFIX=$bpp_dir -DCMAKE_INSTALL_RPATH_USE_LINK_PATH=TRUE ..
-make
+make -j
 make install
 cd ../../bpp-phyl
 mkdir build
 cd build
 cmake -DCMAKE_INSTALL_PREFIX=$bpp_dir -DCMAKE_INSTALL_RPATH_USE_LINK_PATH=TRUE ..
-make
+make -j
 make install
 cd ../../bpp-popgen
 mkdir build
 cd build
 cmake -DCMAKE_INSTALL_PREFIX=$bpp_dir -DCMAKE_INSTALL_RPATH_USE_LINK_PATH=TRUE ..
-make
+make -j
 make install
 cd ../../../bppsuite
 mkdir build
 cd build
 cmake -DCMAKE_INSTALL_PREFIX=$bpp_dir -DCMAKE_INSTALL_RPATH_USE_LINK_PATH=TRUE ..
-make
+make -j
 make install
 ```
 
@@ -90,6 +90,6 @@ make install
 ```
 cd $traitrelax_dir
 cmake -DCMAKE_INSTALL_PREFIX=$bpp_dir -DCMAKE_INSTALL_RPATH_USE_LINK_PATH=TRUE .
-make
+make -j
 make install
 ```
