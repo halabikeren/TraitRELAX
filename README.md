@@ -38,9 +38,7 @@ The compilation may take a little while (especially that of `bpp-phyl`; ~20-30 m
 #### Creating source directories
 ```
 bpp_dir=BIOPP_INSTALLATION_DIRECTORY
-traitrelax_dir=TRAITRELAX_INSTALLATION_DIRECTORY # the directory to which you clone TraitRELAX
 mkdir -p $bpp_dir/sources/
-mkdir -p $traitrelax_dir
 ```
 
 #### Downloading the 5 Bio++ libraries
@@ -89,9 +87,15 @@ make install
 ```
 
 #### Compiling and installing TraitRELAX
+clone
 ```
+traitrelax_dir=TRAITRELAX_INSTALLATION_DIRECTORY # the directory to which you clone TraitRELAX
+mkdir -p $traitrelax_dir
 cd $traitrelax_dir/
 git clone https://github.com/halabikeren/TraitRELAX.git
+```
+and compile
+```
 cd $traitrelax_dir/TraitRELAX/
 cmake -DCMAKE_INSTALL_PREFIX=$bpp_dir -DCMAKE_INSTALL_RPATH_USE_LINK_PATH=TRUE .
 make -j
