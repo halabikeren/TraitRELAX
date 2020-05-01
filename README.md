@@ -35,8 +35,8 @@ An installation script is available at **install.sh**. To install, modify lines 
 ### ...by shell commands
 #### Creating source directories
 ```
-bpp_dir=$HOME/local/bpp/
-traitrelax_dir=$HOME/local/traitrelax/
+bpp_dir=BIOPP_INSTALLATION_DIRECTORY
+traitrelax_dir=TRAITRELAX_INSTALLATION_DIRECTORY // the directory to which you clone TraitRELAX
 mkdir -p $bpp_dir/sources/
 mkdir -p $traitrelax_dir
 ```
@@ -88,7 +88,7 @@ make install
 
 #### Compiling and installing TraitRELAX
 ```
-cd $traitrelax_dir
+cd $traitrelax_dir/TraitRELAX/
 cmake -DCMAKE_INSTALL_PREFIX=$bpp_dir -DCMAKE_INSTALL_RPATH_USE_LINK_PATH=TRUE .
 make -j
 make install
