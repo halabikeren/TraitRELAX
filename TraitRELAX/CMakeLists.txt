@@ -1,10 +1,6 @@
-# CMake script for TestNH package
-# Authors:
-#   Julien Dutheil
-#   Francois Gindraud (2017)
-# Created: 07/04/2010
+# Modified from the CMake script for the TestNH package https://github.com/BioPP/testnh
 
-# Executables of TestNH
+# Executables of TraitRELAX
 add_executable (traitrelax TraitRELAX.cpp)
 
 set (traitrelax-targets
