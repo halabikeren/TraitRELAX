@@ -596,7 +596,9 @@ void optimizeAlternativeCharaterModelMultiDim(JointLikelihoodFunction* jointlike
 int main(int args, char **argv)
 {
   cout << "************************************************************************************************" << endl;
-  cout << "*       TraitRELAX program for detecting phenotype related changed in selective pressure       *" << endl;
+  cout << "*       TraitRELAX program for detecting phenotype related changes in selective pressure       *" << endl;
+  cout << "*                                                                                              *" << endl;
+  cout << "*                       by Halabi, Levy Karin, Guéguen and Mayrose 2020                        *" << endl;
   cout << "************************************************************************************************" << endl;
   cout << endl;
 
