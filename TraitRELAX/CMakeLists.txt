@@ -1,4 +1,4 @@
-# Modified from the CMake script for the TestNH package https://github.com/BioPP/testnh
+# CMake script for TraitRELAX program, based on the script from TestNH (https://github.com/BioPP/testnh)
 
 # Executables of TraitRELAX
 add_executable (traitrelax TraitRELAX.cpp)
