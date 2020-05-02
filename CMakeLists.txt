@@ -1,8 +1,4 @@
-# CMake script for TraitRELAX program
-# Authors:
-#   Julien Dutheil
-#   Francois Gindraud (2017)
-# Created: 07/04/2010
+# CMake script for TraitRELAX program, based on the script from TestNH (https://github.com/BioPP/testnh)
 
 cmake_minimum_required (VERSION 2.8.11)
 project (traitrelax CXX)
@@ -26,7 +22,7 @@ IF(NO_DEP_CHECK)
   MESSAGE(STATUS "Dependencies checking disabled. Only distribution can be built.")
 ELSE(NO_DEP_CHECK)
 
-#static linkage?
+# static linkage?
 IF(NOT BUILD_STATIC)
   SET(BUILD_STATIC FALSE CACHE BOOL
       "Enable static linkage."
