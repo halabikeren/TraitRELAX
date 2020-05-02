@@ -33,36 +33,6 @@ IF(BUILD_STATIC)
   SET(CMAKE_CXX_FLAGS "-static -static-libgcc ${CMAKE_CXX_FLAGS}")
 ENDIF()
 
-# Check compression program
-# COMPRESS_PROGRAM controls the choice of program
-# COMPRESS_EXT can be used to override the file extension
-if (NOT COMPRESS_PROGRAM)
-  set (COMPRESS_PROGRAM gzip CACHE STRING "Set program for compressing documentation" FORCE)
-endif ()
-find_program (COMPRESS_BIN NAMES ${COMPRESS_PROGRAM} DOC "${COMPRESS_PROGRAM} compression program")
-if (NOT COMPRESS_BIN)
-  message (STATUS "${COMPRESS_PROGRAM} program not found, text doc will not be compressed")
-else ()
-  # Deduce COMPRESS_EXT for known compression programs if not set
-  if (NOT COMPRESS_EXT)
-    if (${COMPRESS_PROGRAM} STREQUAL "gzip")
-      set (COMPRESS_EXT "gz")
-    elseif (${COMPRESS_PROGRAM} STREQUAL "bzip2")
-      set (COMPRESS_EXT "bz2")
-    else ()
-      set (COMPRESS_EXT "${COMPRESS_PROGRAM}") # Default: program name (works for xz/lzma)
-    endif ()
-  endif ()
-  # Generate command line args (always add -c to output compressed file to stdout)
-  if (${COMPRESS_PROGRAM} STREQUAL "gzip")
-    # -n for no timestamp in files (reproducible builds)
-    # -9 for maximum compression
-    set (COMPRESS_ARGS -c -n -9)
-  else ()
-    set (COMPRESS_ARGS -c)
-  endif ()
-  message (STATUS "Found ${COMPRESS_BIN} compression program, using file extension .${COMPRESS_EXT}")
-endif ()
 
 # Find dependencies (add install directory to search)
 if (CMAKE_INSTALL_PREFIX)
@@ -74,45 +44,5 @@ find_package (bpp-phyl 12.0.0 REQUIRED)
 
 # Subdirectories
 add_subdirectory (TraitRELAX)
-add_subdirectory (doc)
-add_subdirectory (man)
 
 ENDIF(NO_DEP_CHECK)
-
-# Packager
-SET(CPACK_PACKAGE_NAME "traitrelax")
-SET(CPACK_PACKAGE_VENDOR "Keren Halabi, Eli Levy Karin, Laurent Guéguen, and Itay Mayrose")
-SET(CPACK_PACKAGE_VERSION "1.0.0")
-SET(CPACK_PACKAGE_VERSION_MAJOR "1")
-SET(CPACK_PACKAGE_VERSION_MINOR "0")
-SET(CPACK_PACKAGE_VERSION_PATCH "0")
-SET(CPACK_PACKAGE_DESCRIPTION_SUMMARY "test for trait-codon selection intenisty association")
-SET(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_SOURCE_DIR}/COPYING")
-SET(CPACK_RESOURCE_FILE_AUTHORS "${CMAKE_SOURCE_DIR}/AUTHORS")
-SET(CPACK_RESOURCE_FILE_INSTALL "${CMAKE_SOURCE_DIR}/INSTALL")
-SET(CPACK_SOURCE_GENERATOR "TGZ")
-# /!\ This assumes that an external build is used
-SET(CPACK_SOURCE_IGNORE_FILES 
-       "/build/" 
-       "/\\\\.git/" 
-       "/\\\\.gitignore" 
-       ${CPACK_SOURCE_IGNORE_FILES}
-       )
-
-SET(CPACK_SOURCE_PACKAGE_FILE_NAME "${CMAKE_PROJECT_NAME}-${CPACK_PACKAGE_VERSION_MAJOR}.${CPACK_PACKAGE_VERSION_MINOR}.${CPACK_PACKAGE_VERSION_PATCH}")
-SET(CPACK_DEBSOURCE_PACKAGE_FILE_NAME "${CMAKE_PROJECT_NAME}_${CPACK_PACKAGE_VERSION_MAJOR}.${CPACK_PACKAGE_VERSION_MINOR}.${CPACK_PACKAGE_VERSION_PATCH}.orig")
-INCLUDE(CPack)
-
-#This adds the 'dist' target
-ADD_CUSTOM_TARGET(dist COMMAND ${CMAKE_MAKE_PROGRAM} package_source)
-
-IF(NOT NO_DEP_CHECK)
-IF (UNIX)
-
-#This creates rpm packages:
-ADD_CUSTOM_TARGET(rpm rpmbuild -ta ${CPACK_SOURCE_PACKAGE_FILE_NAME}.tar.gz)
-ADD_DEPENDENCIES(rpm dist info man)
-
-ENDIF(UNIX)
-
-ENDIF(NOT NO_DEP_CHECK)
