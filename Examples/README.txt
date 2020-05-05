@@ -39,7 +39,7 @@ p0=0.0380727606300336
 p1=0.961927239
 k=0.258846591077448
 
-When using XXX cores, the estimated runtime is 2.5 hours.
+When using 16 cores, the estimated runtime is 2.5 hours.
 You can compare your output files to those provided in "${EXAMPLES_DIR}"/data/example1/
 
 ### Example 2 (will be added soon)
