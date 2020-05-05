@@ -1,0 +1,2986 @@
+************************************************************************************************
+*       TraitRELAX program for detecting phenotype related changes in selective pressure       *
+*                                                                                              *
+*                       by Halabi, Levy Karin, Guéguen and Mayrose 2020                        *
+************************************************************************************************
+
+Parsing options:
+Parsing file /path/to/TraitRELAX/Examples/example1.bpp for options.
+seed=0.29796
+character data file ...................: ./data/example1/character_data.fas
+chatacter data format .................: FASTA file
+Input tree file .......................: ./data/example1/tree.nwk
+Input tree format .....................: Newick
+Alphabet type .........................: Codon(letter=DNA)
+Sequence file .........................: ./data/example1/sequence_data.fas
+Sequence format .......................: FASTA file
+Sites to use...........................: all
+Remove Stop Codons.....................: yes
+WARNING!!! Tree has been unrooted.
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Number of distinct models..............: 2
+StopCodon frequencies distribution ....: quadratic
+Stationarity assumed...................: yes
+StopCodon frequencies distribution ....: quadratic
+Transition model.......................: RELAX
+Frequencies Initialization for model...: None
+WARNING!!! Parameter RELAX.1_Full.theta not specified. Default used instead: 0.5
+Parameter found........................: RELAX.1_Full.theta_1=0.5
+WARNING!!! Parameter RELAX.1_Full.theta1 not specified. Default used instead: 0.5
+Parameter found........................: RELAX.1_Full.theta1_1=0.5
+WARNING!!! Parameter RELAX.1_Full.theta2 not specified. Default used instead: 0.5
+Parameter found........................: RELAX.1_Full.theta2_1=0.5
+WARNING!!! Parameter RELAX.2_Full.theta not specified. Default used instead: 0.5
+Parameter found........................: RELAX.2_Full.theta_1=0.5
+WARNING!!! Parameter RELAX.2_Full.theta1 not specified. Default used instead: 0.5
+Parameter found........................: RELAX.2_Full.theta1_1=0.5
+WARNING!!! Parameter RELAX.2_Full.theta2 not specified. Default used instead: 0.5
+Parameter found........................: RELAX.2_Full.theta2_1=0.5
+WARNING!!! Parameter RELAX.3_Full.theta not specified. Default used instead: 0.5
+Parameter found........................: RELAX.3_Full.theta_1=0.5
+WARNING!!! Parameter RELAX.3_Full.theta1 not specified. Default used instead: 0.5
+Parameter found........................: RELAX.3_Full.theta1_1=0.5
+WARNING!!! Parameter RELAX.3_Full.theta2 not specified. Default used instead: 0.5
+Parameter found........................: RELAX.3_Full.theta2_1=0.5
+Parameter found........................: RELAX.kappa_1=2
+Parameter found........................: RELAX.theta1_1=0.5
+Parameter found........................: RELAX.theta2_1=0.8
+Parameter found........................: RELAX.p_1=0.125
+Parameter found........................: RELAX.omega1_1=0.8
+Parameter found........................: RELAX.omega2_1=2
+Parameter found........................: RELAX.k_1=1
+Model1 is associated to................: 17 node(s).
+StopCodon frequencies distribution ....: quadratic
+Transition model.......................: RELAX
+Frequencies Initialization for model...: None
+WARNING!!! Parameter RELAX.1_Full.theta not specified. Default used instead: 0.5
+Parameter found........................: RELAX.1_Full.theta_2=0.5
+WARNING!!! Parameter RELAX.1_Full.theta1 not specified. Default used instead: 0.5
+Parameter found........................: RELAX.1_Full.theta1_2=0.5
+WARNING!!! Parameter RELAX.1_Full.theta2 not specified. Default used instead: 0.5
+Parameter found........................: RELAX.1_Full.theta2_2=0.5
+WARNING!!! Parameter RELAX.2_Full.theta not specified. Default used instead: 0.5
+Parameter found........................: RELAX.2_Full.theta_2=0.5
+WARNING!!! Parameter RELAX.2_Full.theta1 not specified. Default used instead: 0.5
+Parameter found........................: RELAX.2_Full.theta1_2=0.5
+WARNING!!! Parameter RELAX.2_Full.theta2 not specified. Default used instead: 0.5
+Parameter found........................: RELAX.2_Full.theta2_2=0.5
+WARNING!!! Parameter RELAX.3_Full.theta not specified. Default used instead: 0.5
+Parameter found........................: RELAX.3_Full.theta_2=0.5
+WARNING!!! Parameter RELAX.3_Full.theta1 not specified. Default used instead: 0.5
+Parameter found........................: RELAX.3_Full.theta1_2=0.5
+WARNING!!! Parameter RELAX.3_Full.theta2 not specified. Default used instead: 0.5
+Parameter found........................: RELAX.3_Full.theta2_2=0.5
+Parameter found........................: RELAX.k_2=0.2
+Model2 is associated to................: 13 node(s).
+Parameter alias found..................: RELAX.kappa_2 -> RELAX.kappa_1 = 2
+Parameter alias found..................: RELAX.omega1_2 -> RELAX.omega1_1 = 0.8
+Parameter alias found..................: RELAX.omega2_2 -> RELAX.omega2_1 = 2
+Parameter alias found..................: RELAX.p_2 -> RELAX.p_1 = 0.125
+Parameter alias found..................: RELAX.theta1_2 -> RELAX.theta1_1 = 0.5
+Parameter alias found..................: RELAX.theta2_2 -> RELAX.theta2_1 = 0.8
+Number of distinct paths...............: 2
+Site Path..............................: model1[YN98.omega_1]&model2[YN98.omega_1]
+Site Path..............................: model1[YN98.omega_2]&model2[YN98.omega_2]
+Site Path Completion...................: Yes
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+WARNING!!! Parameter character.num_of_mappings not specified. Default used instead: 1000
+
+**** Initial parameters ****
+TwoParameterBinary.mu..................: 8
+TwoParameterBinary.pi0.................: 0.5
+
+model 1
+
+RELAX.1_Full.theta.....................: 0.5
+RELAX.1_Full.theta1....................: 0.5
+RELAX.1_Full.theta2....................: 0.5
+RELAX.2_Full.theta.....................: 0.5
+RELAX.2_Full.theta1....................: 0.5
+RELAX.2_Full.theta2....................: 0.5
+RELAX.3_Full.theta.....................: 0.5
+RELAX.3_Full.theta1....................: 0.5
+RELAX.3_Full.theta2....................: 0.5
+RELAX.kappa............................: 2
+RELAX.theta1...........................: 0.5
+RELAX.theta2...........................: 0.8
+RELAX.p................................: 0.125
+RELAX.omega1...........................: 0.8
+RELAX.omega2...........................: 2
+RELAX.k................................: 1
+
+model 2
+
+RELAX.1_Full.theta.....................: 0.5
+RELAX.1_Full.theta1....................: 0.5
+RELAX.1_Full.theta2....................: 0.5
+RELAX.2_Full.theta.....................: 0.5
+RELAX.2_Full.theta1....................: 0.5
+RELAX.2_Full.theta2....................: 0.5
+RELAX.3_Full.theta.....................: 0.5
+RELAX.3_Full.theta1....................: 0.5
+RELAX.3_Full.theta2....................: 0.5
+RELAX.kappa............................: 2
+RELAX.theta1...........................: 0.5
+RELAX.theta2...........................: 0.8
+RELAX.p................................: 0.125
+RELAX.omega1...........................: 0.8
+RELAX.omega2...........................: 2
+RELAX.k................................: 0.2
+Sequence scaling factor................: 1
+
+Character Log likelihood..............: -10.4412882718008
+Sequence Log likelihood................: -3438.92014435149
+Overall Log likelihood.................: -3449.36143262329
+
+**** Null model fitting ****
+** Optimzing the character model **
+Message handler........................: none
+Profiler...............................: ./res_example1_optimization_steps.txt
+WARNING!!! Parameter 'RELAX.k_1' not found, and so can't be ignored!
+Parameter ignored......................: Branch lengths
+WARNING!!! Parameter 'BrLen0' not found, and so can't be ignored!
+Max # ML evaluations...................: 10000
+Tolerance..............................: 1e-06
+Optimize topology......................: no
+Optimization method....................: FullD
+Algorithm used for derivable parameters: Newton
+Reparametrization......................: no
+Molecular clock........................: None
+Optimizing... / 1Optimizing... - 2Optimizing... \ 3Optimizing... - 4Optimizing... / 5Optimizing... - 6
+
+Final optimization step................: powell
+Optimizing... / 1Performed..............................: 46 function evaluations.
+Message handler........................: none
+Profiler...............................: ./res_example1_optimization_steps.txt
+WARNING!!! Parameter 'RELAX.k_1' not found, and so can't be ignored!
+Parameter ignored......................: Branch lengths
+WARNING!!! Parameter 'BrLen0' not found, and so can't be ignored!
+Max # ML evaluations...................: 10000
+Tolerance..............................: 1e-06
+Optimize topology......................: no
+Optimization method....................: FullD
+Algorithm used for derivable parameters: Newton
+Reparametrization......................: no
+Molecular clock........................: None
+Optimizing... / 1
+
+Final optimization step................: powell
+Optimizing... / 1Performed..............................: 26 function evaluations.
+
+
+TwoParameterBinary.mu..................: 3.80645
+TwoParameterBinary.pi0.................: 0.05
+Character log likelihood...............: -8.22909
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+** Optimzing the sequence model **
+WARNING!!! Parameter optimization.scale.tree not specified. Default used instead: 0
+WARNING!!! Parameter optimization.advanced not specified. Default used instead: 0
+Optimization cycle: 1
+Message handler........................: none
+Profiler...............................: ./res_example1_optimization_steps.txt
+Parameter ignored......................: Branch lengths
+Parameter ignored......................: RELAX.k_1
+Parameter ignored......................: RELAX.k_2
+Max # ML evaluations...................: 10000
+Tolerance..............................: 1e-06
+Optimize topology......................: no
+Optimization method....................: FullD
+Algorithm used for derivable parameters: Newton
+Reparametrization......................: no
+Molecular clock........................: None
+Optimizing... / 1Optimizing... - 2Optimizing... \ 3Optimizing... - 4Optimizing... / 5Optimizing... - 6Optimizing... \ 7Optimizing... - 8Optimizing... / 9Optimizing... - 10Optimizing... \ 11Optimizing... - 12Optimizing... / 13Optimizing... - 14Optimizing... \ 15Optimizing... - 16Optimizing... / 17Optimizing... - 18Optimizing... \ 19Optimizing... - 20Optimizing... / 21Optimizing... - 22Optimizing... \ 23Optimizing... - 24Optimizing... / 25Optimizing... - 26Optimizing... \ 27Optimizing... - 28Optimizing... / 29Optimizing... - 30Optimizing... \ 31Optimizing... - 32Optimizing... / 33Optimizing... - 34Optimizing... \ 35Optimizing... - 36Optimizing... / 37Optimizing... - 38Optimizing... \ 39Optimizing... - 40Optimizing... / 41Optimizing... - 42Optimizing... \ 43Optimizing... - 44Optimizing... / 45Optimizing... - 46Optimizing... \ 47Optimizing... - 48Optimizing... / 49Optimizing... - 50Optimizing... \ 51Optimizing... - 52Optimizing... / 53Optimizing... - 54Optimizing... \ 55Optimizing... - 56
+
+Final optimization step................: powell
+Optimizing... / 1Performed..............................: 281 function evaluations.
+Current log likelihood.................: -3405.04800803582
+Current diff...........................: 53.3913250045593
+Optimization cycle: 2
+Message handler........................: none
+Profiler...............................: ./res_example1_optimization_steps.txt
+Parameter ignored......................: Branch lengths
+Parameter ignored......................: RELAX.k_1
+Parameter ignored......................: RELAX.k_2
+Max # ML evaluations...................: 10000
+Tolerance..............................: 1e-06
+Optimize topology......................: no
+Optimization method....................: FullD
+Algorithm used for derivable parameters: Newton
+Reparametrization......................: no
+Molecular clock........................: None
+Optimizing... / 1
+
+Final optimization step................: powell
+Optimizing... / 1Performed..............................: 289 function evaluations.
+Current log likelihood.................: -3405.04800801943
+Current diff...........................: 1.63890945259482e-08
+iteraive optimzation complete
+Log likelihood.........................: -3405.04800801943
+TwoParameterBinary.mu..................: 3.80645
+TwoParameterBinary.pi0.................: 0.05
+
+model 1
+
+RELAX.1_Full.theta.....................: 0.547321
+RELAX.1_Full.theta1....................: 0.53317
+RELAX.1_Full.theta2....................: 0.500878
+RELAX.2_Full.theta.....................: 0.489595
+RELAX.2_Full.theta1....................: 0.526304
+RELAX.2_Full.theta2....................: 0.516453
+RELAX.3_Full.theta.....................: 0.512177
+RELAX.3_Full.theta1....................: 0.468887
+RELAX.3_Full.theta2....................: 0.49269
+RELAX.kappa............................: 1.86599
+RELAX.theta1...........................: 0.0384568
+RELAX.theta2...........................: 1
+RELAX.p................................: 0.01
+RELAX.omega1...........................: 0.62411
+RELAX.omega2...........................: 1.058
+RELAX.k................................: 1
+
+model 2
+
+RELAX.1_Full.theta.....................: 0.528043
+RELAX.1_Full.theta1....................: 0.577416
+RELAX.1_Full.theta2....................: 0.490626
+RELAX.2_Full.theta.....................: 0.523215
+RELAX.2_Full.theta1....................: 0.494417
+RELAX.2_Full.theta2....................: 0.481164
+RELAX.3_Full.theta.....................: 0.56272
+RELAX.3_Full.theta1....................: 0.481286
+RELAX.3_Full.theta2....................: 0.503775
+RELAX.kappa............................: 1.86599
+RELAX.theta1...........................: 0.0384568
+RELAX.theta2...........................: 1
+RELAX.p................................: 0.01
+RELAX.omega1...........................: 0.62411
+RELAX.omega2...........................: 1.058
+RELAX.k................................: 1
+Sequence scaling factor................: 1
+
+Character Log likelihood..............: -8.22909086235116
+Sequence Log likelihood................: -3405.04800801943
+Overall Log likelihood.................: -3413.27709888178
+
+** Model parameters after sequence model optimizaiton ** 
+TwoParameterBinary.mu..................: 3.80645
+TwoParameterBinary.pi0.................: 0.05
+
+model 1
+
+RELAX.1_Full.theta.....................: 0.547321
+RELAX.1_Full.theta1....................: 0.53317
+RELAX.1_Full.theta2....................: 0.500878
+RELAX.2_Full.theta.....................: 0.489595
+RELAX.2_Full.theta1....................: 0.526304
+RELAX.2_Full.theta2....................: 0.516453
+RELAX.3_Full.theta.....................: 0.512177
+RELAX.3_Full.theta1....................: 0.468887
+RELAX.3_Full.theta2....................: 0.49269
+RELAX.kappa............................: 1.86599
+RELAX.theta1...........................: 0.0384568
+RELAX.theta2...........................: 1
+RELAX.p................................: 0.01
+RELAX.omega1...........................: 0.62411
+RELAX.omega2...........................: 1.058
+RELAX.k................................: 1
+
+model 2
+
+RELAX.1_Full.theta.....................: 0.528043
+RELAX.1_Full.theta1....................: 0.577416
+RELAX.1_Full.theta2....................: 0.490626
+RELAX.2_Full.theta.....................: 0.523215
+RELAX.2_Full.theta1....................: 0.494417
+RELAX.2_Full.theta2....................: 0.481164
+RELAX.3_Full.theta.....................: 0.56272
+RELAX.3_Full.theta1....................: 0.481286
+RELAX.3_Full.theta2....................: 0.503775
+RELAX.kappa............................: 1.86599
+RELAX.theta1...........................: 0.0384568
+RELAX.theta2...........................: 1
+RELAX.p................................: 0.01
+RELAX.omega1...........................: 0.62411
+RELAX.omega2...........................: 1.058
+RELAX.k................................: 1
+Sequence scaling factor................: 1
+
+Character Log likelihood..............: -8.22909086235116
+Sequence Log likelihood................: -3405.04800801943
+Overall Log likelihood.................: -3413.27709888178
+traitRELAX's done. Bye.
+Total execution time: 0.000000d, 0.000000h, 24.000000m, 3.000000s.
+
+**** Alternative model fitting ****
+
+Starting point optimization: maximum parsimony partition
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+** Optimzing the sequence model **
+WARNING!!! Parameter optimization.scale.tree not specified. Default used instead: 0
+WARNING!!! Parameter optimization.advanced not specified. Default used instead: 0
+Optimization cycle: 1
+Message handler........................: none
+Profiler...............................: ./res_example1_optimization_steps.txt
+Parameter ignored......................: Branch lengths
+Parameter ignored......................: RELAX.k_1
+Parameter ignored......................: RELAX.1_Full.theta_1
+Parameter ignored......................: RELAX.1_Full.theta1_1
+Parameter ignored......................: RELAX.1_Full.theta2_1
+Parameter ignored......................: RELAX.2_Full.theta_1
+Parameter ignored......................: RELAX.2_Full.theta1_1
+Parameter ignored......................: RELAX.2_Full.theta2_1
+Parameter ignored......................: RELAX.3_Full.theta_1
+Parameter ignored......................: RELAX.3_Full.theta1_1
+Parameter ignored......................: RELAX.3_Full.theta2_1
+Max # ML evaluations...................: 10000
+Tolerance..............................: 1e-06
+Optimize topology......................: no
+Optimization method....................: FullD
+Algorithm used for derivable parameters: Newton
+Reparametrization......................: no
+Molecular clock........................: None
+Optimizing... / 1Optimizing... - 2Optimizing... \ 3Optimizing... - 4Optimizing... / 5Optimizing... - 6Optimizing... \ 7Optimizing... - 8Optimizing... / 9Optimizing... - 10Optimizing... \ 11Optimizing... - 12Optimizing... / 13Optimizing... - 14Optimizing... \ 15Optimizing... - 16Optimizing... / 17Optimizing... - 18Optimizing... \ 19Optimizing... - 20Optimizing... / 21Optimizing... - 22Optimizing... \ 23Optimizing... - 24Optimizing... / 25Optimizing... - 26Optimizing... \ 27Optimizing... - 28Optimizing... / 29Optimizing... - 30Optimizing... \ 31Optimizing... - 32Optimizing... / 33Optimizing... - 34Optimizing... \ 35Optimizing... - 36Optimizing... / 37Optimizing... - 38Optimizing... \ 39Optimizing... - 40Optimizing... / 41Optimizing... - 42Optimizing... \ 43Optimizing... - 44Optimizing... / 45Optimizing... - 46Optimizing... \ 47Optimizing... - 48Optimizing... / 49Optimizing... - 50Optimizing... \ 51Optimizing... - 52Optimizing... / 53
+
+Final optimization step................: powell
+Optimizing... / 1Performed..............................: 221 function evaluations.
+Current log likelihood.................: -3401.03646805332
+Current diff...........................: 5.79374464404009
+Optimization cycle: 2
+Message handler........................: none
+Profiler...............................: ./res_example1_optimization_steps.txt
+Parameter ignored......................: Branch lengths
+Parameter ignored......................: RELAX.k_1
+Parameter ignored......................: RELAX.1_Full.theta_1
+Parameter ignored......................: RELAX.1_Full.theta1_1
+Parameter ignored......................: RELAX.1_Full.theta2_1
+Parameter ignored......................: RELAX.2_Full.theta_1
+Parameter ignored......................: RELAX.2_Full.theta1_1
+Parameter ignored......................: RELAX.2_Full.theta2_1
+Parameter ignored......................: RELAX.3_Full.theta_1
+Parameter ignored......................: RELAX.3_Full.theta1_1
+Parameter ignored......................: RELAX.3_Full.theta2_1
+Max # ML evaluations...................: 10000
+Tolerance..............................: 1e-06
+Optimize topology......................: no
+Optimization method....................: FullD
+Algorithm used for derivable parameters: Newton
+Reparametrization......................: no
+Molecular clock........................: None
+Optimizing... / 1
+
+Final optimization step................: powell
+Optimizing... / 1Performed..............................: 175 function evaluations.
+Current log likelihood.................: -3401.03646769961
+Current diff...........................: 3.5371704143472e-07
+iteraive optimzation complete
+Log likelihood.........................: -3401.03646769961
+TwoParameterBinary.mu..................: 3.80645
+TwoParameterBinary.pi0.................: 0.05
+
+model 1
+
+RELAX.1_Full.theta.....................: 0.547321
+RELAX.1_Full.theta1....................: 0.53317
+RELAX.1_Full.theta2....................: 0.500878
+RELAX.2_Full.theta.....................: 0.489595
+RELAX.2_Full.theta1....................: 0.526304
+RELAX.2_Full.theta2....................: 0.516453
+RELAX.3_Full.theta.....................: 0.512177
+RELAX.3_Full.theta1....................: 0.468887
+RELAX.3_Full.theta2....................: 0.49269
+RELAX.kappa............................: 1.87513
+RELAX.theta1...........................: 0.0401686
+RELAX.theta2...........................: 1
+RELAX.p................................: 0.01
+RELAX.omega1...........................: 0.484547
+RELAX.omega2...........................: 1.11687
+RELAX.k................................: 1
+
+model 2
+
+RELAX.1_Full.theta.....................: 0.549445
+RELAX.1_Full.theta1....................: 0.55026
+RELAX.1_Full.theta2....................: 0.484318
+RELAX.2_Full.theta.....................: 0.500091
+RELAX.2_Full.theta1....................: 0.475893
+RELAX.2_Full.theta2....................: 0.505183
+RELAX.3_Full.theta.....................: 0.550116
+RELAX.3_Full.theta1....................: 0.51256
+RELAX.3_Full.theta2....................: 0.521073
+RELAX.kappa............................: 1.87513
+RELAX.theta1...........................: 0.0401686
+RELAX.theta2...........................: 1
+RELAX.p................................: 0.01
+RELAX.omega1...........................: 0.484547
+RELAX.omega2...........................: 1.11687
+RELAX.k................................: 0.256224
+Sequence scaling factor................: 1
+
+Character Log likelihood..............: -8.22909086235116
+Sequence Log likelihood................: -3401.03646769961
+Overall Log likelihood.................: -3409.26555856196
+
+** Model parameters after sequence model optimizaiton ** 
+TwoParameterBinary.mu..................: 3.80645
+TwoParameterBinary.pi0.................: 0.05
+
+model 1
+
+RELAX.1_Full.theta.....................: 0.547321
+RELAX.1_Full.theta1....................: 0.53317
+RELAX.1_Full.theta2....................: 0.500878
+RELAX.2_Full.theta.....................: 0.489595
+RELAX.2_Full.theta1....................: 0.526304
+RELAX.2_Full.theta2....................: 0.516453
+RELAX.3_Full.theta.....................: 0.512177
+RELAX.3_Full.theta1....................: 0.468887
+RELAX.3_Full.theta2....................: 0.49269
+RELAX.kappa............................: 1.87513
+RELAX.theta1...........................: 0.0401686
+RELAX.theta2...........................: 1
+RELAX.p................................: 0.01
+RELAX.omega1...........................: 0.484547
+RELAX.omega2...........................: 1.11687
+RELAX.k................................: 1
+
+model 2
+
+RELAX.1_Full.theta.....................: 0.549445
+RELAX.1_Full.theta1....................: 0.55026
+RELAX.1_Full.theta2....................: 0.484318
+RELAX.2_Full.theta.....................: 0.500091
+RELAX.2_Full.theta1....................: 0.475893
+RELAX.2_Full.theta2....................: 0.505183
+RELAX.3_Full.theta.....................: 0.550116
+RELAX.3_Full.theta1....................: 0.51256
+RELAX.3_Full.theta2....................: 0.521073
+RELAX.kappa............................: 1.87513
+RELAX.theta1...........................: 0.0401686
+RELAX.theta2...........................: 1
+RELAX.p................................: 0.01
+RELAX.omega1...........................: 0.484547
+RELAX.omega2...........................: 1.11687
+RELAX.k................................: 0.256224
+Sequence scaling factor................: 1
+
+Character Log likelihood..............: -8.22909086235116
+Sequence Log likelihood................: -3401.03646769961
+Overall Log likelihood.................: -3409.26555856196
+* Starting iterative two-layer optimzation of the alternative model *
+TwoParameterBinary.mu..................: 3.80645
+TwoParameterBinary.pi0.................: 0.05
+
+model 1
+
+RELAX.1_Full.theta.....................: 0.547321
+RELAX.1_Full.theta1....................: 0.53317
+RELAX.1_Full.theta2....................: 0.500878
+RELAX.2_Full.theta.....................: 0.489595
+RELAX.2_Full.theta1....................: 0.526304
+RELAX.2_Full.theta2....................: 0.516453
+RELAX.3_Full.theta.....................: 0.512177
+RELAX.3_Full.theta1....................: 0.468887
+RELAX.3_Full.theta2....................: 0.49269
+RELAX.kappa............................: 1.87513
+RELAX.theta1...........................: 0.0401686
+RELAX.theta2...........................: 1
+RELAX.p................................: 0.01
+RELAX.omega1...........................: 0.484547
+RELAX.omega2...........................: 1.11687
+RELAX.k................................: 1
+
+model 2
+
+RELAX.1_Full.theta.....................: 0.549445
+RELAX.1_Full.theta1....................: 0.55026
+RELAX.1_Full.theta2....................: 0.484318
+RELAX.2_Full.theta.....................: 0.500091
+RELAX.2_Full.theta1....................: 0.475893
+RELAX.2_Full.theta2....................: 0.505183
+RELAX.3_Full.theta.....................: 0.550116
+RELAX.3_Full.theta1....................: 0.51256
+RELAX.3_Full.theta2....................: 0.521073
+RELAX.kappa............................: 1.87513
+RELAX.theta1...........................: 0.0401686
+RELAX.theta2...........................: 1
+RELAX.p................................: 0.01
+RELAX.omega1...........................: 0.484547
+RELAX.omega2...........................: 1.11687
+RELAX.k................................: 0.256224
+Sequence scaling factor................: 1
+
+Character Log likelihood..............: -8.22909086235116
+Sequence Log likelihood................: -3401.03646769961
+Overall Log likelihood.................: -3409.26555856196
+traitRELAX's done. Bye.
+Total execution time: 0.000000d, 0.000000h, 49.000000m, 59.000000s.
+
+** Step 1: fix sequence model parameters, optimize character model parameters **
+
+WARNING!!! Parameter optimization.character_method not specified. Default used instead: FullD(derivatives=Newton)
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.80645295054835
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.22909086235116
+Sequence Log likelihood................: -3401.03646769961
+Overall Log likelihood.................: -3409.26555856196
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.80645295054835
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.22909086235116
+Sequence Log likelihood................: -3401.03646769961
+Overall Log likelihood.................: -3409.26555856196
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.80645343119364
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.2290908623512
+Sequence Log likelihood................: -3401.03646787232
+Overall Log likelihood.................: -3409.26555873467
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.80645295054835
+TwoParameterBinary.pi0.................: 0.050000105
+Character Log likelihood...............: -8.2290912400712
+Sequence Log likelihood................: -3401.03646880181
+Overall Log likelihood.................: -3409.26556004188
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.80645295054835
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.22909086235116
+Sequence Log likelihood................: -3401.03646769961
+Overall Log likelihood.................: -3409.26555856196
+Optimizing... / 1WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.80645295054835
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.22909086235116
+Sequence Log likelihood................: -3401.03646769961
+Overall Log likelihood.................: -3409.26555856196
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.80645295054835
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.22909086235116
+Sequence Log likelihood................: -3401.03646769961
+Overall Log likelihood.................: -3409.26555856196
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.80285955507287
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.22909308208439
+Sequence Log likelihood................: -3401.03517849487
+Overall Log likelihood.................: -3409.26427157696
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.80285955507287
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.22909308208439
+Sequence Log likelihood................: -3401.03517849487
+Overall Log likelihood.................: -3409.26427157696
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.79704531905852
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.22910608861503
+Sequence Log likelihood................: -3401.03310112735
+Overall Log likelihood.................: -3409.26220721596
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.79704531905852
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.22910608861503
+Sequence Log likelihood................: -3401.03310112735
+Overall Log likelihood.................: -3409.26220721596
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.26121965299253
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.28415437483697
+Sequence Log likelihood................: -3400.89214182594
+Overall Log likelihood.................: -3409.17629620077
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.26121965299253
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.28415437483697
+Sequence Log likelihood................: -3400.89214182594
+Overall Log likelihood.................: -3409.17629620077
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.78763768756869
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.22915184508375
+Sequence Log likelihood................: -3401.02976250649
+Overall Log likelihood.................: -3409.25891435158
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.78763768756869
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.22915184508375
+Sequence Log likelihood................: -3401.02976250649
+Overall Log likelihood.................: -3409.25891435158
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.80645295054835
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.22909086235116
+Sequence Log likelihood................: -3401.03646769961
+Overall Log likelihood.................: -3409.26555856196
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.80645295054835
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.22909086235116
+Sequence Log likelihood................: -3401.03646769961
+Overall Log likelihood.................: -3409.26555856196
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.26121965299253
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.28415437483697
+Sequence Log likelihood................: -3400.89214182594
+Overall Log likelihood.................: -3409.17629620077
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.26121965299253
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.28415437483697
+Sequence Log likelihood................: -3400.89214182594
+Overall Log likelihood.................: -3409.17629620077
+Optimizing... / 1WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.46588684538518
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.24996990891603
+Sequence Log likelihood................: -3400.93355797516
+Overall Log likelihood.................: -3409.18352788407
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.46588684538518
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.24996990891603
+Sequence Log likelihood................: -3400.93355797516
+Overall Log likelihood.................: -3409.18352788407
+Optimizing... - 2WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.33939556410451
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.26905607157872
+Sequence Log likelihood................: -3400.90604305257
+Overall Log likelihood.................: -3409.17509912414
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.33939556410451
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.26905607157872
+Sequence Log likelihood................: -3400.90604305257
+Overall Log likelihood.................: -3409.17509912414
+Optimizing... \ 3WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31942948133022
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.27266746877107
+Sequence Log likelihood................: -3400.90226425178
+Overall Log likelihood.................: -3409.17493172055
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31942948133022
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.27266746877107
+Sequence Log likelihood................: -3400.90226425178
+Overall Log likelihood.................: -3409.17493172055
+Optimizing... - 4WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31455924660211
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.27357366149002
+Sequence Log likelihood................: -3400.9013661828
+Overall Log likelihood.................: -3409.17493984429
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31455924660211
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.27357366149002
+Sequence Log likelihood................: -3400.9013661828
+Overall Log likelihood.................: -3409.17493984429
+Optimizing... / 5WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.32429971605834
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.27177121149363
+Sequence Log likelihood................: -3400.90317161795
+Overall Log likelihood.................: -3409.17494282945
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.32429971605834
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.27177121149363
+Sequence Log likelihood................: -3400.90317161795
+Overall Log likelihood.................: -3409.17494282945
+Optimizing... - 6WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.32429971605834
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.27177121149363
+Sequence Log likelihood................: -3400.90317161795
+Overall Log likelihood.................: -3409.17494282945
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.32429971605834
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.27177121149363
+Sequence Log likelihood................: -3400.90317161795
+Overall Log likelihood.................: -3409.17494282945
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31942948133022
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.27266746877107
+Sequence Log likelihood................: -3400.90226425178
+Overall Log likelihood.................: -3409.17493172055
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31942948133022
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.27266746877107
+Sequence Log likelihood................: -3400.90226425178
+Overall Log likelihood.................: -3409.17493172055
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31942948133022
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.27266746877107
+Sequence Log likelihood................: -3400.90226425178
+Overall Log likelihood.................: -3409.17493172055
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31942948133022
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.27266746877107
+Sequence Log likelihood................: -3400.90226425178
+Overall Log likelihood.................: -3409.17493172055
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31942991327317
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.27266738884142
+Sequence Log likelihood................: -3400.90226433184
+Overall Log likelihood.................: -3409.17493172068
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31942948133022
+TwoParameterBinary.pi0.................: 0.050000105
+Character Log likelihood...............: -8.27266792783703
+Sequence Log likelihood................: -3400.90226513879
+Overall Log likelihood.................: -3409.17493306663
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31942948133022
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.27266746877107
+Sequence Log likelihood................: -3400.90226425178
+Overall Log likelihood.................: -3409.17493172055
+Optimizing... / 9WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31942948133022
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.27266746877107
+Sequence Log likelihood................: -3400.90226425178
+Overall Log likelihood.................: -3409.17493172055
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31942948133022
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.27266746877107
+Sequence Log likelihood................: -3400.90226425178
+Overall Log likelihood.................: -3409.17493172055
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31972186363522
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.27261338224483
+Sequence Log likelihood................: -3400.90231846288
+Overall Log likelihood.................: -3409.17493184512
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31972186363522
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.27261338224483
+Sequence Log likelihood................: -3400.90231846288
+Overall Log likelihood.................: -3409.17493184512
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31895639682303
+TwoParameterBinary.pi0.................: 0.23868012976046
+Character Log likelihood...............: -9.00776219409346
+Sequence Log likelihood................: -3401.33732053105
+Overall Log likelihood.................: -3410.34508272515
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31895639682303
+TwoParameterBinary.pi0.................: 0.23868012976046
+Character Log likelihood...............: -9.00776219409346
+Sequence Log likelihood................: -3401.33732053105
+Overall Log likelihood.................: -3410.34508272515
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31942948133022
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.27266746877107
+Sequence Log likelihood................: -3400.90226425178
+Overall Log likelihood.................: -3409.17493172055
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31942948133022
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.27266746877107
+Sequence Log likelihood................: -3400.90226425178
+Overall Log likelihood.................: -3409.17493172055
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31942948133022
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.27266746877107
+Sequence Log likelihood................: -3400.90226425178
+Overall Log likelihood.................: -3409.17493172055
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31942948133022
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.27266746877107
+Sequence Log likelihood................: -3400.90226425178
+Overall Log likelihood.................: -3409.17493172055
+Optimizing... / 1WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31924877912803
+TwoParameterBinary.pi0.................: 0.122069396566755
+Character Log likelihood...............: -8.59029344236377
+Sequence Log likelihood................: -3401.26869300657
+Overall Log likelihood.................: -3409.85898644894
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31924877912803
+TwoParameterBinary.pi0.................: 0.122069396566755
+Character Log likelihood...............: -8.59029344236377
+Sequence Log likelihood................: -3401.26869300657
+Overall Log likelihood.................: -3409.85898644894
+Optimizing... - 2WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31954116143302
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.27264680532996
+Sequence Log likelihood................: -3400.90228495462
+Overall Log likelihood.................: -3409.17493175995
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31954116143302
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.27264680532996
+Sequence Log likelihood................: -3400.90228495462
+Overall Log likelihood.................: -3409.17493175995
+Optimizing... \ 3WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.319485321368
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.2726571364
+Sequence Log likelihood................: -3400.90227460258
+Overall Log likelihood.................: -3409.17493173898
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.319485321368
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.2726571364
+Sequence Log likelihood................: -3400.90227460258
+Overall Log likelihood.................: -3409.17493173898
+Optimizing... - 4WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31936045923083
+TwoParameterBinary.pi0.................: 0.0775280599398055
+Character Log likelihood...............: -8.39434259995547
+Sequence Log likelihood................: -3401.09397554433
+Overall Log likelihood.................: -3409.48831814429
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31936045923083
+TwoParameterBinary.pi0.................: 0.0775280599398055
+Character Log likelihood...............: -8.39434259995547
+Sequence Log likelihood................: -3401.09397554433
+Overall Log likelihood.................: -3409.48831814429
+Optimizing... / 5WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31940311723423
+TwoParameterBinary.pi0.................: 0.0605147832526613
+Character Log likelihood...............: -8.31888523371143
+Sequence Log likelihood................: -3400.98475633787
+Overall Log likelihood.................: -3409.30364157158
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31940311723423
+TwoParameterBinary.pi0.................: 0.0605147832526613
+Character Log likelihood...............: -8.31888523371143
+Sequence Log likelihood................: -3400.98475633787
+Overall Log likelihood.................: -3409.30364157158
+Optimizing... - 6WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31945081032672
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.27266352200234
+Sequence Log likelihood................: -3400.90226820529
+Overall Log likelihood.................: -3409.17493172729
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31945081032672
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.27266352200234
+Sequence Log likelihood................: -3400.90226820529
+Overall Log likelihood.................: -3409.17493172729
+Optimizing... \ 7WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31941941114164
+TwoParameterBinary.pi0.................: 0.0540162898181785
+Character Log likelihood...............: -8.29026681550592
+Sequence Log likelihood................: -3400.93524472282
+Overall Log likelihood.................: -3409.22551153832
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31941941114164
+TwoParameterBinary.pi0.................: 0.0540162898181785
+Character Log likelihood...............: -8.29026681550592
+Sequence Log likelihood................: -3400.93524472282
+Overall Log likelihood.................: -3409.22551153832
+Optimizing... - 8WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31943762828194
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.27266596121707
+Sequence Log likelihood................: -3400.90226576186
+Overall Log likelihood.................: -3409.17493172308
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31943762828194
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.27266596121707
+Sequence Log likelihood................: -3400.90226576186
+Overall Log likelihood.................: -3409.17493172308
+Optimizing... / 9WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31942563486046
+TwoParameterBinary.pi0.................: 0.051534086201874
+Character Log likelihood...............: -8.27938099536066
+Sequence Log likelihood................: -3400.91508374507
+Overall Log likelihood.................: -3409.19446474043
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31942563486046
+TwoParameterBinary.pi0.................: 0.051534086201874
+Character Log likelihood...............: -8.27938099536066
+Sequence Log likelihood................: -3400.91508374507
+Overall Log likelihood.................: -3409.19446474043
+Optimizing... - 10WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31943259318887
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.2726668929334
+Sequence Log likelihood................: -3400.90226482858
+Overall Log likelihood.................: -3409.17493172151
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31943259318887
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.2726668929334
+Sequence Log likelihood................: -3400.90226482858
+Overall Log likelihood.................: -3409.17493172151
+Optimizing... \ 11WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31942801210951
+TwoParameterBinary.pi0.................: 0.0505859687874436
+Character Log likelihood...............: -8.27523046991625
+Sequence Log likelihood................: -3400.90719369444
+Overall Log likelihood.................: -3409.18242416435
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31942801210951
+TwoParameterBinary.pi0.................: 0.0505859687874436
+Character Log likelihood...............: -8.27523046991625
+Sequence Log likelihood................: -3400.90719369444
+Overall Log likelihood.................: -3409.18242416435
+Optimizing... - 12WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31943066995446
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.27266724882017
+Sequence Log likelihood................: -3400.9022644721
+Overall Log likelihood.................: -3409.17493172092
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31943066995446
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.27266724882017
+Sequence Log likelihood................: -3400.9022644721
+Overall Log likelihood.................: -3409.17493172092
+Optimizing... / 13WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31942892013785
+TwoParameterBinary.pi0.................: 0.0502238201604569
+Character Log likelihood...............: -8.27364625012178
+Sequence Log likelihood................: -3400.90415194592
+Overall Log likelihood.................: -3409.17779819604
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31942892013785
+TwoParameterBinary.pi0.................: 0.0502238201604569
+Character Log likelihood...............: -8.27364625012178
+Sequence Log likelihood................: -3400.90415194592
+Overall Log likelihood.................: -3409.17779819604
+Optimizing... - 14WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31942993534428
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.27266738475723
+Sequence Log likelihood................: -3400.90226433593
+Overall Log likelihood.................: -3409.17493172069
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31942993534428
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.27266738475723
+Sequence Log likelihood................: -3400.90226433593
+Overall Log likelihood.................: -3409.17493172069
+Optimizing... \ 15WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31942926697381
+TwoParameterBinary.pi0.................: 0.0500854916939271
+Character Log likelihood...............: -8.27304130094041
+Sequence Log likelihood................: -3400.90298599059
+Overall Log likelihood.................: -3409.17602729153
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31942926697381
+TwoParameterBinary.pi0.................: 0.0500854916939271
+Character Log likelihood...............: -8.27304130094041
+Sequence Log likelihood................: -3400.90298599059
+Overall Log likelihood.................: -3409.17602729153
+Optimizing... - 16WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31942965474816
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.27266743668063
+Sequence Log likelihood................: -3400.90226428392
+Overall Log likelihood.................: -3409.1749317206
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31942965474816
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.27266743668063
+Sequence Log likelihood................: -3400.90226428392
+Overall Log likelihood.................: -3409.1749317206
+Optimizing... / 17WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31942939945336
+TwoParameterBinary.pi0.................: 0.0500326549213243
+Character Log likelihood...............: -8.27281025570829
+Sequence Log likelihood................: -3400.90254003424
+Overall Log likelihood.................: -3409.17535028995
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31942939945336
+TwoParameterBinary.pi0.................: 0.0500326549213243
+Character Log likelihood...............: -8.27281025570829
+Sequence Log likelihood................: -3400.90254003424
+Overall Log likelihood.................: -3409.17535028995
+Optimizing... - 18WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31942954756998
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.27266745651361
+Sequence Log likelihood................: -3400.90226426406
+Overall Log likelihood.................: -3409.17493172057
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31942954756998
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.27266745651361
+Sequence Log likelihood................: -3400.90226426406
+Overall Log likelihood.................: -3409.17493172057
+Optimizing... \ 19WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31942945005604
+TwoParameterBinary.pi0.................: 0.0500124730700459
+Character Log likelihood...............: -8.27272200790806
+Sequence Log likelihood................: -3400.9023696063
+Overall Log likelihood.................: -3409.17509161421
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31942945005604
+TwoParameterBinary.pi0.................: 0.0500124730700459
+Character Log likelihood...............: -8.27272200790806
+Sequence Log likelihood................: -3400.9023696063
+Overall Log likelihood.................: -3409.17509161421
+Optimizing... - 20WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31942950663156
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.27266746408914
+Sequence Log likelihood................: -3400.90226425647
+Overall Log likelihood.................: -3409.17493172056
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31942950663156
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.27266746408914
+Sequence Log likelihood................: -3400.90226425647
+Overall Log likelihood.................: -3409.17493172056
+Optimizing... / 21WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31942946938455
+TwoParameterBinary.pi0.................: 0.0500047642888135
+Character Log likelihood...............: -8.27268830077722
+Sequence Log likelihood................: -3400.90230449581
+Overall Log likelihood.................: -3409.17499279659
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31942946938455
+TwoParameterBinary.pi0.................: 0.0500047642888135
+Character Log likelihood...............: -8.27268830077722
+Sequence Log likelihood................: -3400.90230449581
+Overall Log likelihood.................: -3409.17499279659
+Optimizing... - 22WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31942949099447
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.27266746698273
+Sequence Log likelihood................: -3400.90226425357
+Overall Log likelihood.................: -3409.17493172055
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31942949099447
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.27266746698273
+Sequence Log likelihood................: -3400.90226425357
+Overall Log likelihood.................: -3409.17493172055
+Optimizing... \ 23WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31942947422903
+TwoParameterBinary.pi0.................: 0.0500028321658912
+Character Log likelihood...............: -8.27267985249409
+Sequence Log likelihood................: -3400.90228817546
+Overall Log likelihood.................: -3409.17496802795
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31942947422903
+TwoParameterBinary.pi0.................: 0.0500028321658912
+Character Log likelihood...............: -8.27267985249409
+Sequence Log likelihood................: -3400.90228817546
+Overall Log likelihood.................: -3409.17496802795
+Optimizing... - 24WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31942948502164
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.27266746808799
+Sequence Log likelihood................: -3400.90226425246
+Overall Log likelihood.................: -3409.17493172055
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31942948502164
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.27266746808799
+Sequence Log likelihood................: -3400.90226425246
+Overall Log likelihood.................: -3409.17493172055
+Optimizing... / 25WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31942947861781
+TwoParameterBinary.pi0.................: 0.0500010817911087
+Character Log likelihood...............: -8.27267219892769
+Sequence Log likelihood................: -3400.90227338992
+Overall Log likelihood.................: -3409.17494558885
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31942947861781
+TwoParameterBinary.pi0.................: 0.0500010817911087
+Character Log likelihood...............: -8.27267219892769
+Sequence Log likelihood................: -3400.90227338992
+Overall Log likelihood.................: -3409.17494558885
+Optimizing... - 26WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31942948274022
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.27266746851016
+Sequence Log likelihood................: -3400.90226425204
+Overall Log likelihood.................: -3409.17493172055
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31942948274022
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.27266746851016
+Sequence Log likelihood................: -3400.90226425204
+Overall Log likelihood.................: -3409.17493172055
+Optimizing... \ 27WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31942948203522
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.27266746864061
+Sequence Log likelihood................: -3400.90226425191
+Overall Log likelihood.................: -3409.17493172055
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31942948203522
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.27266746864061
+Sequence Log likelihood................: -3400.90226425191
+Overall Log likelihood.................: -3409.17493172055
+Optimizing... - 28WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31942948203522
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.27266746864061
+Sequence Log likelihood................: -3400.90226425191
+Overall Log likelihood.................: -3409.17493172055
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31942948203522
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.27266746864061
+Sequence Log likelihood................: -3400.90226425191
+Overall Log likelihood.................: -3409.17493172055
+Optimizing... / 29WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31942948230451
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.27266746859078
+Sequence Log likelihood................: -3400.90226425196
+Overall Log likelihood.................: -3409.17493172055
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31942948230451
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.27266746859078
+Sequence Log likelihood................: -3400.90226425196
+Overall Log likelihood.................: -3409.17493172055
+Optimizing... - 30WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31942948213808
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.27266746862158
+Sequence Log likelihood................: -3400.90226425193
+Overall Log likelihood.................: -3409.17493172055
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31942948213808
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.27266746862158
+Sequence Log likelihood................: -3400.90226425193
+Overall Log likelihood.................: -3409.17493172055
+Optimizing... \ 31WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31942948208665
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.2726674686311
+Sequence Log likelihood................: -3400.90226425192
+Overall Log likelihood.................: -3409.17493172055
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31942948208665
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.2726674686311
+Sequence Log likelihood................: -3400.90226425192
+Overall Log likelihood.................: -3409.17493172055
+Optimizing... - 32WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31942948214908
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.27266746861954
+Sequence Log likelihood................: -3400.90226425193
+Overall Log likelihood.................: -3409.17493172055
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31942948214908
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.27266746861954
+Sequence Log likelihood................: -3400.90226425193
+Overall Log likelihood.................: -3409.17493172055
+Optimizing... / 33WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31942948211844
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.27266746862521
+Sequence Log likelihood................: -3400.90226425192
+Overall Log likelihood.................: -3409.17493172055
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31942948211844
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.27266746862521
+Sequence Log likelihood................: -3400.90226425192
+Overall Log likelihood.................: -3409.17493172055
+Optimizing... - 34WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31942948212708
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.27266746862361
+Sequence Log likelihood................: -3400.90226425193
+Overall Log likelihood.................: -3409.17493172055
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31942948212708
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.27266746862361
+Sequence Log likelihood................: -3400.90226425193
+Overall Log likelihood.................: -3409.17493172055
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31942948213808
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.27266746862158
+Sequence Log likelihood................: -3400.90226425193
+Overall Log likelihood.................: -3409.17493172055
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31942948213808
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.27266746862158
+Sequence Log likelihood................: -3400.90226425193
+Overall Log likelihood.................: -3409.17493172055
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31942948213808
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.27266746862158
+Sequence Log likelihood................: -3400.90226425193
+Overall Log likelihood.................: -3409.17493172055
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31942948213808
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.27266746862158
+Sequence Log likelihood................: -3400.90226425193
+Overall Log likelihood.................: -3409.17493172055
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31942991408103
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.27266738869193
+Sequence Log likelihood................: -3400.90226433199
+Overall Log likelihood.................: -3409.17493172068
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31942948213808
+TwoParameterBinary.pi0.................: 0.050000105
+Character Log likelihood...............: -8.27266792768754
+Sequence Log likelihood................: -3400.90226513894
+Overall Log likelihood.................: -3409.17493306663
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31942948213808
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.27266746862158
+Sequence Log likelihood................: -3400.90226425193
+Overall Log likelihood.................: -3409.17493172055
+# TL evaluations.......................: 45
+
+** Optimal character parameters: **
+
+Mu.....................................: 3.31943
+Pi0....................................: 0.05
+traitRELAX's done. Bye.
+Total execution time: 0.000000d, 0.000000h, 5.000000m, 27.000000s.
+
+** Step 2: fix character model parameters, optimize sequence model parameters **
+
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+** Optimzing the sequence model **
+WARNING!!! Parameter optimization.scale.tree not specified. Default used instead: 0
+WARNING!!! Parameter optimization.advanced not specified. Default used instead: 0
+Optimization cycle: 1
+Message handler........................: none
+Profiler...............................: ./res_example1_optimization_steps.txt
+Parameter ignored......................: Branch lengths
+Parameter ignored......................: RELAX.k_1
+Parameter ignored......................: RELAX.1_Full.theta_1
+Parameter ignored......................: RELAX.1_Full.theta1_1
+Parameter ignored......................: RELAX.1_Full.theta2_1
+Parameter ignored......................: RELAX.2_Full.theta_1
+Parameter ignored......................: RELAX.2_Full.theta1_1
+Parameter ignored......................: RELAX.2_Full.theta2_1
+Parameter ignored......................: RELAX.3_Full.theta_1
+Parameter ignored......................: RELAX.3_Full.theta1_1
+Parameter ignored......................: RELAX.3_Full.theta2_1
+Max # ML evaluations...................: 10000
+Tolerance..............................: 1e-06
+Optimize topology......................: no
+Optimization method....................: FullD
+Algorithm used for derivable parameters: Newton
+Reparametrization......................: no
+Molecular clock........................: None
+Optimizing... / 1Optimizing... - 2Optimizing... \ 3Optimizing... - 4Optimizing... / 5Optimizing... - 6Optimizing... \ 7Optimizing... - 8Optimizing... / 9Optimizing... - 10Optimizing... \ 11Optimizing... - 12Optimizing... / 13Optimizing... - 14Optimizing... \ 15Optimizing... - 16Optimizing... / 17Optimizing... - 18Optimizing... \ 19Optimizing... - 20Optimizing... / 21Optimizing... - 22
+
+Final optimization step................: powell
+Optimizing... / 1Performed..............................: 180 function evaluations.
+Current log likelihood.................: -3400.88999627788
+Current diff...........................: 0.01226797405252
+Optimization cycle: 2
+Message handler........................: none
+Profiler...............................: ./res_example1_optimization_steps.txt
+Parameter ignored......................: Branch lengths
+Parameter ignored......................: RELAX.k_1
+Parameter ignored......................: RELAX.1_Full.theta_1
+Parameter ignored......................: RELAX.1_Full.theta1_1
+Parameter ignored......................: RELAX.1_Full.theta2_1
+Parameter ignored......................: RELAX.2_Full.theta_1
+Parameter ignored......................: RELAX.2_Full.theta1_1
+Parameter ignored......................: RELAX.2_Full.theta2_1
+Parameter ignored......................: RELAX.3_Full.theta_1
+Parameter ignored......................: RELAX.3_Full.theta1_1
+Parameter ignored......................: RELAX.3_Full.theta2_1
+Max # ML evaluations...................: 10000
+Tolerance..............................: 1e-06
+Optimize topology......................: no
+Optimization method....................: FullD
+Algorithm used for derivable parameters: Newton
+Reparametrization......................: no
+Molecular clock........................: None
+Optimizing... / 1
+
+Final optimization step................: powell
+Optimizing... / 1Performed..............................: 161 function evaluations.
+Current log likelihood.................: -3400.88999600989
+Current diff...........................: 2.67989435087657e-07
+iteraive optimzation complete
+Log likelihood.........................: -3400.88999600989
+TwoParameterBinary.mu..................: 3.31943
+TwoParameterBinary.pi0.................: 0.05
+
+model 1
+
+RELAX.1_Full.theta.....................: 0.547321
+RELAX.1_Full.theta1....................: 0.53317
+RELAX.1_Full.theta2....................: 0.500878
+RELAX.2_Full.theta.....................: 0.489595
+RELAX.2_Full.theta1....................: 0.526304
+RELAX.2_Full.theta2....................: 0.516453
+RELAX.3_Full.theta.....................: 0.512177
+RELAX.3_Full.theta1....................: 0.468887
+RELAX.3_Full.theta2....................: 0.49269
+RELAX.kappa............................: 1.87366
+RELAX.theta1...........................: 0.0383204
+RELAX.theta2...........................: 1
+RELAX.p................................: 0.01
+RELAX.omega1...........................: 0.489501
+RELAX.omega2...........................: 1.17682
+RELAX.k................................: 1
+
+model 2
+
+RELAX.1_Full.theta.....................: 0.549154
+RELAX.1_Full.theta1....................: 0.551455
+RELAX.1_Full.theta2....................: 0.482663
+RELAX.2_Full.theta.....................: 0.500664
+RELAX.2_Full.theta1....................: 0.478089
+RELAX.2_Full.theta2....................: 0.504812
+RELAX.3_Full.theta.....................: 0.553038
+RELAX.3_Full.theta1....................: 0.510511
+RELAX.3_Full.theta2....................: 0.521592
+RELAX.kappa............................: 1.87366
+RELAX.theta1...........................: 0.0383204
+RELAX.theta2...........................: 1
+RELAX.p................................: 0.01
+RELAX.omega1...........................: 0.489501
+RELAX.omega2...........................: 1.17682
+RELAX.k................................: 0.258276
+Sequence scaling factor................: 1
+
+Character Log likelihood..............: -8.27266746862158
+Sequence Log likelihood................: -3400.88999600989
+Overall Log likelihood.................: -3409.16266347851
+
+** Model parameters after sequence model optimizaiton ** 
+TwoParameterBinary.mu..................: 3.31943
+TwoParameterBinary.pi0.................: 0.05
+
+model 1
+
+RELAX.1_Full.theta.....................: 0.547321
+RELAX.1_Full.theta1....................: 0.53317
+RELAX.1_Full.theta2....................: 0.500878
+RELAX.2_Full.theta.....................: 0.489595
+RELAX.2_Full.theta1....................: 0.526304
+RELAX.2_Full.theta2....................: 0.516453
+RELAX.3_Full.theta.....................: 0.512177
+RELAX.3_Full.theta1....................: 0.468887
+RELAX.3_Full.theta2....................: 0.49269
+RELAX.kappa............................: 1.87366
+RELAX.theta1...........................: 0.0383204
+RELAX.theta2...........................: 1
+RELAX.p................................: 0.01
+RELAX.omega1...........................: 0.489501
+RELAX.omega2...........................: 1.17682
+RELAX.k................................: 1
+
+model 2
+
+RELAX.1_Full.theta.....................: 0.549154
+RELAX.1_Full.theta1....................: 0.551455
+RELAX.1_Full.theta2....................: 0.482663
+RELAX.2_Full.theta.....................: 0.500664
+RELAX.2_Full.theta1....................: 0.478089
+RELAX.2_Full.theta2....................: 0.504812
+RELAX.3_Full.theta.....................: 0.553038
+RELAX.3_Full.theta1....................: 0.510511
+RELAX.3_Full.theta2....................: 0.521592
+RELAX.kappa............................: 1.87366
+RELAX.theta1...........................: 0.0383204
+RELAX.theta2...........................: 1
+RELAX.p................................: 0.01
+RELAX.omega1...........................: 0.489501
+RELAX.omega2...........................: 1.17682
+RELAX.k................................: 0.258276
+Sequence scaling factor................: 1
+
+Character Log likelihood..............: -8.27266746862158
+Sequence Log likelihood................: -3400.88999600989
+Overall Log likelihood.................: -3409.16266347851
+traitRELAX's done. Bye.
+Total execution time: 0.000000d, 0.000000h, 24.000000m, 38.000000s.
+Optimization cycle.....................: 1
+Difference between current and previous: 0.102895
+
+
+************************************************************************************************
+
+
+
+** Step 1: fix sequence model parameters, optimize character model parameters **
+
+WARNING!!! Parameter optimization.character_method not specified. Default used instead: FullD(derivatives=Newton)
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31942948213808
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.27266746862158
+Sequence Log likelihood................: -3400.88999600989
+Overall Log likelihood.................: -3409.16266347851
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31942948213808
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.27266746862158
+Sequence Log likelihood................: -3400.88999600989
+Overall Log likelihood.................: -3409.16266347851
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31942991408103
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.27266738869193
+Sequence Log likelihood................: -3400.88999611232
+Overall Log likelihood.................: -3409.16266350101
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31942948213808
+TwoParameterBinary.pi0.................: 0.050000105
+Character Log likelihood...............: -8.27266792768754
+Sequence Log likelihood................: -3400.88999694151
+Overall Log likelihood.................: -3409.16266486919
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31942948213808
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.27266746862158
+Sequence Log likelihood................: -3400.88999600989
+Overall Log likelihood.................: -3409.16266347851
+Optimizing... / 1WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31942948213808
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.27266746862158
+Sequence Log likelihood................: -3400.88999600989
+Overall Log likelihood.................: -3409.16266347851
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31942948213808
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.27266746862158
+Sequence Log likelihood................: -3400.88999600989
+Overall Log likelihood.................: -3409.16266347851
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31890843286564
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.27276394402263
+Sequence Log likelihood................: -3400.88987249411
+Overall Log likelihood.................: -3409.16263643813
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31890843286564
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.27276394402263
+Sequence Log likelihood................: -3400.88987249411
+Overall Log likelihood.................: -3409.16263643813
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31806535743303
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.27292028543003
+Sequence Log likelihood................: -3400.88967286364
+Overall Log likelihood.................: -3409.16259314907
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31806535743303
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.27292028543003
+Sequence Log likelihood................: -3400.88967286364
+Overall Log likelihood.................: -3409.16259314907
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.25474189071485
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.28552192814202
+Sequence Log likelihood................: -3400.87546807743
+Overall Log likelihood.................: -3409.16099000558
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.25474189071485
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.28552192814202
+Sequence Log likelihood................: -3400.87546807743
+Overall Log likelihood.................: -3409.16099000558
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31670123272798
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.27317388213826
+Sequence Log likelihood................: -3400.88935043676
+Overall Log likelihood.................: -3409.16252431889
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31670123272798
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.27317388213826
+Sequence Log likelihood................: -3400.88935043676
+Overall Log likelihood.................: -3409.16252431889
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31942948213808
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.27266746862158
+Sequence Log likelihood................: -3400.88999600989
+Overall Log likelihood.................: -3409.16266347851
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.31942948213808
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.27266746862158
+Sequence Log likelihood................: -3400.88999600989
+Overall Log likelihood.................: -3409.16266347851
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.25474189071485
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.28552192814202
+Sequence Log likelihood................: -3400.87546807743
+Overall Log likelihood.................: -3409.16099000558
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.25474189071485
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.28552192814202
+Sequence Log likelihood................: -3400.87546807743
+Overall Log likelihood.................: -3409.16099000558
+Optimizing... / 1WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.27892930271572
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.28050735057328
+Sequence Log likelihood................: -3400.88070931648
+Overall Log likelihood.................: -3409.16121666706
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.27892930271572
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.28050735057328
+Sequence Log likelihood................: -3400.88070931648
+Overall Log likelihood.................: -3409.16121666706
+Optimizing... - 2WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.26398065999928
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.28357695958719
+Sequence Log likelihood................: -3400.87744302455
+Overall Log likelihood.................: -3409.16101998413
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.26398065999928
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.28357695958719
+Sequence Log likelihood................: -3400.87744302455
+Overall Log likelihood.................: -3409.16101998413
+Optimizing... \ 3WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.25827078656728
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.2847746897106
+Sequence Log likelihood................: -3400.8762184911
+Overall Log likelihood.................: -3409.16099318081
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.25827078656728
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.2847746897106
+Sequence Log likelihood................: -3400.8762184911
+Overall Log likelihood.................: -3409.16099318081
+Optimizing... - 4WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.25608980898772
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.28523587653654
+Sequence Log likelihood................: -3400.87575413349
+Overall Log likelihood.................: -3409.16099001003
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.25608980898772
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.28523587653654
+Sequence Log likelihood................: -3400.87575413349
+Overall Log likelihood.................: -3409.16099001003
+Optimizing... / 5WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.25538876663429
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.28538455234858
+Sequence Log likelihood................: -3400.87560526891
+Overall Log likelihood.................: -3409.16098982125
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.25538876663429
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.28538455234858
+Sequence Log likelihood................: -3400.87560526891
+Overall Log likelihood.................: -3409.16098982125
+Optimizing... - 6WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.25602917379454
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.28524872759134
+Sequence Log likelihood................: -3400.87574125015
+Overall Log likelihood.................: -3409.16098997774
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.25602917379454
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.28524872759134
+Sequence Log likelihood................: -3400.87574125015
+Overall Log likelihood.................: -3409.16098997774
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.25538876663429
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.28538455234858
+Sequence Log likelihood................: -3400.87560526891
+Overall Log likelihood.................: -3409.16098982125
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.25538876663429
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.28538455234858
+Sequence Log likelihood................: -3400.87560526891
+Overall Log likelihood.................: -3409.16098982125
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.25538876663429
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.28538455234858
+Sequence Log likelihood................: -3400.87560526891
+Overall Log likelihood.................: -3409.16098982125
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.25538876663429
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.28538455234858
+Sequence Log likelihood................: -3400.87560526891
+Overall Log likelihood.................: -3409.16098982125
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.25538919217317
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.28538446203695
+Sequence Log likelihood................: -3400.87560535921
+Overall Log likelihood.................: -3409.16098982125
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.25538876663429
+TwoParameterBinary.pi0.................: 0.050000105
+Character Log likelihood...............: -8.28538502056319
+Sequence Log likelihood................: -3400.87560616969
+Overall Log likelihood.................: -3409.16099119026
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.25538876663429
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.28538455234858
+Sequence Log likelihood................: -3400.87560526891
+Overall Log likelihood.................: -3409.16098982125
+Optimizing... / 9WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.25538876663429
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.28538455234858
+Sequence Log likelihood................: -3400.87560526891
+Overall Log likelihood.................: -3409.16098982125
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.25538876663429
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.28538455234858
+Sequence Log likelihood................: -3400.87560526891
+Overall Log likelihood.................: -3409.16098982125
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.25539695676376
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.28538281418038
+Sequence Log likelihood................: -3400.87560700695
+Overall Log likelihood.................: -3409.16098982113
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.25539695676376
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.28538281418038
+Sequence Log likelihood................: -3400.87560700695
+Overall Log likelihood.................: -3409.16098982113
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.25541020867161
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.28538000182625
+Sequence Log likelihood................: -3400.87560981921
+Overall Log likelihood.................: -3409.16098982104
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.25541020867161
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.28538000182625
+Sequence Log likelihood................: -3400.87560981921
+Overall Log likelihood.................: -3409.16098982104
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.25541190565717
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.28537964169305
+Sequence Log likelihood................: -3400.87561017934
+Overall Log likelihood.................: -3409.16098982103
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.25541190565717
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.28537964169305
+Sequence Log likelihood................: -3400.87561017934
+Overall Log likelihood.................: -3409.16098982103
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.25543165070894
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.28537545150166
+Sequence Log likelihood................: -3400.87561436969
+Overall Log likelihood.................: -3409.1609898212
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.25543165070894
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.28537545150166
+Sequence Log likelihood................: -3400.87561436969
+Overall Log likelihood.................: -3409.1609898212
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.25538876663429
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.28538455234858
+Sequence Log likelihood................: -3400.87560526891
+Overall Log likelihood.................: -3409.16098982125
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.25538876663429
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.28538455234858
+Sequence Log likelihood................: -3400.87560526891
+Overall Log likelihood.................: -3409.16098982125
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.25541190565717
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.28537964169305
+Sequence Log likelihood................: -3400.87561017934
+Overall Log likelihood.................: -3409.16098982103
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.25541190565717
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.28537964169305
+Sequence Log likelihood................: -3400.87561017934
+Overall Log likelihood.................: -3409.16098982103
+Optimizing... / 1WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.25541944759584
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.28537804116256
+Sequence Log likelihood................: -3400.8756117799
+Overall Log likelihood.................: -3409.16098982106
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.25541944759584
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.28537804116256
+Sequence Log likelihood................: -3400.8756117799
+Overall Log likelihood.................: -3409.16098982106
+Optimizing... - 2WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.2554147864214
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.28537903034191
+Sequence Log likelihood................: -3400.8756107907
+Overall Log likelihood.................: -3409.16098982104
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.2554147864214
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.28537903034191
+Sequence Log likelihood................: -3400.8756107907
+Overall Log likelihood.................: -3409.16098982104
+Optimizing... \ 3WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.25541154189444
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.28537971889044
+Sequence Log likelihood................: -3400.87561010214
+Overall Log likelihood.................: -3409.16098982104
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.25541154189444
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.28537971889044
+Sequence Log likelihood................: -3400.87561010214
+Overall Log likelihood.................: -3409.16098982104
+Optimizing... - 4WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.25541271819674
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.28537946925685
+Sequence Log likelihood................: -3400.87561035178
+Overall Log likelihood.................: -3409.16098982104
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.25541271819674
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.28537946925685
+Sequence Log likelihood................: -3400.87561035178
+Overall Log likelihood.................: -3409.16098982104
+Optimizing... / 5WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.25541213704748
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.28537959258764
+Sequence Log likelihood................: -3400.87561022845
+Overall Log likelihood.................: -3409.16098982103
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.25541213704748
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.28537959258764
+Sequence Log likelihood................: -3400.87561022845
+Overall Log likelihood.................: -3409.16098982103
+Optimizing... - 6WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.25541167426686
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.28537969079848
+Sequence Log likelihood................: -3400.87561013024
+Overall Log likelihood.................: -3409.16098982104
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.25541167426686
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.28537969079848
+Sequence Log likelihood................: -3400.87561013024
+Overall Log likelihood.................: -3409.16098982104
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.25541190565717
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.28537964169305
+Sequence Log likelihood................: -3400.87561017934
+Overall Log likelihood.................: -3409.16098982103
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.25541190565717
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.28537964169305
+Sequence Log likelihood................: -3400.87561017934
+Overall Log likelihood.................: -3409.16098982103
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.25541190565717
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.28537964169305
+Sequence Log likelihood................: -3400.87561017934
+Overall Log likelihood.................: -3409.16098982103
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.25541190565717
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.28537964169305
+Sequence Log likelihood................: -3400.87561017934
+Overall Log likelihood.................: -3409.16098982103
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.25541233119836
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.28537955138516
+Sequence Log likelihood................: -3400.87561026965
+Overall Log likelihood.................: -3409.16098982104
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.25541190565717
+TwoParameterBinary.pi0.................: 0.050000105
+Character Log likelihood...............: -8.28538010990442
+Sequence Log likelihood................: -3400.87561108014
+Overall Log likelihood.................: -3409.16099119005
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+TwoParameterBinary.mu..................: 3.25541190565717
+TwoParameterBinary.pi0.................: 0.05
+Character Log likelihood...............: -8.28537964169305
+Sequence Log likelihood................: -3400.87561017934
+Overall Log likelihood.................: -3409.16098982103
+# TL evaluations.......................: 17
+
+** Optimal character parameters: **
+
+Mu.....................................: 3.25541
+Pi0....................................: 0.05
+traitRELAX's done. Bye.
+Total execution time: 0.000000d, 0.000000h, 3.000000m, 10.000000s.
+
+** Step 2: fix character model parameters, optimize sequence model parameters **
+
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 1
+Initializing data structure............: Done.
+Number of distinct sites...............: 150
+WARNING!!! Parameter optimization.verbose not specified. Default used instead: 1
+** Optimzing the sequence model **
+WARNING!!! Parameter optimization.scale.tree not specified. Default used instead: 0
+WARNING!!! Parameter optimization.advanced not specified. Default used instead: 0
+Optimization cycle: 1
+Message handler........................: none
+Profiler...............................: ./res_example1_optimization_steps.txt
+Parameter ignored......................: Branch lengths
+Parameter ignored......................: RELAX.k_1
+Parameter ignored......................: RELAX.1_Full.theta_1
+Parameter ignored......................: RELAX.1_Full.theta1_1
+Parameter ignored......................: RELAX.1_Full.theta2_1
+Parameter ignored......................: RELAX.2_Full.theta_1
+Parameter ignored......................: RELAX.2_Full.theta1_1
+Parameter ignored......................: RELAX.2_Full.theta2_1
+Parameter ignored......................: RELAX.3_Full.theta_1
+Parameter ignored......................: RELAX.3_Full.theta1_1
+Parameter ignored......................: RELAX.3_Full.theta2_1
+Max # ML evaluations...................: 10000
+Tolerance..............................: 1e-06
+Optimize topology......................: no
+Optimization method....................: FullD
+Algorithm used for derivable parameters: Newton
+Reparametrization......................: no
+Molecular clock........................: None
+Optimizing... / 1Optimizing... - 2Optimizing... \ 3Optimizing... - 4Optimizing... / 5Optimizing... - 6Optimizing... \ 7Optimizing... - 8Optimizing... / 9Optimizing... - 10Optimizing... \ 11
+
+Final optimization step................: powell
+Optimizing... / 1Performed..............................: 157 function evaluations.
+Current log likelihood.................: -3400.8753841547
+Current diff...........................: 0.000226024641506228
+iteraive optimzation complete
+Log likelihood.........................: -3400.8753841547
+TwoParameterBinary.mu..................: 3.25541
+TwoParameterBinary.pi0.................: 0.05
+
+model 1
+
+RELAX.1_Full.theta.....................: 0.547321
+RELAX.1_Full.theta1....................: 0.53317
+RELAX.1_Full.theta2....................: 0.500878
+RELAX.2_Full.theta.....................: 0.489595
+RELAX.2_Full.theta1....................: 0.526304
+RELAX.2_Full.theta2....................: 0.516453
+RELAX.3_Full.theta.....................: 0.512177
+RELAX.3_Full.theta1....................: 0.468887
+RELAX.3_Full.theta2....................: 0.49269
+RELAX.kappa............................: 1.87348
+RELAX.theta1...........................: 0.0380728
+RELAX.theta2...........................: 1
+RELAX.p................................: 0.01
+RELAX.omega1...........................: 0.490178
+RELAX.omega2...........................: 1.2027
+RELAX.k................................: 1
+
+model 2
+
+RELAX.1_Full.theta.....................: 0.549135
+RELAX.1_Full.theta1....................: 0.551611
+RELAX.1_Full.theta2....................: 0.48244
+RELAX.2_Full.theta.....................: 0.500736
+RELAX.2_Full.theta1....................: 0.47837
+RELAX.2_Full.theta2....................: 0.504722
+RELAX.3_Full.theta.....................: 0.553413
+RELAX.3_Full.theta1....................: 0.510153
+RELAX.3_Full.theta2....................: 0.521692
+RELAX.kappa............................: 1.87348
+RELAX.theta1...........................: 0.0380728
+RELAX.theta2...........................: 1
+RELAX.p................................: 0.01
+RELAX.omega1...........................: 0.490178
+RELAX.omega2...........................: 1.2027
+RELAX.k................................: 0.258847
+Sequence scaling factor................: 1
+
+Character Log likelihood..............: -8.28537964169305
+Sequence Log likelihood................: -3400.8753841547
+Overall Log likelihood.................: -3409.16076379639
+
+** Model parameters after sequence model optimizaiton ** 
+TwoParameterBinary.mu..................: 3.25541
+TwoParameterBinary.pi0.................: 0.05
+
+model 1
+
+RELAX.1_Full.theta.....................: 0.547321
+RELAX.1_Full.theta1....................: 0.53317
+RELAX.1_Full.theta2....................: 0.500878
+RELAX.2_Full.theta.....................: 0.489595
+RELAX.2_Full.theta1....................: 0.526304
+RELAX.2_Full.theta2....................: 0.516453
+RELAX.3_Full.theta.....................: 0.512177
+RELAX.3_Full.theta1....................: 0.468887
+RELAX.3_Full.theta2....................: 0.49269
+RELAX.kappa............................: 1.87348
+RELAX.theta1...........................: 0.0380728
+RELAX.theta2...........................: 1
+RELAX.p................................: 0.01
+RELAX.omega1...........................: 0.490178
+RELAX.omega2...........................: 1.2027
+RELAX.k................................: 1
+
+model 2
+
+RELAX.1_Full.theta.....................: 0.549135
+RELAX.1_Full.theta1....................: 0.551611
+RELAX.1_Full.theta2....................: 0.48244
+RELAX.2_Full.theta.....................: 0.500736
+RELAX.2_Full.theta1....................: 0.47837
+RELAX.2_Full.theta2....................: 0.504722
+RELAX.3_Full.theta.....................: 0.553413
+RELAX.3_Full.theta1....................: 0.510153
+RELAX.3_Full.theta2....................: 0.521692
+RELAX.kappa............................: 1.87348
+RELAX.theta1...........................: 0.0380728
+RELAX.theta2...........................: 1
+RELAX.p................................: 0.01
+RELAX.omega1...........................: 0.490178
+RELAX.omega2...........................: 1.2027
+RELAX.k................................: 0.258847
+Sequence scaling factor................: 1
+
+Character Log likelihood..............: -8.28537964169305
+Sequence Log likelihood................: -3400.8753841547
+Overall Log likelihood.................: -3409.16076379639
+traitRELAX's done. Bye.
+Total execution time: 0.000000d, 0.000000h, 11.000000m, 47.000000s.
+Optimization cycle.....................: 2
+Difference between current and previous: 0.00189968
+
+
+************************************************************************************************
+
+
+
+**** Alternative model likelihood after optimization ****
+
+RELAX.1_Full.theta1_1..................: 0.533169709249922
+RELAX.1_Full.theta2_1..................: 0.500877637524378
+RELAX.1_Full.theta_1...................: 0.54732113319577
+RELAX.2_Full.theta1_1..................: 0.526304053790618
+RELAX.2_Full.theta2_1..................: 0.516452962770874
+RELAX.2_Full.theta_1...................: 0.48959463016643
+RELAX.3_Full.theta1_1..................: 0.46888748531532
+RELAX.3_Full.theta2_1..................: 0.492690232206428
+RELAX.3_Full.theta_1...................: 0.512176854145533
+RELAX.k_2..............................: 0.258846591077448
+RELAX.kappa_1..........................: 1.87347952238339
+RELAX.omega1_1.........................: 0.490177859225133
+RELAX.omega2_1.........................: 1.20269784121443
+RELAX.p_1..............................: 0.01
+RELAX.theta1_1.........................: 0.0380727606300336
+RELAX.theta2_1.........................: 1
+TwoParameterBinary.mu..................: 3.25541190565717
+TwoParameterBinary.pi0.................: 0.05
+sequenceScalingFactor..................: 1
+
+
+Character Log likelihood...............: -8.28537964169305
+Sequence Log likelihood................: -3400.8753841547
+Overall Log likelihood.................: -3409.16076379639
+Number of optimization cycles..........: 2
+Null hypothesis rejected with selection intensity k = 0.258847
+
+
+Joint log likelihood ratio by site
+
+site	log(LR)
+0	0.959007
+1	1.072715
+2	1.398971
+3	1.011393
+4	0.937742
+5	0.906444
+6	0.876268
+7	0.718219
+8	1.009467
+9	0.843349
+10	0.922880
+11	1.242102
+12	0.971756
+13	0.993260
+14	1.241759
+15	0.990974
+16	0.965172
+17	1.984933
+18	1.332620
+19	1.031197
+20	0.835859
+21	1.027045
+22	0.795911
+23	0.971264
+24	1.408517
+25	0.911606
+26	1.439333
+27	0.583789
+28	1.364505
+29	0.845338
+30	0.898437
+31	1.167302
+32	0.740245
+33	1.018566
+34	1.199476
+35	0.908611
+36	0.752572
+37	0.765356
+38	1.461780
+39	1.588978
+40	1.028759
+41	0.717922
+42	0.946899
+43	0.678465
+44	1.167348
+45	1.212336
+46	0.977763
+47	0.796272
+48	0.991955
+49	0.956449
+50	0.740046
+51	1.139793
+52	1.568737
+53	1.242164
+54	0.555606
+55	1.090347
+56	0.707264
+57	1.420104
+58	0.856932
+59	0.894471
+60	0.785400
+61	0.591264
+62	0.872144
+63	1.065152
+64	0.909286
+65	1.107268
+66	0.784594
+67	1.504036
+68	0.957998
+69	0.850843
+70	1.033535
+71	0.994332
+72	0.638401
+73	0.733528
+74	1.102435
+75	1.006340
+76	0.883710
+77	0.854648
+78	0.956461
+79	0.903212
+80	0.907221
+81	0.711230
+82	0.797591
+83	2.704861
+84	0.805887
+85	1.275367
+86	0.745706
+87	0.924509
+88	1.325873
+89	0.910789
+90	0.933113
+91	1.107191
+92	1.550921
+93	0.867031
+94	1.103932
+95	0.630368
+96	0.930578
+97	0.562843
+98	0.953934
+99	1.075030
+100	0.918670
+101	1.544406
+102	0.808394
+103	1.034132
+104	1.410777
+105	0.810933
+106	0.805883
+107	1.154343
+108	0.970193
+109	0.714464
+110	0.743477
+111	1.444774
+112	0.780529
+113	1.162245
+114	0.845597
+115	1.400928
+116	1.514951
+117	1.279288
+118	1.009915
+119	0.874316
+120	1.104135
+121	0.903877
+122	1.547676
+123	0.910917
+124	1.221649
+125	0.877439
+126	0.795494
+127	0.969105
+128	0.814641
+129	0.930149
+130	1.411021
+131	0.737017
+132	1.095566
+133	0.824959
+134	0.981661
+135	1.001162
+136	0.967873
+137	0.775488
+138	1.177008
+139	0.606824
+140	0.808348
+141	1.010328
+142	0.827317
+143	0.834674
+144	1.112381
+145	1.058769
+146	1.354003
+147	0.571353
+148	0.722910
+149	0.644095
+traitRELAX's done. Bye.
+Total execution time: 0.000000d, 0.000000h, 11.000000m, 47.000000s.
