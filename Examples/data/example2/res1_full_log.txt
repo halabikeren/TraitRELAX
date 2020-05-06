@@ -1,5 +1,7 @@
 ************************************************************************************************
-*       TraitRELAX program for detecting phenotype related changed in selective pressure       *
+*       TraitRELAX program for detecting phenotype related changes in selective pressure       *
+*                                                                                              *
+*                       by Halabi, Levy Karin, Guéguen and Mayrose 2020                        *
 ************************************************************************************************
 
 Parsing options:
@@ -111,7 +113,7 @@ Overall Log likelihood.................: -18.5407876203198
 **** Null model fitting ****
 ** Optimzing the character model **
 Message handler........................: none
-Profiler...............................: none
+Profiler...............................: ./data/example2/optimization_steps.res
 Parameter ignored......................: Branch lengths
 Max # ML evaluations...................: 10000
 Tolerance..............................: 1e-05
@@ -120,19 +122,25 @@ Optimization method....................: FullD
 Algorithm used for derivable parameters: Newton
 Reparametrization......................: no
 Molecular clock........................: None
-Optimizing... / 1Optimizing... - 2Optimizing... \ 3
+
+Optimizing... / 1
+Optimizing... - 2
+Optimizing... \ 3
 
 Final optimization step................: powell
-Optimizing... / 1Performed..............................: 36 function evaluations.
+
+Optimizing... / 1Performed..............................: 36 function evaluations.
 
 
 TwoParameterBinary.mu..................: 0.193055
 TwoParameterBinary.pi0.................: 0.95
 Character log likelihood...............: -2.75128
 ** Optimzing the sequence model **
+WARNING!!! Parameter optimization.scale.tree not specified. Default used instead: 0
+WARNING!!! Parameter optimization.advanced not specified. Default used instead: 0
 Optimization cycle: 1
 Message handler........................: none
-Profiler...............................: none
+Profiler...............................: ./data/example2/optimization_steps.res
 Parameter ignored......................: Branch lengths
 Parameter ignored......................: RELAX.k_1
 Parameter ignored......................: RELAX.1_Full.theta_1
@@ -158,15 +166,20 @@ Optimization method....................: FullD
 Algorithm used for derivable parameters: Newton
 Reparametrization......................: no
 Molecular clock........................: None
-Optimizing... / 1Optimizing... - 2Optimizing... \ 3Optimizing... - 4
+
+Optimizing... / 1
+Optimizing... - 2
+Optimizing... \ 3
+Optimizing... - 4
 
 Final optimization step................: powell
-Optimizing... / 1Performed..............................: 24 function evaluations.
+
+Optimizing... / 1Performed..............................: 24 function evaluations.
 Current log likelihood.................: -15.6043717436444
 Current diff...........................: 0.26462765777311
 Optimization cycle: 2
 Message handler........................: none
-Profiler...............................: none
+Profiler...............................: ./data/example2/optimization_steps.res
 Parameter ignored......................: Branch lengths
 Parameter ignored......................: RELAX.k_1
 Parameter ignored......................: RELAX.1_Full.theta_1
@@ -192,10 +205,12 @@ Optimization method....................: FullD
 Algorithm used for derivable parameters: Newton
 Reparametrization......................: no
 Molecular clock........................: None
-Optimizing... / 1
+
+Optimizing... / 1
 
 Final optimization step................: powell
-Optimizing... / 1Performed..............................: 31 function evaluations.
+
+Optimizing... / 1Performed..............................: 31 function evaluations.
 Current log likelihood.................: -15.6043717436444
 Current diff...........................: 2.66453525910038e-14
 iteraive optimzation complete
@@ -285,9 +300,11 @@ Number of distinct sites...............: 1
 Initializing data structure............: Done.
 Number of distinct sites...............: 1
 ** Optimzing the sequence model **
+WARNING!!! Parameter optimization.scale.tree not specified. Default used instead: 0
+WARNING!!! Parameter optimization.advanced not specified. Default used instead: 0
 Optimization cycle: 1
 Message handler........................: none
-Profiler...............................: none
+Profiler...............................: ./data/example2/optimization_steps.res
 Parameter ignored......................: Branch lengths
 Parameter ignored......................: RELAX.k_1
 Parameter ignored......................: RELAX.1_Full.theta_1
@@ -321,15 +338,23 @@ Optimization method....................: FullD
 Algorithm used for derivable parameters: Newton
 Reparametrization......................: no
 Molecular clock........................: None
-Optimizing... / 1Optimizing... - 2Optimizing... \ 3Optimizing... - 4Optimizing... / 5Optimizing... - 6Optimizing... \ 7
+
+Optimizing... / 1
+Optimizing... - 2
+Optimizing... \ 3
+Optimizing... - 4
+Optimizing... / 5
+Optimizing... - 6
+Optimizing... \ 7
 
 Final optimization step................: powell
-Optimizing... / 1Performed..............................: 50 function evaluations.
+
+Optimizing... / 1Performed..............................: 50 function evaluations.
 Current log likelihood.................: -15.5046336733662
 Current diff...........................: 0.0891483930502233
 Optimization cycle: 2
 Message handler........................: none
-Profiler...............................: none
+Profiler...............................: ./data/example2/optimization_steps.res
 Parameter ignored......................: Branch lengths
 Parameter ignored......................: RELAX.k_1
 Parameter ignored......................: RELAX.1_Full.theta_1
@@ -363,10 +388,12 @@ Optimization method....................: FullD
 Algorithm used for derivable parameters: Newton
 Reparametrization......................: no
 Molecular clock........................: None
-Optimizing... / 1
+
+Optimizing... / 1
 
 Final optimization step................: powell
-Optimizing... / 1Performed..............................: 39 function evaluations.
+
+Optimizing... / 1Performed..............................: 39 function evaluations.
 Current log likelihood.................: -15.504633618237
 Current diff...........................: 5.51292771433509e-08
 iteraive optimzation complete
@@ -483,7 +510,7 @@ Character Log likelihood..............: -2.75128456219233
 Sequence Log likelihood................: -15.504633618237
 Overall Log likelihood.................: -18.2559181804293
 traitRELAX's done. Bye.
-Total execution time: 0.000000d, 0.000000h, 1.000000m, 56.000000s.
+Total execution time: 0.000000d, 0.000000h, 1.000000m, 57.000000s.
 
 ** Step 1: fix sequence model parameters, optimize character model parameters **
 
@@ -533,7 +560,8 @@ TwoParameterBinary.pi0.................: 0.95
 Character Log likelihood...............: -2.75128456219233
 Sequence Log likelihood................: -15.504633618237
 Overall Log likelihood.................: -18.2559181804293
-Optimizing... / 1Initializing data structure............: Done.
+
+Optimizing... / 1Initializing data structure............: Done.
 Number of distinct sites...............: 1
 Initializing data structure............: Done.
 Number of distinct sites...............: 1
@@ -1395,7 +1423,7 @@ Overall Log likelihood.................: -18.2559181804293
 Mu.....................................: 0.193055
 Pi0....................................: 0.95
 traitRELAX's done. Bye.
-Total execution time: 0.000000d, 0.000000h, 2.000000m, 32.000000s.
+Total execution time: 0.000000d, 0.000000h, 2.000000m, 33.000000s.
 
 ** Step 2: fix character model parameters, optimize sequence model parameters **
 
@@ -1404,9 +1432,11 @@ Number of distinct sites...............: 1
 Initializing data structure............: Done.
 Number of distinct sites...............: 1
 ** Optimzing the sequence model **
+WARNING!!! Parameter optimization.scale.tree not specified. Default used instead: 0
+WARNING!!! Parameter optimization.advanced not specified. Default used instead: 0
 Optimization cycle: 1
 Message handler........................: none
-Profiler...............................: none
+Profiler...............................: ./data/example2/optimization_steps.res
 Parameter ignored......................: Branch lengths
 Parameter ignored......................: RELAX.k_1
 Parameter ignored......................: RELAX.1_Full.theta_1
@@ -1440,10 +1470,12 @@ Optimization method....................: FullD
 Algorithm used for derivable parameters: Newton
 Reparametrization......................: no
 Molecular clock........................: None
-Optimizing... / 1
+
+Optimizing... / 1
 
 Final optimization step................: powell
-Optimizing... / 1Performed..............................: 82 function evaluations.
+
+Optimizing... / 1Performed..............................: 82 function evaluations.
 Current log likelihood.................: -15.5046336175306
 Current diff...........................: 7.06330993693882e-10
 iteraive optimzation complete
@@ -1523,7 +1555,7 @@ Character Log likelihood..............: -2.75128456219233
 Sequence Log likelihood................: -15.5046336175306
 Overall Log likelihood.................: -18.255918179723
 traitRELAX's done. Bye.
-Total execution time: 0.000000d, 0.000000h, 0.000000m, 53.000000s.
+Total execution time: 0.000000d, 0.000000h, 0.000000m, 52.000000s.
 Optimization cycle.....................: 1
 Difference between current and previous: 7.06333e-10
 
@@ -1561,7 +1593,7 @@ Overall Log likelihood.................: -18.255918179723
 Number of optimization cycles..........: 1
 Null hypothesis not rejected
 WARNING!!! Parameter output.estimates.alias not specified. Default used instead: 1
-Output estimates to file...............: ./Examples/parameter_estimates.res
-Alignment information logfile..........: ./Examples/optimization_output.res
+Output estimates to file...............: ./data/example2/parameter_estimates.res
+Alignment information logfile..........: ./data/example2/optimization_output.res
 traitRELAX's done. Bye.
-Total execution time: 0.000000d, 0.000000h, 0.000000m, 53.000000s.
+Total execution time: 0.000000d, 0.000000h, 0.000000m, 52.000000s.
