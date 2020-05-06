@@ -1,0 +1,69 @@
+# Global variables:
+verbose = 1
+
+# ----------------------------------------------------------------------------------------
+#                                     Input character file
+# ----------------------------------------------------------------------------------------
+
+input.character.file =./data/example2/character_data.fas
+seed = 1000
+
+# ----------------------------------------------------------------------------------------
+#                                     Input alignment file
+# ----------------------------------------------------------------------------------------
+
+alphabet=Codon(letter=DNA)
+genetic_code=Standard
+input.sequence.file =./data/example2/sequence_data.fas
+input.sequence.format = Fasta
+input.sequence.sites_to_use = all
+input.sequence.max_gap_allowed = 100%
+input.sequence.remove_stop_codons = yes
+
+# ----------------------------------------------------------------------------------------
+#                                     Input tree file
+# ----------------------------------------------------------------------------------------
+
+init.tree = user
+input.tree.file =./data/example2/tree.nwk
+input.tree.format = Newick
+init.brlen.method = Input
+
+# ----------------------------------------------------------------------------------------
+#                                     Character Model specification
+# ----------------------------------------------------------------------------------------
+
+#character_model.set_initial_parameters = true 
+character_model.mu = 0.213502
+character_model.pi0 = 0.95
+character.use_analytic_mapping = 1
+
+# ----------------------------------------------------------------------------------------
+#                                     Sequence Model specification
+# ----------------------------------------------------------------------------------------
+
+sequence_model.set_initial_parameters = true
+model1 = RELAX(kappa=2,p=0.1,omega1=1,omega2=2,k=1,theta1=0.5,theta2=0.8,frequencies=F3X4)
+model2 = RELAX(kappa=RELAX.kappa_1,p=RELAX.p_1,omega1=RELAX.omega1_1,omega2=RELAX.omega2_1,theta1=RELAX.theta1_1,theta2=RELAX.theta2_1,frequencies=F0,k=0.2)
+likelihood.recursion_simple.compression = recursive
+rate_distribution = Constant()
+
+
+# ----------------------------------------------------------------------------------------
+#                                    Optimization parameters
+# ----------------------------------------------------------------------------------------
+
+optimization.tolerance = 0.00001
+optimization.max_number_f_eval = 10000
+optimization = FullD(derivatives=Newton)
+optimization.final = powell
+optimization.ignore_parameters_additonal = BrLen,RELAX.k_1,RELAX.1_Full.theta_1,RELAX.1_Full.theta1_1,RELAX.1_Full.theta2_1,RELAX.2_Full.theta_1,RELAX.2_Full.theta1_1,RELAX.2_Full.theta2_1,RELAX.3_Full.theta_1,RELAX.3_Full.theta1_1,RELAX.3_Full.theta2_1,RELAX.p_1,RELAX.theta1_1,RELAX.theta2_1,RELAX.omega1_1
+optimization.verbose = 1
+
+# ----------------------------------------------------------------------------------------
+#                                    Output files
+# ----------------------------------------------------------------------------------------
+
+output.estimates = ./data/example2/parameter_estimates.res
+optimization.profiler = ./data/example2/optimization_steps.res
+output.infos = ./data/example2/optimization_output.res
