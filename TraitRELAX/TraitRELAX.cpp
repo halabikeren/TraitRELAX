@@ -774,14 +774,90 @@ int main(int args, char **argv)
     }
     
 
-    cout << "\n\nJoint log likelihood ratio by site" << endl;
+    // Write parameters to file:
+    string parametersFile = ApplicationTools::getAFilePath("output.estimates", traitRELAX.getParams(), false, false, "none", 1);
+    bool withAlias = ApplicationTools::getBooleanParameter("output.estimates.alias", traitRELAX.getParams(), true, "", true, 0);
+
+    ApplicationTools::displayResult("Output estimates to file", parametersFile);
+    if (parametersFile != "none")
+    {
+      StlOutputStream out(new ofstream(parametersFile.c_str(), ios::out));
+      out << "# Log likelihood = ";
+      out.setPrecision(20) << (-traitRELAXLikelihoodFunction->getValue());
+      out.endLine();
+      out << "# Number of coding sequence sites = ";
+      out.setPrecision(20) << seqData->getNumberOfSites();
+      out.endLine();
+      out.endLine();
+      out << "# Substitution model parameters:";
+      out.endLine();
+	  charModel->matchParametersValues(traitRELAXLikelihoodFunction->getCharacterLikelihoodFunction()->getParameters());
+      PhylogeneticsApplicationTools::printParameters(charModel, out, 1, withAlias);
+      out.endLine();
+      seqModel->matchParametersValues(traitRELAXLikelihoodFunction->getSequenceLikelihoodFunction()->getParameters());
+      PhylogeneticsApplicationTools::printParameters(seqModel, out, 1, withAlias);
+      out.endLine();
+    }
+
+    // Write infos to file:
+    string infosFile = ApplicationTools::getAFilePath("output.infos", traitRELAX.getParams(), false, false);
+    if (infosFile != "none")
+    {
+      ApplicationTools::displayResult("Alignment information logfile", infosFile);
+      ofstream out(infosFile.c_str(), ios::out);
+
+      // Get the rate class with maximum posterior probability:
+      vector<size_t> classes = traitRELAXLikelihoodFunction->getSequenceLikelihoodFunction()->getRateClassWithMaxPostProbOfEachSite();
+
+      // Get the posterior rate, i.e. rate averaged over all posterior probabilities:
+      Vdouble rates = traitRELAXLikelihoodFunction->getSequenceLikelihoodFunction()->getPosteriorRateOfEachSite();
+
+      vector<string> colNames;
+      colNames.push_back("Sequence.Sites");
+      colNames.push_back("is.complete");
+      colNames.push_back("is.constant");
+      colNames.push_back("lnL");
+      colNames.push_back("rc");
+      colNames.push_back("pr");
+      vector<string> row(6);
+      DataTable* infos = new DataTable(colNames);
+	  
+	  vector<double> LoglBySite = traitRELAXLikelihoodFunction->getLikelihoodForEachSite();
+    
+      for (unsigned int i = 0; i < seqData->getNumberOfSites(); i++)
+      {
+        double lnL = LoglBySite[i];
+        const Site* currentSite = &seqData->getSite(i);
+        int currentSitePosition = currentSite->getPosition();
+        string isCompl = "NA";
+        string isConst = "NA";
+        try { isCompl = (SiteTools::isComplete(*currentSite) ? "1" : "0"); }
+        catch(EmptySiteException& ex) {}
+        try { isConst = (SiteTools::isConstant(*currentSite) ? "1" : "0"); }
+        catch(EmptySiteException& ex) {}
+        row[0] = (string("[" + TextTools::toString(currentSitePosition) + "]"));
+        row[1] = isCompl;
+        row[2] = isConst;
+        row[3] = TextTools::toString(lnL);
+        row[4] = TextTools::toString(classes[i]);
+        row[5] = TextTools::toString(rates[i]);
+        infos->addRow(row);
+      }
+
+      DataTable::write(*infos, out, "\t");
+
+      delete infos;
+    }
+	  
+    // commented out due to current irrelevancy
+    /*cout << "\n\nJoint log likelihood ratio by site" << endl;
     double logLR;
     cout << "\nsite\tlog(LR)" << endl;
     for (size_t s=0; s<altLoglBySite.size(); ++s)
     {
         logLR = altLoglBySite[s] / nullLoglBySite[s];
         cout <<  s << "\t" << logLR << endl;
-    }
+    } */
 
     // free parameters
     delete balpha;
