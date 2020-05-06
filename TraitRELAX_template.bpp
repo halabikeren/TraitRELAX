@@ -5,7 +5,8 @@ verbose = 1
 #                                     Input character file
 # ----------------------------------------------------------------------------------------
 
-input.character.file = <full_path_to_character_data_in_fasta_format>
+input.character.file = <path_to_character_data_file>
+input.character.format = Fasta  # here, state the format of the character trait data
 
 # ----------------------------------------------------------------------------------------
 #                                     Input alignment file
@@ -13,8 +14,8 @@ input.character.file = <full_path_to_character_data_in_fasta_format>
 
 alphabet=Codon(letter=DNA)
 genetic_code=Standard
-input.sequence.file = <full_path_to_codon_sequence_alignment>
-input.sequence.format = Fasta # here, state the format of codon sequence alignment
+input.sequence.file = <path_to_codon_sequence_alignment>
+input.sequence.format = Fasta # here, state the format of the codon sequence alignment
 input.sequence.sites_to_use = all
 input.sequence.max_gap_allowed = 100%
 input.sequence.remove_stop_codons = yes
@@ -24,26 +25,29 @@ input.sequence.remove_stop_codons = yes
 # ----------------------------------------------------------------------------------------
 
 init.tree = user
-input.tree.file = <full_path_to_tree_in_nwk_format>
-input.tree.format = Newick
+input.tree.file = <path_to_tree_in_nwk_format>
+input.tree.format = Newick  # here, state the format of the tree file
 init.brlen.method = Input
 
 # ----------------------------------------------------------------------------------------
 #                                     Character Model specification
 # ----------------------------------------------------------------------------------------
 
-character.use_analytic_mapping = 1
+character_model.set_initial_parameters = true # here, use 'true' to customize the initial parameters for the character model 
+character_model.mu = 8.0 
+character_model.pi0 = 0.5
+character.use_analytic_mapping = 1 # 1 for usage of the analytic approximation of trait history (recommended)
 
 # ----------------------------------------------------------------------------------------
 #                                     Sequence Model specification
 # ----------------------------------------------------------------------------------------
 
-sequence_model.set_initial_parameters = true
+sequence_model.set_initial_parameters = true # here, use 'true' to customize the initial parameters for the sequence model 
 model1 = RELAX(kappa=2,p=0.001,omega1=1,omega2=2,theta1=0.5,theta2=0.8,frequencies=F3X4,1_Full.theta=0.5,1_Full.theta1=0.5,1_Full.theta2=0.5,2_Full.theta=0.5,2_Full.theta1=0.5,2_Full.theta2=0.5,3_Full.theta=0.5,3_Full.theta1=0.5,3_Full.theta2=0.5,k=1)
 model2 = RELAX(kappa=RELAX.kappa_1,p=RELAX.p_1,omega1=RELAX.omega1_1,omega2=RELAX.omega2_1,theta1=RELAX.theta1_1,theta2=RELAX.theta2_1,frequencies=F3X4,1_Full.theta=RELAX.1_Full.theta_1,1_Full.theta1=RELAX.1_Full.theta1_1,1_Full.theta2=RELAX.1_Full.theta2_1,2_Full.theta=RELAX.2_Full.theta_1,2_Full.theta1=RELAX.2_Full.theta1_1,2_Full.theta2=RELAX.2_Full.theta2_1,3_Full.theta=RELAX.3_Full.theta_1,3_Full.theta1=RELAX.3_Full.theta1_1,3_Full.theta2=RELAX.3_Full.theta2_1,k=1)
 
 # ----------------------------------------------------------------------------------------
-#                                    optimization parameters
+#                                    Optimization parameters
 # ----------------------------------------------------------------------------------------
 
 optimization.tolerance = 0.000001
@@ -51,4 +55,13 @@ optimization.max_number_f_eval = 10000
 optimization = FullD(derivatives=Newton,nstep=10)
 optimization.final = powell
 optimization.ignore_parameters = RELAX.k_1,BrLen
-optimization.advanced = 1
+optimization.advanced = 1 # 1 for advanced optimization procedure with sequential iterations with decreasing starting points to increase changes of convergence into global maxima (recommended)
+
+# ----------------------------------------------------------------------------------------
+#                                    Output files 
+# ----------------------------------------------------------------------------------------
+
+output.estimates = <path_to_parameter_estimatess_output_file>    # set to 'none' if not required
+optimization.profiler = <path_to_optimization_steps_output_file> # set to 'none' if not required
+output.infos = <path_to_log_likelihood_scores_by_sequence_sites> # set to 'none' if not required
+
