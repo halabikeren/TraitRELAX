@@ -10,6 +10,12 @@ TRAIT_RELAX_EXEC="/your/path/to/TraitRELAX/traitrelax"
 cd "${EXAMPLES_DIR}"
 "${TRAIT_RELAX_EXEC}" param="${EXAMPLES_DIR}"/example1.bpp > "${EXAMPLES_DIR}"/res1_full_log.txt
 
+Three output files will be created in the respective input directory following the run:
+# parameter_estimates.res - Estimated parameter values following optimization of the alternative model.
+# optimization_output.res - The obtained log likelihood score for each site under the optimized alternative model.
+# optimization_steps.res  - The detailed steps of optimization of the alternative model.
+
+
 ###################################### Info about the examples ######################################
 
 ### Example 1
@@ -42,8 +48,22 @@ k=0.258846591077448
 When using 16 cores, the estimated runtime is 2.5 hours.
 You can compare your output files to those provided in "${EXAMPLES_DIR}"/data/example1/
 
-### Example 2 (will be added soon)
+### Example 2
 
 This is a toy example of a super small data set (4 species and 1 codon position), designed to ensure
-a valid execution of the program. It should run very quickly.
-You can compare your output files to those provided in "${EXAMPLES_DIR}"/data/example2/
+a valid execution of the program.
+You can compare your output files to those provided in "${EXAMPLES_DIR}"/data/example2/ with the "base_" prefix.
+
+Parameter estimates after optimization are expected to be:
+
+mu=0.193055454634
+pi0=0.950000000000
+kappa=4.449699220655
+omega0=0.1
+omega1=1
+omega2=1
+p0=0.5
+p1=0.8
+k=0.000000000001
+
+Approximated running time is 6.5 minutes.
