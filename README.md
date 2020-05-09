@@ -20,7 +20,7 @@ The TraitRELAX control file specifies parameters as detailed in the [bppSuite ma
 ## Output
 
 TraitRELAX writes the maximum-likelihood scores for the null and alternative models as well as their inferred model parameters to STDOUT. You can save the results by redirecting STDOUT into a file (see Examples/README.txt). 
-An option to additionaly save the results to output files specified in the control file will be added soon.
+Additionaly it can save results to output files specified in the control file (see the provided **TraitRELAX_template.bpp**).
 
 ## Running the program
 
