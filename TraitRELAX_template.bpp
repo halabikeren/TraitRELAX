@@ -65,3 +65,8 @@ output.estimates = <path_to_parameter_estimatess_output_file>    # set to 'none'
 optimization.profiler = <path_to_optimization_steps_output_file> # set to 'none' if not required
 output.infos = <path_to_log_likelihood_scores_by_sequence_sites> # set to 'none' if not required
 
+joint.likelihood.debug = <bool>       # set to 'true' for getting the strcuture of the expected and stochasting trait mappings as output
+output.debug.dir = <path_to_mappings> # the directory to which the respective mappings will be written
+output.tree.format = Newick           # the format in which the mappings will be written (the newick format corresponds to the input format of labeled trees given as partitions to RELAX)
+
+
