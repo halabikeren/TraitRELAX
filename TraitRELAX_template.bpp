@@ -45,6 +45,7 @@ character.use_analytic_mapping = 1 # 1 for usage of the analytic approximation o
 sequence_model.set_initial_parameters = true # here, use 'true' to customize the initial parameters for the sequence model 
 model1 = RELAX(kappa=2,p=0.001,omega1=1,omega2=2,theta1=0.5,theta2=0.8,frequencies=F3X4,1_Full.theta=0.5,1_Full.theta1=0.5,1_Full.theta2=0.5,2_Full.theta=0.5,2_Full.theta1=0.5,2_Full.theta2=0.5,3_Full.theta=0.5,3_Full.theta1=0.5,3_Full.theta2=0.5,k=1)
 model2 = RELAX(kappa=RELAX.kappa_1,p=RELAX.p_1,omega1=RELAX.omega1_1,omega2=RELAX.omega2_1,theta1=RELAX.theta1_1,theta2=RELAX.theta2_1,frequencies=F3X4,1_Full.theta=RELAX.1_Full.theta_1,1_Full.theta1=RELAX.1_Full.theta1_1,1_Full.theta2=RELAX.1_Full.theta2_1,2_Full.theta=RELAX.2_Full.theta_1,2_Full.theta1=RELAX.2_Full.theta1_1,2_Full.theta2=RELAX.2_Full.theta2_1,3_Full.theta=RELAX.3_Full.theta_1,3_Full.theta1=RELAX.3_Full.theta1_1,3_Full.theta2=RELAX.3_Full.theta2_1,k=1)
+likelihood.computation.approach = 3 # the order of likelihood computation approaches corresponds to the discussion in the manuscript: 1 (Random effects, which is currently not impleemnted), 2 (PAML's approach), 3 (Fixed effect)
 
 # ----------------------------------------------------------------------------------------
 #                                    Optimization parameters
