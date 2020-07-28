@@ -49,7 +49,7 @@ mkdir -p $bpp_dir/sources/
 cd $bpp_dir/sources
 git clone https://github.com/BioPP/bpp-core.git
 git clone https://github.com/BioPP/bpp-seq.git
-git clone https://github.com/BioPP/bpp-phyl.git
+git clone -b kerenDevel https://github.com/halabikeren/bpp-phyl.git
 git clone https://github.com/BioPP/bpp-popgen.git
 cd $bpp_dir
 git clone https://github.com/BioPP/bppsuite.git
@@ -72,7 +72,7 @@ make install
 cd ../../bpp-phyl
 mkdir build
 cd build
-cmake -DCMAKE_INSTALL_PREFIX=$bpp_dir -DCMAKE_INSTALL_RPATH_USE_LINK_PATH=TRUE ..
+cmake -DCMAKE_INSTALL_PREFIX=$bpp_dir -DCMAKE_INSTALL_RPATH_USE_LINK_PATH=TRUE OMP_NUM_THREADS=<required_number_of_cores> ..
 make -j
 make install
 cd ../../bpp-popgen

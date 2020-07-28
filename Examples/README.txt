@@ -66,4 +66,4 @@ p0=0.5
 p1=0.8
 k=0.000000000001
 
-Approximated running time is 6.5 minutes.
+Approximated running time with 4 cores is 5 minutes.
