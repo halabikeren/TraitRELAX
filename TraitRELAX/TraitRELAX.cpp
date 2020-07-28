@@ -219,6 +219,16 @@ void setMpPartition(BppApplication *bppml, DRTreeParsimonyScore *mpData, const V
 
 MixedSubstitutionModelSet *setSequenceModel(BppApplication *bppml, const VectorSiteContainer *codon_data, const CodonAlphabet *codonAlphabet, DRTreeParsimonyScore *mpData, const VectorSiteContainer *characterData, TransitionModel *characterModel, Tree *tree)
 {
+  
+  string codeDesc = ApplicationTools::getStringParameter("genetic_code", bppml->getParams(), "Standard", "", true, true);
+  GeneticCode *gCode = SequenceApplicationTools::getGeneticCode(codonAlphabet->getNucleicAlphabet(), codeDesc);
+
+  // set initial partition, based on maximum parsimony
+  setMpPartition(bppml, mpData, characterData, characterModel, tree); // the partition is set on tree
+
+  MixedSubstitutionModelSet *modelSet; 
+  // TransitionModel *model; // commented out until further consult with Itay as to weather this should be implemented
+
   if (!ApplicationTools::getBooleanParameter("sequence_model.set_initial_parameters", bppml->getParams(), true, "", true, false))
   {
     bppml->getParam("model1") = "RELAX(kappa=1,p=0.1,omega1=1.0,omega2=2.0,theta1=0.5,theta2=0.8,k=1,frequencies=F3X4,initFreqs=observed,initFreqs.observedPseudoCount=1)";
@@ -226,21 +236,58 @@ MixedSubstitutionModelSet *setSequenceModel(BppApplication *bppml, const VectorS
   }
   bppml->getParam("nonhomogeneous") = "general";
   bppml->getParam("nonhomogeneous.number_of_models") = "2";
-  bppml->getParam("nonhomogeneous.stationarity") = "yes"; // constrain root frequencies to be the same as stationary (since RELAX is a time reversible model, this should not cause issues)
+  bppml->getParam("nonhomogeneous.stationarity") = "yes"; 					 // constrain root frequencies to be the same as stationary (since RELAX is a time reversible model, this should not cause issues)
 
-  // set likelihood computation to restrict the same selective regime for each site along the phylogeny
-  bppml->getParam("site.number_of_paths") = "2";                               // the 3rd path mapping omega3 in the branches under chatacter states 0 and 1 is imlies the the other two paths
-  bppml->getParam("site.path1") = "model1[YN98.omega_1]&model2[YN98.omega_1]"; // map omega1 in the branches under character state 0 (=model1) to omega1 in the branches under character state 1 (=model2)
-  bppml->getParam("site.path2") = "model1[YN98.omega_2]&model2[YN98.omega_2]"; // do the same for omega2
 
-  string codeDesc = ApplicationTools::getStringParameter("genetic_code", bppml->getParams(), "Standard", "", true, true);
-  GeneticCode *gCode = SequenceApplicationTools::getGeneticCode(codonAlphabet->getNucleicAlphabet(), codeDesc);
+	int LLApproach = ApplicationTools::getIntParameter("likelihood.computation.approach", bppml->getParams(), 3);
 
-  // set initial partition, based on maximum parsimony
-  setMpPartition(bppml, mpData, characterData, characterModel, tree); // the partition is set on tree
+  // commented out until further consult with Itay as to weather this should be implemented
+  // likelihood approach 1 (RELAX HyPhy default)- set likelihood computation to enable shifts in the selective regime in different branches in the phylogeny with respect to each site
+  if (LLApproach == 1)
+  {
+	//   bppml->getParam("nonhomogeneous") = "one_per_branch";
+  //   bppml->getParam("nonhomogeneous.number_of_models") = "1";
+  //   string sharedParams = "RELAX.kappa, RELAX.p, RELAX.omega1, RELAX.omega2, RELAX.theta1, RELAX.theta2, RELAX.1_Full.theta, RELAX.1_Full.theta1, RELAX.1_Full.theta2, RELAX.2_Full.theta, RELAX.2_Full.theta1, RELAX.2_Full.theta2, RELAX.3_Full.theta, RELAX.3_Full.theta1, RELAX.3_Full.theta2";
+  //   vector<int> BGNodes = ApplicationTools::getVectorParameter<int>("model1.nodes_id", bppml->getParams(), ',', ':', "", "", true, false);
+  //   string BGK = "";
+  //   if (BGNodes.size() > 1)
+  //   {
+  //     BGK = BGK + "RELAX.k_[";
+  //     for (size_t i=0; i<BGNodes.size()-1; ++i)
+  //     {
+  //       BGK = BGK + TextTools::toString(BGNodes[i]) + ",";
+  //     }
+  //     BGK = BGK + TextTools::toString(BGNodes[BGNodes.size()-1]) + "]";
+  //     sharedParams = sharedParams + ", " + BGK;
+  //   }
+  //   vector<int> FGNodes = ApplicationTools::getVectorParameter<int>("model2.nodes_id", bppml->getParams(), ',', ':', "", "", true, false);
+  //   string FGK = "";
+  //   if (FGNodes.size() > 1)
+  //   {
+  //     FGK = FGK + "RELAX.k_[";
+  //     for (size_t j=0; j<FGNodes.size()-1; ++j)
+  //     {
+  //       FGK = FGK + TextTools::toString(FGNodes[j]) + ",";
+  //     }
+  //     FGK = FGK + TextTools::toString(FGNodes[FGNodes.size()-1]) + "]";
+  //     sharedParams = sharedParams + ", " + FGK;
+  //   }
+  //   bppml->getParam("nonhomogeneous_one_per_branch.shared_parameters") = sharedParams;
+  //   model = PhylogeneticsApplicationTools::getTransitionModel(codonAlphabet, gCode, codon_data, bppml->getParams());
+  //   return model
+    throw Exception("Random effects likelihood approach is currently disabled. PLease choose 2 or 3.");
+  }
+  // likelihood approach 3 (TraitRELAX default) - set likelihood computation to restrict the same selective regime for each branch along the phylogeny with respect to each site
+  if (LLApproach == 3)
+  {
+    bppml->getParam("site.number_of_paths") = "2";                               // the 3rd path mapping omega3 in the branches under chatacter states 0 and 1 is imlied by the other two paths
+    bppml->getParam("site.path1") = "model1[YN98.omega_1]&model2[YN98.omega_1]"; // map omega1 in the branches under character state 0 (=model1) to omega1 in the branches under character state 1 (=model2)
+    bppml->getParam("site.path2") = "model1[YN98.omega_2]&model2[YN98.omega_2]"; // do the same for omega2
+  }
+  // likelihood approach 2 (Bio++ default, no need to set) - set likelihood computation to enable shifts in the selective regime between branches in the phylogeny with respect to each site only upon transition from FG to BG category
 
   // create the set of models
-  MixedSubstitutionModelSet *modelSet = dynamic_cast<MixedSubstitutionModelSet *>(PhylogeneticsApplicationTools::getSubstitutionModelSet(codonAlphabet, gCode, codon_data, bppml->getParams()));
+  modelSet = dynamic_cast<MixedSubstitutionModelSet *>(PhylogeneticsApplicationTools::getSubstitutionModelSet(codonAlphabet, gCode, codon_data, bppml->getParams()));
   return modelSet;
 }
 
@@ -791,7 +838,7 @@ int main(int args, char **argv)
       out.endLine();
       out << "# Substitution model parameters:";
       out.endLine();
-	  charModel->matchParametersValues(traitRELAXLikelihoodFunction->getCharacterLikelihoodFunction()->getParameters());
+	    charModel->matchParametersValues(traitRELAXLikelihoodFunction->getCharacterLikelihoodFunction()->getParameters());
       PhylogeneticsApplicationTools::printParameters(charModel, out, 1, withAlias);
       out.endLine();
       seqModel->matchParametersValues(traitRELAXLikelihoodFunction->getSequenceLikelihoodFunction()->getParameters());
