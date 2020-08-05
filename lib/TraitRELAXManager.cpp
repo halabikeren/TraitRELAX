@@ -15,22 +15,21 @@ TraitRELAXManager::TraitRELAXManager(BppApplication* parameters) :
 TraitRELAXManager::~TraitRELAXManager()
 {
   traitRELAXParameters_->done();
-
+  if (gCode_) delete gCode_;
   // get all the pointers to be deleted from the joint likelihood function
-  delete traitRELAXLikelihoodFunction_->getCharacterLikelihoodFunction()->getAlphabet();
-  delete traitRELAXLikelihoodFunction_->getCharacterLikelihoodFunction()->getData();
-  delete traitRELAXLikelihoodFunction_->getCharacterLikelihoodFunction()->getModelForSite(0, 0);
-  delete gCode_;
-  delete dynamic_cast<const CodonAlphabet*>(traitRELAXLikelihoodFunction_->getSequenceLikelihoodFunction()->getAlphabet())->getNucleicAlphabet();
-  delete traitRELAXLikelihoodFunction_->getSequenceLikelihoodFunction()->getAlphabet();
-  delete traitRELAXLikelihoodFunction_->getSequenceLikelihoodFunction()->getData();
-  delete traitRELAXLikelihoodFunction_->getSequenceLikelihoodFunction()->getSubstitutionModelSet();
-
-  delete &traitRELAXLikelihoodFunction_->getSequenceLikelihoodFunction()->getTree();
-  delete RASTools::getPosteriorRateDistribution(*traitRELAXLikelihoodFunction_->getSequenceLikelihoodFunction());
-
-  if (traitRELAXParameters_) delete traitRELAXParameters_;
-  if (traitRELAXLikelihoodFunction_) delete traitRELAXLikelihoodFunction_;
+  if (traitRELAXLikelihoodFunction_)
+  {
+    delete traitRELAXLikelihoodFunction_->getCharacterLikelihoodFunction()->getAlphabet();
+    delete traitRELAXLikelihoodFunction_->getCharacterLikelihoodFunction()->getData();
+    delete traitRELAXLikelihoodFunction_->getCharacterLikelihoodFunction()->getModelForSite(0, 0);
+    delete dynamic_cast<const CodonAlphabet*>(traitRELAXLikelihoodFunction_->getSequenceLikelihoodFunction()->getAlphabet())->getNucleicAlphabet();
+    delete traitRELAXLikelihoodFunction_->getSequenceLikelihoodFunction()->getAlphabet();
+    delete traitRELAXLikelihoodFunction_->getSequenceLikelihoodFunction()->getData();
+    delete traitRELAXLikelihoodFunction_->getSequenceLikelihoodFunction()->getSubstitutionModelSet();
+    delete &traitRELAXLikelihoodFunction_->getSequenceLikelihoodFunction()->getTree();
+    delete RASTools::getPosteriorRateDistribution(*traitRELAXLikelihoodFunction_->getSequenceLikelihoodFunction());
+    delete traitRELAXLikelihoodFunction_;
+  }
 }
 
 /******************************************************************************/
@@ -922,7 +921,6 @@ void TraitRELAXManager::ParametricBoostrap(map <string, double> simulationParame
   StochasticMapping* stocMapping = new StochasticMapping(characterLikelihoodFunction, 1);
   vector<Tree*> mappings;
   stocMapping->generateStochasticMapping(mappings);
-  delete stocMapping;
   Tree* traitHistory = mappings[0];
 
   // write the simulated history
@@ -939,6 +937,7 @@ void TraitRELAXManager::ParametricBoostrap(map <string, double> simulationParame
   // free
   delete tree;
   delete traitHistory;
+  delete stocMapping;
 }
 
 /******************************************************************************/
@@ -1288,12 +1287,13 @@ Tree* TraitRELAXManager::simulateTraitEvolution(Tree* tree)
 
     // write the simulate character data
     map<string, string> writeParams;
+    writeParams["output.sequence.file"] = ApplicationTools::getAFilePath("character.data_path", traitRELAXParameters_->getParams(), false, false, "", true, GetCurrentWorkingDir() + "/character_data.fas", 1);
     writeParams["output.sequence.format"] = ApplicationTools::getStringParameter("output.sequence.format", traitRELAXParameters_->getParams(), "Fasta", "", true, 1);
     SequenceApplicationTools::writeSequenceFile(*(dynamic_cast<SequenceContainer*>(&charData)), writeParams, "", false, 1);
 
     // write the true history to a file before deleting it
-    string unlabled_history_path = ApplicationTools::getAFilePath("character.unlabeled_history_path", traitRELAXParameters_->getParams(), false, false, "", true, "none", 1);
-    string labeled_history_path  = ApplicationTools::getAFilePath("character.labeled_history_path", traitRELAXParameters_->getParams(), false, false, "", true, "none", 1);
+    string unlabled_history_path = ApplicationTools::getAFilePath("character.unlabeled_history_path", traitRELAXParameters_->getParams(), false, false, "", true, GetCurrentWorkingDir() + "/.unlabeled_trait_history.nwk", 1);
+    string labeled_history_path  = ApplicationTools::getAFilePath("character.labeled_history_path", traitRELAXParameters_->getParams(), false, false, "", true, GetCurrentWorkingDir() + "/.labeled_trait_history.nwk", 1);
     writeMapping(traitHistory, unlabled_history_path, labeled_history_path);
 
     return traitHistory;
@@ -1337,6 +1337,11 @@ SubstitutionModelSet* TraitRELAXManager::setSequenceSubModel(const VectorSiteCon
   traitRELAXParameters_->getParam("nonhomogeneous.stationarity") = "yes"; // constrain root frequencies to be the same as stationary (since RELAX is a time reversible model, this should not cause issues)
 
   // create the set of models
+  if (!gCode_)
+  {
+    string codeDesc = ApplicationTools::getStringParameter("genetic_code", traitRELAXParameters_->getParams(), "Standard", "", true, true);
+    gCode_ = SequenceApplicationTools::getGeneticCode(codonAlphabet->getNucleicAlphabet(), codeDesc);
+  }
   SubstitutionModelSet* modelSet = dynamic_cast<SubstitutionModelSet*>(PhylogeneticsApplicationTools::getSubstitutionModelSet(codonAlphabet, gCode_, codon_data, traitRELAXParameters_->getParams()));
   return modelSet;
 }
@@ -1503,7 +1508,7 @@ void TraitRELAXManager::simulateSequenceEvolution(Tree* tree)
     
     // write the simulated sequence data
     map<string, string> writeParams;
-    writeParams["output.sequence.file"] = ApplicationTools::getAFilePath("sequence.data_path", traitRELAXParameters_->getParams(), false, false, "", true, "none", 1);
+    writeParams["output.sequence.file"] = ApplicationTools::getAFilePath("sequence.data_path", traitRELAXParameters_->getParams(), false, false, "", true, GetCurrentWorkingDir() + "/.sequence_data.fas.nwk", 1);
     writeParams["output.sequence.format"] = ApplicationTools::getStringParameter("output.sequence.format", traitRELAXParameters_->getParams(), "Fasta", "", true, 1);
     SequenceApplicationTools::writeSequenceFile(*(dynamic_cast<SequenceContainer*>(&seqData)), writeParams, "", false, 1);
 }
