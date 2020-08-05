@@ -948,7 +948,7 @@ void TraitRELAXManager::test(map<string, double> nullParameters, map<string, dou
   cout << "\n****************************** Performing statistical test ******************************" << endl;
  
   string testMethod = ApplicationTools::getStringParameter("statisical.test", traitRELAXParameters_->getParams(), "traditional LRT", "", true, 1);
-  if (testMethod.compare("traditional LRT"))
+  if (testMethod.compare("traditional LRT") == 0)
   {
     cout << "Tranditional Likelihood ratio test was selected..." << endl;
     bool isRejected = LRT();
