@@ -6,7 +6,8 @@ TraitRELAXManager::TraitRELAXManager(BppApplication* parameters) :
   traitRELAXLikelihoodFunction_(),
   nullLogl_(0),
   alternativeLogl_(0),
-  gCode_()
+  gCode_() //,
+  //rDist_()
 {
   traitRELAXParameters_ = parameters;
 }
@@ -16,6 +17,7 @@ TraitRELAXManager::~TraitRELAXManager()
 {
   traitRELAXParameters_->done();
   if (gCode_) delete gCode_;
+  //if (rDist_) delete rDist_;
   // get all the pointers to be deleted from the joint likelihood function
   if (traitRELAXLikelihoodFunction_)
   {
@@ -1296,6 +1298,12 @@ Tree* TraitRELAXManager::simulateTraitEvolution(Tree* tree)
     string labeled_history_path  = ApplicationTools::getAFilePath("character.labeled_history_path", traitRELAXParameters_->getParams(), false, false, "", true, GetCurrentWorkingDir() + "/.labeled_trait_history.nwk", 1);
     writeMapping(traitHistory, unlabled_history_path, labeled_history_path);
 
+    // free
+    delete alphabet;
+    delete rdist;
+    delete charModel;
+    delete charSimulator;
+    delete charResult;
     return traitHistory;
 }
 
@@ -1357,7 +1365,7 @@ void TraitRELAXManager::homogenize(vector<SubstitutionModel*> models, vector<dou
     vector<int> supportedChars = models[0]->getAlphabetStates();
     GeneticCode* gc = SequenceApplicationTools::getGeneticCode(codonAlphabet->getNucleicAlphabet(), "Standard");
     size_t synfrom = 0;
-	size_t synto = 0;
+	  size_t synto = 0;
     for (synfrom = 1; synfrom < supportedChars.size(); ++synfrom)
     {
         for (synto = 0; synto < synfrom; ++synto)
@@ -1397,6 +1405,7 @@ void TraitRELAXManager::homogenize(vector<SubstitutionModel*> models, vector<dou
         Rates[i] *= 1 / sum;
         models[i]->setRate(Rates[i]);
     }
+    delete gc;
 }
 
 /* ################################################################## */
@@ -1417,7 +1426,7 @@ void TraitRELAXManager::simulateSequenceEvolution(Tree* tree)
     omegaWeights.push_back(ApplicationTools::getDoubleParameter("p1", traitRELAXParameters_->getParams(), 0.4, "", true, 1));
     omegaWeights.push_back(1-omegaWeights[0]-omegaWeights[1]);
     // process k values to simulate with
-   double k_value = ApplicationTools::getDoubleParameter("k",  traitRELAXParameters_->getParams(), 1, "", true, 1);
+    double k_value = ApplicationTools::getDoubleParameter("k",  traitRELAXParameters_->getParams(), 1, "", true, 1);
     
     
     // create auxiliary variables for model generation
@@ -1452,7 +1461,7 @@ void TraitRELAXManager::simulateSequenceEvolution(Tree* tree)
     NonHomogeneousSequenceSimulator* seqSimulator_1 = new NonHomogeneousSequenceSimulator(seqModel_1, rdist, ttree);
     NonHomogeneousSequenceSimulator* seqSimulator_2 = new NonHomogeneousSequenceSimulator(seqModel_2, rdist, ttree);
     NonHomogeneousSequenceSimulator* seqSimulator_3 = new NonHomogeneousSequenceSimulator(seqModel_3, rdist, ttree);
-    VectorSiteContainer seqData(seqNames, codonAlphabet);
+    VectorSiteContainer* seqData = new VectorSiteContainer(seqNames, codonAlphabet);
     vector<size_t> omegaOrders;   // holds 1,2,3
 
     // for debugging purposes - track how many sites were simulated each omega category
@@ -1462,12 +1471,11 @@ void TraitRELAXManager::simulateSequenceEvolution(Tree* tree)
         categroyToNumOfSites[i] = 0;
     }
 
-    
-
-    Site* seqSite;
-
     for (size_t site=0; site<numOfSites; ++site)
-    {          
+    {
+
+    RASiteSimulationResult* seqResult;
+    Site* seqSite; 
     
     omegaOrders.clear();
     omegaOrders.push_back(1);
@@ -1478,27 +1486,24 @@ void TraitRELAXManager::simulateSequenceEvolution(Tree* tree)
     categroyToNumOfSites[modelOfSite] ++;  // for debugging purposes
     if (modelOfSite == 1)
     {
-        RASiteSimulationResult* seqResult = seqSimulator_1->dSimulateSite();
+        seqResult = seqSimulator_1->dSimulateSite();
         seqSite = seqResult->getSite(*seqSimulator_1->getSubstitutionModelSet()->getModel(0));
     }
     else if (modelOfSite == 2)
     {
-        RASiteSimulationResult* seqResult = seqSimulator_2->dSimulateSite();
+        seqResult = seqSimulator_2->dSimulateSite();
         seqSite = seqResult->getSite(*seqSimulator_2->getSubstitutionModelSet()->getModel(0));
     }
     else
     {
-        RASiteSimulationResult* seqResult = seqSimulator_3->dSimulateSite();
+        seqResult = seqSimulator_3->dSimulateSite();
         seqSite = seqResult->getSite(*seqSimulator_3->getSubstitutionModelSet()->getModel(0));
     }
     seqSite->setPosition(static_cast<int>(site));
-    seqData.addSite(*seqSite, false);
+    seqData->addSite(*seqSite, false);
+    delete seqSite;
+    delete seqResult;
     }
-
-    // delete the models
-    delete seqModel_1;
-    delete seqModel_2;
-    delete seqModel_3;
 
     // for debugging purposes
     for (size_t i=1; i<4; ++i)
@@ -1510,7 +1515,19 @@ void TraitRELAXManager::simulateSequenceEvolution(Tree* tree)
     map<string, string> writeParams;
     writeParams["output.sequence.file"] = ApplicationTools::getAFilePath("sequence.data_path", traitRELAXParameters_->getParams(), false, false, "", true, GetCurrentWorkingDir() + "/.sequence_data.fas.nwk", 1);
     writeParams["output.sequence.format"] = ApplicationTools::getStringParameter("output.sequence.format", traitRELAXParameters_->getParams(), "Fasta", "", true, 1);
-    SequenceApplicationTools::writeSequenceFile(*(dynamic_cast<SequenceContainer*>(&seqData)), writeParams, "", false, 1);
+    SequenceApplicationTools::writeSequenceFile(*(dynamic_cast<SequenceContainer*>(seqData)), writeParams, "", false, 1);
+
+    // free
+    delete codonAlphabet->getNucleicAlphabet();
+    delete codonAlphabet;
+    delete rdist;
+    delete seqData;
+    delete seqModel_1;
+    delete seqModel_2;
+    delete seqModel_3;
+    delete seqSimulator_1;
+    delete seqSimulator_2;
+    delete seqSimulator_3;
 }
 
 /* ################################################################## */
