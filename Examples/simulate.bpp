@@ -1,0 +1,50 @@
+# ----------------------------------------------------------------------------------------
+#                                     Input tree file
+# ----------------------------------------------------------------------------------------
+
+init.tree = user
+input.tree.file =./data/example2/tree.nwk
+input.tree.format = Newick
+init.brlen.method = Input
+
+# ----------------------------------------------------------------------------------------
+#                             Character simulation parameters 
+# ----------------------------------------------------------------------------------------
+
+character_model.mu = 8.0
+character_model.pi0 = 0.5
+
+# ----------------------------------------------------------------------------------------
+#                             Sequence simulation parameters 
+# ----------------------------------------------------------------------------------------
+
+sequence.num_of_sites = 50
+sequence_model.kappa = 2
+sequence_model.omega0 = 0.1
+sequence_model.p0 = 0.5
+sequence_model.omega1 = 0.8
+sequence_model.p1 = 0.4
+sequence_model.omega2 = 2
+sequence_model.k = 1
+sequence_model.frequencies = F3X4
+# nucleotide frequencies parameters in the case the F3X4 model is chosen to model codon frequencies
+# the three lines correspond to the three nucleotide positions in a codon
+# the three values in which line correspond to parameters theta, theta1 and theta2 such that:
+# Frequency(A) = theta1 * (1. - theta);
+# Frequency(C) = (1 - theta2) * theta;
+# Frequency(G) = theta2 * theta;
+# Frequency(T) = (1 - theta1) * (1. - theta);
+sequence_model.frequencies.codon_pos1 = 0.5, 0.5, 0.5
+sequence_model.frequencies.codon_pos2 = 0.5, 0.5, 0.5
+sequence_model.frequencies.codon_pos3 = 0.5, 0.5, 0.5
+
+# ----------------------------------------------------------------------------------------
+#                                Output settings ans specs
+# ----------------------------------------------------------------------------------------
+
+character.data_path = ./data/simulation_output/character_data.fas
+character.unlabeled_history_path = ./data/simulation_output/unlabeled_trait_history.nwk
+character.labeled_history_path = ./data/simulation_output/labeled_trait_history.nwk
+sequence.data_path = ./data/simulation_output/sequence_data.fas
+output.sequence.format = Fasta
+output.tree.format = Newick
