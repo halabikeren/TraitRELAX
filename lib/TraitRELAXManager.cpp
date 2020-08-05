@@ -19,15 +19,15 @@ TraitRELAXManager::~TraitRELAXManager()
   // get all the pointers to be deleted from the joint likelihood function
   if (traitRELAXLikelihoodFunction_)
   {
-    delete traitRELAXLikelihoodFunction_->getCharacterLikelihoodFunction()->getAlphabet();
-    delete traitRELAXLikelihoodFunction_->getCharacterLikelihoodFunction()->getData();
-    delete traitRELAXLikelihoodFunction_->getCharacterLikelihoodFunction()->getModelForSite(0, 0);
-    delete dynamic_cast<const CodonAlphabet*>(traitRELAXLikelihoodFunction_->getSequenceLikelihoodFunction()->getAlphabet())->getNucleicAlphabet();
-    delete traitRELAXLikelihoodFunction_->getSequenceLikelihoodFunction()->getAlphabet();
-    delete traitRELAXLikelihoodFunction_->getSequenceLikelihoodFunction()->getData();
-    delete traitRELAXLikelihoodFunction_->getSequenceLikelihoodFunction()->getSubstitutionModelSet();
-    delete &traitRELAXLikelihoodFunction_->getSequenceLikelihoodFunction()->getTree();
-    delete RASTools::getPosteriorRateDistribution(*traitRELAXLikelihoodFunction_->getSequenceLikelihoodFunction());
+    if (traitRELAXLikelihoodFunction_->getCharacterLikelihoodFunction()->getAlphabet()) delete traitRELAXLikelihoodFunction_->getCharacterLikelihoodFunction()->getAlphabet();
+    if (traitRELAXLikelihoodFunction_->getCharacterLikelihoodFunction()->getData()) delete traitRELAXLikelihoodFunction_->getCharacterLikelihoodFunction()->getData();
+    if (traitRELAXLikelihoodFunction_->getCharacterLikelihoodFunction()->getModelForSite(0, 0)) delete traitRELAXLikelihoodFunction_->getCharacterLikelihoodFunction()->getModelForSite(0, 0);
+    if (dynamic_cast<const CodonAlphabet*>(traitRELAXLikelihoodFunction_->getSequenceLikelihoodFunction()->getAlphabet())->getNucleicAlphabet()) delete dynamic_cast<const CodonAlphabet*>(traitRELAXLikelihoodFunction_->getSequenceLikelihoodFunction()->getAlphabet())->getNucleicAlphabet();
+    if (traitRELAXLikelihoodFunction_->getSequenceLikelihoodFunction()->getAlphabet()) delete traitRELAXLikelihoodFunction_->getSequenceLikelihoodFunction()->getAlphabet();
+    if (traitRELAXLikelihoodFunction_->getSequenceLikelihoodFunction()->getData()) delete traitRELAXLikelihoodFunction_->getSequenceLikelihoodFunction()->getData();
+    if (traitRELAXLikelihoodFunction_->getSequenceLikelihoodFunction()->getSubstitutionModelSet()) delete traitRELAXLikelihoodFunction_->getSequenceLikelihoodFunction()->getSubstitutionModelSet();
+    if (&(traitRELAXLikelihoodFunction_->getSequenceLikelihoodFunction()->getTree())) delete &(traitRELAXLikelihoodFunction_->getSequenceLikelihoodFunction()->getTree());
+    if (traitRELAXLikelihoodFunction_->getSequenceLikelihoodFunction()->getRateDistribution()) delete traitRELAXLikelihoodFunction_->getSequenceLikelihoodFunction()->getRateDistribution();
     delete traitRELAXLikelihoodFunction_;
   }
 }
