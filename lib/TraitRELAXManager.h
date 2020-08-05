@@ -88,6 +88,7 @@ class TraitRELAXManager
         JointLikelihoodFunction*  traitRELAXLikelihoodFunction_;
         double nullLogl_;
         double alternativeLogl_;
+        GeneticCode* gCode_; // this is saved as a data member of that its pointer wouldn't be lost upon closure of init(), a stage in which it cnnot be deleted yet
 
     public:
 
@@ -99,10 +100,11 @@ class TraitRELAXManager
 
         // copy constructor
         TraitRELAXManager(const TraitRELAXManager& trm) : 
-        traitRELAXParameters_(0), traitRELAXLikelihoodFunction_(), nullLogl_(0), alternativeLogl_(0)
+        traitRELAXParameters_(0), traitRELAXLikelihoodFunction_(), nullLogl_(0), alternativeLogl_(0), gCode_()
         {   
             traitRELAXLikelihoodFunction_ = trm.traitRELAXLikelihoodFunction_; 
             traitRELAXParameters_ = trm.traitRELAXParameters_; 
+            gCode_ = trm.gCode_;
         }
 
         // assignment operator
@@ -110,6 +112,7 @@ class TraitRELAXManager
         {
             traitRELAXParameters_ = trm.traitRELAXParameters_;
             traitRELAXLikelihoodFunction_ = trm.traitRELAXLikelihoodFunction_;
+            gCode_ = trm.gCode_;
             return *this;
         }
 

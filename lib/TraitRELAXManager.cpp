@@ -5,7 +5,8 @@ TraitRELAXManager::TraitRELAXManager(BppApplication* parameters) :
   traitRELAXParameters_(),
   traitRELAXLikelihoodFunction_(),
   nullLogl_(0),
-  alternativeLogl_(0)
+  alternativeLogl_(0),
+  gCode_()
 {
   traitRELAXParameters_ = parameters;
 }
@@ -19,10 +20,12 @@ TraitRELAXManager::~TraitRELAXManager()
   delete traitRELAXLikelihoodFunction_->getCharacterLikelihoodFunction()->getAlphabet();
   delete traitRELAXLikelihoodFunction_->getCharacterLikelihoodFunction()->getData();
   delete traitRELAXLikelihoodFunction_->getCharacterLikelihoodFunction()->getModelForSite(0, 0);
-
+  delete gCode_;
+  delete dynamic_cast<const CodonAlphabet*>(traitRELAXLikelihoodFunction_->getSequenceLikelihoodFunction()->getAlphabet())->getNucleicAlphabet();
   delete traitRELAXLikelihoodFunction_->getSequenceLikelihoodFunction()->getAlphabet();
   delete traitRELAXLikelihoodFunction_->getSequenceLikelihoodFunction()->getData();
   delete traitRELAXLikelihoodFunction_->getSequenceLikelihoodFunction()->getSubstitutionModelSet();
+
   delete &traitRELAXLikelihoodFunction_->getSequenceLikelihoodFunction()->getTree();
   delete RASTools::getPosteriorRateDistribution(*traitRELAXLikelihoodFunction_->getSequenceLikelihoodFunction());
 
@@ -186,10 +189,6 @@ void TraitRELAXManager::setMpPartition(DRTreeParsimonyScore *mpData, const Vecto
 // creates the sequence model
 MixedSubstitutionModelSet* TraitRELAXManager::setSequenceModel(const VectorSiteContainer *codon_data, const CodonAlphabet *codonAlphabet, DRTreeParsimonyScore *mpData, const VectorSiteContainer *characterData, TransitionModel *characterModel, Tree *tree)
 {
-  
-  string codeDesc = ApplicationTools::getStringParameter("genetic_code", traitRELAXParameters_->getParams(), "Standard", "", true, true);
-  GeneticCode *gCode = SequenceApplicationTools::getGeneticCode(codonAlphabet->getNucleicAlphabet(), codeDesc);
-
   // set initial partition, based on maximum parsimony
   setMpPartition(mpData, characterData, characterModel, tree); // the partition is set on tree
 
@@ -224,7 +223,9 @@ MixedSubstitutionModelSet* TraitRELAXManager::setSequenceModel(const VectorSiteC
   // likelihood approach 2 (Bio++ default, no need to set) - set likelihood computation to enable shifts in the selective regime between branches in the phylogeny with respect to each site only upon transition from FG to BG category
 
   // create the set of models
-  modelSet = dynamic_cast<MixedSubstitutionModelSet *>(PhylogeneticsApplicationTools::getSubstitutionModelSet(codonAlphabet, gCode, codon_data, traitRELAXParameters_->getParams()));
+  string codeDesc = ApplicationTools::getStringParameter("genetic_code", traitRELAXParameters_->getParams(), "Standard", "", true, true);
+  gCode_ = SequenceApplicationTools::getGeneticCode(codonAlphabet->getNucleicAlphabet(), codeDesc);
+  modelSet = dynamic_cast<MixedSubstitutionModelSet *>(PhylogeneticsApplicationTools::getSubstitutionModelSet(codonAlphabet, gCode_, codon_data, traitRELAXParameters_->getParams()));
   return modelSet;
 }
 
@@ -996,22 +997,6 @@ string TraitRELAXManager::GetCurrentWorkingDir()
 /* #################### Trait data simulator ######################## */
 /* ################################################################## */
 
-// size_t TraitRELAXManager::getNodeState(const Node* node)
-// {
-//   return static_cast<size_t>((dynamic_cast<const BppInteger*>(node->getNodeProperty(STATE)))->getValue());
-// }
-
-// /*********************************************************************/
-
-// void TraitRELAXManager::setNodeState(Node* node, size_t state)
-// {
-//   BppInteger* stateProperty = new BppInteger(static_cast<int>(state));
-//   node->setNodeProperty(STATE, *stateProperty);
-//   delete stateProperty;
-// }
-
-/*********************************************************************/
-
 // since the function is fitted to true history, the mutation path may exceed the original branch length, in which case the dutration until the last event should be reduced to fit the original branch length
 void TraitRELAXManager::updateBranchMapping(Node* son, const MutationPath& branchMapping, size_t initial_count)
 { 
@@ -1321,8 +1306,8 @@ Tree* TraitRELAXManager::simulateTraitEvolution(Tree* tree)
 //  sets the sequence model to simulate a partition of the sequence data with a specific omega
 SubstitutionModelSet* TraitRELAXManager::setSequenceSubModel(const VectorSiteContainer* codon_data, const CodonAlphabet* codonAlphabet, double omega, double k)
 {
-    // process the other parameters to simulate with
-    double kappa =  ApplicationTools::getDoubleParameter("sequence_model.kappa", traitRELAXParameters_->getParams(), 2, "", true, 0);
+  // process the other parameters to simulate with
+  double kappa =  ApplicationTools::getDoubleParameter("sequence_model.kappa", traitRELAXParameters_->getParams(), 2, "", true, 0);
 	string frequenciesModel = ApplicationTools::getStringParameter("sequence_model.frequencies", traitRELAXParameters_->getParams(), "F3X4", "", true, 0);
 	string frequenciesInitalization = "";
 	if (frequenciesModel.compare("F3X4") == 0)
@@ -1351,10 +1336,8 @@ SubstitutionModelSet* TraitRELAXManager::setSequenceSubModel(const VectorSiteCon
   traitRELAXParameters_->getParam("nonhomogeneous.number_of_models") = "2";
   traitRELAXParameters_->getParam("nonhomogeneous.stationarity") = "yes"; // constrain root frequencies to be the same as stationary (since RELAX is a time reversible model, this should not cause issues)
 
-  GeneticCode* gCode = SequenceApplicationTools::getGeneticCode(codonAlphabet->getNucleicAlphabet(), "Standard");
-    
   // create the set of models
-  SubstitutionModelSet* modelSet = dynamic_cast<SubstitutionModelSet*>(PhylogeneticsApplicationTools::getSubstitutionModelSet(codonAlphabet, gCode, codon_data, traitRELAXParameters_->getParams()));
+  SubstitutionModelSet* modelSet = dynamic_cast<SubstitutionModelSet*>(PhylogeneticsApplicationTools::getSubstitutionModelSet(codonAlphabet, gCode_, codon_data, traitRELAXParameters_->getParams()));
   return modelSet;
 }
 
