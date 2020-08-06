@@ -795,6 +795,8 @@ map<string, double> TraitRELAXManager::optimizeAlternativeModel()
     bool report = false;
     if (verbose)
       report = true;
+  
+    traitRELAXParameters_->startTimer();
 
     // switch settings to alternative model (-> link between the character and sequence models)
     traitRELAXLikelihoodFunction_->setHypothesis(JointLikelihoodFunction::Hypothesis(1));
@@ -865,7 +867,8 @@ map<string, double> TraitRELAXManager::optimizeAlternativeModel()
       ApplicationTools::displayResult(it->first, TextTools::toString(it->second, 15));
     }
   }
-	reportParameters(bestModelParameters);
+  reportParameters(bestModelParameters);
+  traitRELAXParameters_->startTimer();
   ApplicationTools::displayResult("Number of optimization cycles", TextTools::toString(optimizationCyclesNum));
   alternativeLogl_ = -traitRELAXLikelihoodFunction_->getValue();
   writeInferenceToOutput();
