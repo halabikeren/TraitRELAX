@@ -46,15 +46,17 @@ sequence_model.set_initial_parameters = true
 model1 = RELAX(kappa=2,p=0.1,omega1=1,omega2=2,k=1,theta1=0.5,theta2=0.8,frequencies=F3X4)
 model2 = RELAX(kappa=RELAX.kappa_1,p=RELAX.p_1,omega1=RELAX.omega1_1,omega2=RELAX.omega2_1,theta1=RELAX.theta1_1,theta2=RELAX.theta2_1,frequencies=F0,k=0.2)
 likelihood.recursion_simple.compression = recursive
-rate_distribution = Constant()
+rate_distribution = Constant() 
 
 
 # ----------------------------------------------------------------------------------------
 #                                    Optimization parameters
 # ----------------------------------------------------------------------------------------
 
-optimization.tolerance = 0.00001
-optimization.max_number_f_eval = 10000
+#optimization.tolerance = 0.00001
+#optimization.max_number_f_eval = 10000
+#optimization.tolerance = 0.01
+#optimization.max_number_f_eval = 10
 optimization = FullD(derivatives=Newton)
 optimization.final = powell
 optimization.ignore_parameters_additonal = BrLen,RELAX.k_1,RELAX.1_Full.theta_1,RELAX.1_Full.theta1_1,RELAX.1_Full.theta2_1,RELAX.2_Full.theta_1,RELAX.2_Full.theta1_1,RELAX.2_Full.theta2_1,RELAX.3_Full.theta_1,RELAX.3_Full.theta1_1,RELAX.3_Full.theta2_1,RELAX.p_1,RELAX.theta1_1,RELAX.theta2_1,RELAX.omega1_1
@@ -67,3 +69,6 @@ optimization.verbose = 1
 output.estimates = ./data/example2/parameter_estimates.res
 optimization.profiler = ./data/example2/optimization_steps.res
 output.infos = ./data/example2/optimization_output.res
+statisical.test = parametric boostrp
+output.simulations = ./data/simulation_output/
+simulations.number_of_replicates = 5
