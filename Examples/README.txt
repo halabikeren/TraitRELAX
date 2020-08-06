@@ -3,7 +3,7 @@
 # The runs need to be carried out from the 'Examples' directory. Define:
 
 EXAMPLES_DIR="/your/path/to/Examples"
-TRAIT_RELAX_EXEC="/your/path/to/TraitRELAX/traitrelax"
+TRAIT_RELAX_EXEC="/your/path/to/TraitRELAX/TraitRELAX"
 
 # And run (change '1' to '2' for the second example):
 
