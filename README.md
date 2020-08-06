@@ -26,7 +26,7 @@ Additionaly it can save results to output files specified in the control file (s
 
 Once installed (see next section), the program can be run through the shell:
 ```
-path/to/TraitRELAX/traitrelax param=<path_to_control_file>
+path/to/TraitRELAX/TraitRELAX param=<path_to_control_file>
 ```
 
 ## Building from source...
