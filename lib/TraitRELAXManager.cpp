@@ -6,8 +6,15 @@ TraitRELAXManager::TraitRELAXManager(BppApplication* parameters) :
   traitRELAXLikelihoodFunction_(),
   nullLogl_(0),
   alternativeLogl_(0),
-  gCode_() //,
-  //rDist_()
+  gCode_(),
+  binaryAlphabet_(),
+  characterData_(),
+  tree_(),
+  codonAlphabet_(),
+  sequenceData_(),
+  characterModel_(),
+  sequenceModel_(),
+  rDist_()
 {
   traitRELAXParameters_ = parameters;
 }
@@ -16,22 +23,17 @@ TraitRELAXManager::TraitRELAXManager(BppApplication* parameters) :
 TraitRELAXManager::~TraitRELAXManager()
 {
   traitRELAXParameters_->done();
-  if (gCode_) delete gCode_;
-  //if (rDist_) delete rDist_;
-  // get all the pointers to be deleted from the joint likelihood function
-  if (traitRELAXLikelihoodFunction_)
-  {
-    if (traitRELAXLikelihoodFunction_->getCharacterLikelihoodFunction()->getAlphabet()) delete traitRELAXLikelihoodFunction_->getCharacterLikelihoodFunction()->getAlphabet();
-    if (traitRELAXLikelihoodFunction_->getCharacterLikelihoodFunction()->getData()) delete traitRELAXLikelihoodFunction_->getCharacterLikelihoodFunction()->getData();
-    if (traitRELAXLikelihoodFunction_->getCharacterLikelihoodFunction()->getModelForSite(0, 0)) delete traitRELAXLikelihoodFunction_->getCharacterLikelihoodFunction()->getModelForSite(0, 0);
-    if (dynamic_cast<const CodonAlphabet*>(traitRELAXLikelihoodFunction_->getSequenceLikelihoodFunction()->getAlphabet())->getNucleicAlphabet()) delete dynamic_cast<const CodonAlphabet*>(traitRELAXLikelihoodFunction_->getSequenceLikelihoodFunction()->getAlphabet())->getNucleicAlphabet();
-    if (traitRELAXLikelihoodFunction_->getSequenceLikelihoodFunction()->getAlphabet()) delete traitRELAXLikelihoodFunction_->getSequenceLikelihoodFunction()->getAlphabet();
-    if (traitRELAXLikelihoodFunction_->getSequenceLikelihoodFunction()->getData()) delete traitRELAXLikelihoodFunction_->getSequenceLikelihoodFunction()->getData();
-    if (traitRELAXLikelihoodFunction_->getSequenceLikelihoodFunction()->getSubstitutionModelSet()) delete traitRELAXLikelihoodFunction_->getSequenceLikelihoodFunction()->getSubstitutionModelSet();
-    if (&(traitRELAXLikelihoodFunction_->getSequenceLikelihoodFunction()->getTree())) delete &(traitRELAXLikelihoodFunction_->getSequenceLikelihoodFunction()->getTree());
-    if (traitRELAXLikelihoodFunction_->getSequenceLikelihoodFunction()->getRateDistribution()) delete traitRELAXLikelihoodFunction_->getSequenceLikelihoodFunction()->getRateDistribution();
-    delete traitRELAXLikelihoodFunction_;
-  }
+  if (gCode_) delete gCode_;          
+  if (binaryAlphabet_) delete binaryAlphabet_;
+  if (characterData_) delete characterData_;
+  if (tree_) delete tree_;
+  if (codonAlphabet_->getNucleicAlphabet()) delete codonAlphabet_->getNucleicAlphabet();
+  if (codonAlphabet_) delete codonAlphabet_;
+  if (sequenceData_) delete sequenceData_;
+  if (characterModel_) delete characterModel_;
+  if (sequenceModel_) delete sequenceModel_;
+  if (rDist_) delete rDist_;
+  if (traitRELAXLikelihoodFunction_) delete traitRELAXLikelihoodFunction_;
 }
 
 /******************************************************************************/
@@ -39,20 +41,20 @@ TraitRELAXManager::~TraitRELAXManager()
 /******************************************************************************/
 
 // creates a codon alphabet
-const CodonAlphabet* TraitRELAXManager::getCodonAlphabet()
+void TraitRELAXManager::setCodonAlphabet()
 {
   map<string, string> alphabetSettings;
   alphabetSettings["alphabet"] = "Codon(letter=DNA)";
   const Alphabet* alphabet = SequenceApplicationTools::getAlphabet(alphabetSettings, "", false);
-  const CodonAlphabet* codonAlphabet = dynamic_cast<const CodonAlphabet *>(alphabet);
-  return codonAlphabet;
+  codonAlphabet_ = dynamic_cast<const CodonAlphabet *>(alphabet);
 }
 
 /******************************************************************************/
 
 // processes input character trait data
-VectorSiteContainer* TraitRELAXManager::processCharacterData(const BinaryAlphabet *alphabet)
+void TraitRELAXManager::setCharacterData()
 {
+  binaryAlphabet_ = new BinaryAlphabet();
   string charDataFilePath = ApplicationTools::getAFilePath("input.character.file", traitRELAXParameters_->getParams(), true, true, "", true, "none", 1);
   string sequenceFormat = ApplicationTools::getStringParameter("input.character.format", traitRELAXParameters_->getParams(), "Fasta()", "", true, 1);
   BppOAlignmentReaderFormat bppoReader(1);
@@ -60,10 +62,10 @@ VectorSiteContainer* TraitRELAXManager::processCharacterData(const BinaryAlphabe
   map<string, string> args(bppoReader.getUnparsedArguments());
   ApplicationTools::displayResult("character data file ", charDataFilePath);
   ApplicationTools::displayResult("chatacter data format ", iAln->getFormatName());
-  const SequenceContainer *charCont = iAln->readAlignment(charDataFilePath, alphabet);
+  const SequenceContainer *charCont = iAln->readAlignment(charDataFilePath, binaryAlphabet_);
   VectorSiteContainer *sites = new VectorSiteContainer(*dynamic_cast<const OrderedSequenceContainer *>(charCont));
   delete charCont;
-  return sites;
+  characterData_ = sites;
 }
 
 /******************************************************************************/
@@ -71,13 +73,13 @@ VectorSiteContainer* TraitRELAXManager::processCharacterData(const BinaryAlphabe
 /******************************************************************************/
 
 // processes input sequence data
-VectorSiteContainer* TraitRELAXManager::processSequenceData(const CodonAlphabet *codonAlphabet)
+void TraitRELAXManager::setSequenceData()
 {
-  VectorSiteContainer *allSites = SequenceApplicationTools::getSiteContainer(codonAlphabet, traitRELAXParameters_->getParams());            // here, gaps will be converted to unknown characters
+  VectorSiteContainer *allSites = SequenceApplicationTools::getSiteContainer(codonAlphabet_, traitRELAXParameters_->getParams());            // here, gaps will be converted to unknown characters
   VectorSiteContainer *sites = SequenceApplicationTools::getSitesToAnalyse(*allSites, traitRELAXParameters_->getParams(), "", true, false); // convert the alignemnt to condensed format of unique sites
   delete allSites;                                                                                                          // delete the non-condenced intance of the sequence data
   SiteContainerTools::changeGapsToUnknownCharacters(*sites);                                                                // convert gaps to unknown characters (as done in bppML.cpp)
-  return sites;
+  sequenceData_ = sites;
 }
 
 /******************************************************************************/
@@ -97,23 +99,23 @@ void TraitRELAXManager::giveNamesToInternalNodes(Tree *tree)
 /******************************************************************************/
 
 // processes input tree
-Tree* TraitRELAXManager::processTree()
+void TraitRELAXManager::setTree()
 {
   Tree *tree = PhylogeneticsApplicationTools::getTree(traitRELAXParameters_->getParams());
   giveNamesToInternalNodes(tree);
-  return tree;
+  tree_ = tree;
 }
 
 /******************************************************************************/
 
 // creates the character trait model
-TransitionModel* TraitRELAXManager::setCharacterModel(VectorSiteContainer *charData, const BinaryAlphabet *alphabet, Tree *tree, DRTreeParsimonyScore *mpData)
+void TraitRELAXManager::setCharacterModel(DRTreeParsimonyScore *mpData)
 {
   // create the model
-  SubstitutionModel *model = new TwoParameterBinarySubstitutionModel(alphabet);
+  SubstitutionModel *model = new TwoParameterBinarySubstitutionModel(binaryAlphabet_);
 
   // compute the maximum parsimony score and set the lower and upper bounds on mu (=rate) as mp/tree_size, 2*mp/tree_size
-  VDouble treeBranches = dynamic_cast<TreeTemplate<Node> *>(tree)->getBranchLengths();
+  VDouble treeBranches = dynamic_cast<TreeTemplate<Node> *>(tree_)->getBranchLengths();
   double treeSize = 0;
   for (size_t i = 0; i < treeBranches.size(); ++i)
   {
@@ -129,7 +131,7 @@ TransitionModel* TraitRELAXManager::setCharacterModel(VectorSiteContainer *charD
     // set the value of mu to be the middle of the interval
     model->setParameterValue(string("mu"), mu);
 	// estimate the initial frequencies as observedPseudoCount with pseudocount as 1 to avoid possible case of frequency = 0
-    model->setFreqFromData(dynamic_cast<const SequenceContainer &>(*charData), 1); // the second arguemnt stands for pesudocount 1
+    model->setFreqFromData(dynamic_cast<const SequenceContainer &>(*characterData_), 1); // the second arguemnt stands for pesudocount 1
   }
   else
   {
@@ -152,13 +154,13 @@ TransitionModel* TraitRELAXManager::setCharacterModel(VectorSiteContainer *charD
 	dynamic_cast<TwoParameterBinarySubstitutionModel *>(model)->setMuBounds(characterMuLb, characterMuUb);
   }
   
-  return dynamic_cast<TransitionModel *>(model);
+  characterModel_ = dynamic_cast<TransitionModel *>(model);
 }
 
 /******************************************************************************/
 
 // sets initial partition of the branches as input of the sequence model based on a maximum parsimony solution
-void TraitRELAXManager::setMpPartition(DRTreeParsimonyScore *mpData, const VectorSiteContainer *characterData, TransitionModel *characterModel, Tree *tree)
+void TraitRELAXManager::setMpPartition(DRTreeParsimonyScore *mpData)
 {
   mpData->computeSolution();
   const Tree &solution = mpData->getTree();
@@ -168,7 +170,7 @@ void TraitRELAXManager::setMpPartition(DRTreeParsimonyScore *mpData, const Vecto
   string character0NodesIds, character1NodesIds = "";
   for (size_t i = 0; i < nodes.size(); ++i)
   {
-    if (!tree->isRoot(nodes[i]->getId()))
+    if (!tree_->isRoot(nodes[i]->getId()))
     {
       int nodeState = dynamic_cast<const BppInteger *>(nodes[i]->getNodeProperty("state"))->getValue();
       if (nodeState == 0)
@@ -188,10 +190,10 @@ void TraitRELAXManager::setMpPartition(DRTreeParsimonyScore *mpData, const Vecto
 /******************************************************************************/
 
 // creates the sequence model
-MixedSubstitutionModelSet* TraitRELAXManager::setSequenceModel(const VectorSiteContainer *codon_data, const CodonAlphabet *codonAlphabet, DRTreeParsimonyScore *mpData, const VectorSiteContainer *characterData, TransitionModel *characterModel, Tree *tree)
+void TraitRELAXManager::setSequenceModel(DRTreeParsimonyScore *mpData)
 {
   // set initial partition, based on maximum parsimony
-  setMpPartition(mpData, characterData, characterModel, tree); // the partition is set on tree
+  setMpPartition(mpData); // the partition is set on tree
 
   MixedSubstitutionModelSet *modelSet; 
   // TransitionModel *model; // commented out until further consult with Itay as to weather this should be implemented
@@ -225,9 +227,9 @@ MixedSubstitutionModelSet* TraitRELAXManager::setSequenceModel(const VectorSiteC
 
   // create the set of models
   string codeDesc = ApplicationTools::getStringParameter("genetic_code", traitRELAXParameters_->getParams(), "Standard", "", true, true);
-  gCode_ = SequenceApplicationTools::getGeneticCode(codonAlphabet->getNucleicAlphabet(), codeDesc);
-  modelSet = dynamic_cast<MixedSubstitutionModelSet *>(PhylogeneticsApplicationTools::getSubstitutionModelSet(codonAlphabet, gCode_, codon_data, traitRELAXParameters_->getParams()));
-  return modelSet;
+  gCode_ = SequenceApplicationTools::getGeneticCode(codonAlphabet_->getNucleicAlphabet(), codeDesc);
+  modelSet = dynamic_cast<MixedSubstitutionModelSet *>(PhylogeneticsApplicationTools::getSubstitutionModelSet(codonAlphabet_, gCode_, sequenceData_, traitRELAXParameters_->getParams()));
+  sequenceModel_ = modelSet;
 }
 
 /******************************************************************************/
@@ -247,32 +249,33 @@ void TraitRELAXManager::init()
     RandomTools::setSeed(static_cast<long>(seed));
 
     /* process character data */
-    const BinaryAlphabet *balpha = new BinaryAlphabet();
-    VectorSiteContainer *charData = processCharacterData(balpha);
+    setCharacterData();
 
     /* process tree */
-    Tree *tree = processTree();
+    setTree();
 
     /* process codon alignment */
-    const CodonAlphabet* calpha = getCodonAlphabet();
-    VectorSiteContainer* seqData = processSequenceData(calpha);
+    setCodonAlphabet();
+    setSequenceData();
 
     /* compute the maximum parsimony  for the purpose of setting bounds on the rate parameter of the character model and an intial tree partition for the starting point */
-    DRTreeParsimonyScore* mpData = new DRTreeParsimonyScore(*tree, dynamic_cast<const SiteContainer &>(*charData));
+    DRTreeParsimonyScore* mpData = new DRTreeParsimonyScore(*tree_, dynamic_cast<const SiteContainer &>(*characterData_));
 
     /* set the character model */
-    TransitionModel* charModel = setCharacterModel(charData, balpha, tree, mpData);
+    setCharacterModel(mpData);
 
     /* set the sequence model */
-    MixedSubstitutionModelSet* seqModel = setSequenceModel(seqData, calpha, mpData, charData, charModel, tree);
+    setSequenceModel(mpData);
     delete mpData;
 
     /* set the joint likelihood function instance */
-    DiscreteDistribution* rDist = new ConstantRateDistribution();
+    rDist_ = new ConstantRateDistribution();
 
     bool debug = ApplicationTools::getBooleanParameter("joint.likelihood.debug", traitRELAXParameters_->getParams(), false, "", true, 1);
-    traitRELAXLikelihoodFunction_ = new JointLikelihoodFunction(traitRELAXParameters_, tree, charData, charModel, seqData, seqModel, rDist, debug);
+    traitRELAXLikelihoodFunction_ = new JointLikelihoodFunction(traitRELAXParameters_, tree_, characterData_, characterModel_, sequenceData_, sequenceModel_, rDist_, debug);
 }
+
+/******************************************************************************/
 
 void TraitRELAXManager::reportParameters(map <string, double> parameterValues)
 {
@@ -427,13 +430,13 @@ VVDouble TraitRELAXManager::getNeighbors(VVDouble &grid, double currentMu, doubl
 /******************************************************************************/
 
 // optimizes the character model under the alternative hypothesis (in which the sequence evolution is linked to the character evolution of the trait) using one dimensional grid optimization
-void TraitRELAXManager::optimizeAlternativeCharacterModelByGrid(map<string, double> &optimalValues, TransitionModel *characterModel, uint verbose, uint gridSize, bool firstCycle)
+void TraitRELAXManager::optimizeAlternativeCharacterModelByGrid(map<string, double> &optimalValues, uint verbose, uint gridSize, bool firstCycle)
 {
   cout << "* Optimizng joint likelihood function with respect to character parameters using grid *\n" << endl;
 
   // set the grid bounds on the rate and kappa parameters of the character model
   //const IntervalConstraint *muBounds = dynamic_cast<const IntervalConstraint *>(characterModel->getParameter("mu").getConstraint());
-  std::shared_ptr<IntervalConstraint> muBounds = std::dynamic_pointer_cast<IntervalConstraint>(characterModel->getParameter("mu").getConstraint());
+  std::shared_ptr<IntervalConstraint> muBounds = std::dynamic_pointer_cast<IntervalConstraint>(characterModel_->getParameter("mu").getConstraint());
   double muLb = muBounds->getLowerBound() + 0.0001;
   double muUb = muBounds->getUpperBound() - 0.0001;
   double pi0Lb = 0.1;
@@ -506,7 +509,7 @@ void TraitRELAXManager::optimizeAlternativeCharacterModelByGrid(map<string, doub
 /******************************************************************************/
 
 // optimizes the character model under the alternative hypothesis (in which the sequence evolution is linked to the character evolution of the trait) using one dimensional brent optimization
-void TraitRELAXManager::optimizeAlternativeCharacterModelByOneDimBrent(map<string, double> &optimalValues, TransitionModel *characterModel, uint verbose)
+void TraitRELAXManager::optimizeAlternativeCharacterModelByOneDimBrent(map<string, double> &optimalValues, uint verbose)
 {
   cout << "* Optimizing joint likelihood function with respect to character parameters using one dimentional brent *\n" << endl;
 
@@ -552,7 +555,7 @@ void TraitRELAXManager::optimizeAlternativeCharacterModelByOneDimBrent(map<strin
 /******************************************************************************/
 
 // optimizes the character model under the alternative hypothesis (in which the sequence evolution is linked to the character evolution of the trait) using one dimensional powell optimization
-void TraitRELAXManager::optimizeAlternativeCharacterModelByPowell(map<string, double> &optimalValues, TransitionModel *characterModel, uint verbose)
+void TraitRELAXManager::optimizeAlternativeCharacterModelByPowell(map<string, double> &optimalValues, uint verbose)
 {
   cout << "* Optimizing joint likelihood function with respect to character parameters using two dimentional brent (i.e., powell) *\n" << endl;
   // set the brent two dimontional optimizer
@@ -668,7 +671,9 @@ void TraitRELAXManager::optimizeAlternativeCharacterModelMultiDim()
   // We're done.
   unsigned int n = optimizer->getNumberOfEvaluations();
   ApplicationTools::displayResult("# TL evaluations", TextTools::toString(n));
-  delete optimizer;
+  if (profiler) delete profiler;
+  if (fun) delete fun; 
+  if (optimizer) delete optimizer;
 }
 
 /******************************************************************************/
@@ -680,20 +685,19 @@ void TraitRELAXManager::optimizeAlternativeCharacterModel()
     traitRELAXLikelihoodFunction_->setOptimizationScope(JointLikelihoodFunction::OptimizationScope(0)); // no optimization of sequece parameters is required at these stage
     string characterOptimizationMethod = ApplicationTools::getStringParameter("optimization.character_method", traitRELAXParameters_->getParams(), "FullD(derivatives=Newton)");
     map<string, double> optimalCharacterParameters;
-    TransitionModel* charModel = traitRELAXLikelihoodFunction_->getCharacterLikelihoodFunction()->getModel();
     optimalCharacterParameters.clear();
     if (characterOptimizationMethod.compare("grid") == 0)
     {
       uint gridSize = static_cast<unsigned int>(ApplicationTools::getIntParameter("optimization.grid_size", traitRELAXParameters_->getParams(), 10));
-      optimizeAlternativeCharacterModelByGrid(optimalCharacterParameters, charModel, verbose, gridSize);
+      optimizeAlternativeCharacterModelByGrid(optimalCharacterParameters, verbose, gridSize);
     }
     else if (characterOptimizationMethod.compare("oneDimBrent") == 0)
     {
-      optimizeAlternativeCharacterModelByOneDimBrent(optimalCharacterParameters, charModel, 1);
+      optimizeAlternativeCharacterModelByOneDimBrent(optimalCharacterParameters, 1);
     }
     else if (characterOptimizationMethod.compare("powell") == 0)
     {
-      optimizeAlternativeCharacterModelByPowell(optimalCharacterParameters, charModel, verbose);
+      optimizeAlternativeCharacterModelByPowell(optimalCharacterParameters, verbose);
     }
     else
     {
@@ -910,11 +914,6 @@ void TraitRELAXManager::ParametricBoostrap(map <string, double> simulationParame
   traitRELAXParameters_->getParam("output.sequence.format") = "Fasta";
   traitRELAXParameters_->getParam("output.tree.format") = "Newick";
 
-
-  // process the base tree
-  Tree* tree = processTree();
-  giveNamesToInternalNodes(tree);
-
   // simulate trait evolution under the constraint of the states at the leaves
   // in other words, create a single stochastic mapping and use it as the trait history
   HomogeneousTreeLikelihood* characterLikelihoodFunction = traitRELAXLikelihoodFunction_->getCharacterLikelihoodFunction();
@@ -937,7 +936,6 @@ void TraitRELAXManager::ParametricBoostrap(map <string, double> simulationParame
   }
 
   // free
-  delete tree;
   delete traitHistory;
   delete stocMapping;
 }
@@ -1093,9 +1091,9 @@ void TraitRELAXManager::removeStatesFromNodesNames(Tree* mapping)
 // translate the simulation data into a tree format, similar to the one given by the stochastic mappings
 // in the results, there is a mutations paths field that can be returned for each node getMutationPath(int nodeId)
 // then, it is enough to use the function I built in StochasticMapping
-Tree* TraitRELAXManager::extractMapping(RASiteSimulationResult* simulationData, Tree* baseTree)
+Tree* TraitRELAXManager::extractMapping(RASiteSimulationResult* simulationData)
 {
-    Tree* history = baseTree->clone();
+    Tree* history = tree_->clone();
     giveNamesToInternalNodes(history);
     vector<Node*> nodes = (dynamic_cast<TreeTemplate<Node>*>(history))->getNodes();
     vector<Node*> debugNodes;
@@ -1132,14 +1130,14 @@ Tree* TraitRELAXManager::extractMapping(RASiteSimulationResult* simulationData, 
 /* ################################################################## */
 
 // the function verifies that the simulated trait evolution stricktly corresponds to the input phylgoeny strcuture
-void TraitRELAXManager::checkMapping(Tree* mapping, Tree* baseTree)
+void TraitRELAXManager::checkMapping(Tree* mapping)
 {
     // make sure both trees have the same size
-    VDouble baseTreeBranchLengths = dynamic_cast<TreeTemplate<Node>*>(baseTree)->getBranchLengths();
-    double baseTreeSize = 0;
-    for (size_t b=0; b<baseTreeBranchLengths.size(); b++)
+    VDouble tree_BranchLengths = dynamic_cast<TreeTemplate<Node>*>(tree_)->getBranchLengths();
+    double tree_Size = 0;
+    for (size_t b=0; b<tree_BranchLengths.size(); b++)
     {
-        baseTreeSize = baseTreeSize + baseTreeBranchLengths[b];
+        tree_Size = tree_Size + tree_BranchLengths[b];
     }
 
     VDouble traitHistoryBranchLengths = dynamic_cast<TreeTemplate<Node>*>(mapping)->getBranchLengths();
@@ -1149,7 +1147,7 @@ void TraitRELAXManager::checkMapping(Tree* mapping, Tree* baseTree)
         traitHistorySize = traitHistorySize + traitHistoryBranchLengths[b];
     }
 
-    if (abs(baseTreeSize - traitHistorySize) > 0.01)
+    if (abs(tree_Size - traitHistorySize) > 0.01)
     {
         throw Exception("true history has different tbl from base tree");
     }
@@ -1262,30 +1260,32 @@ void TraitRELAXManager::writeMapping(Tree* mapping, string unlabeled_mapping_pat
 
 
 // simulate trait evolution along the provided phylogeny and write to output files: character data, simulated history in a newick format, and write to the BppApplication instance a map of nodes to model1 (BG) and model2 (FG)
-Tree* TraitRELAXManager::simulateTraitEvolution(Tree* tree)
+Tree* TraitRELAXManager::simulateTraitEvolution()
 {
     // extract from the parameters files the simulation parameters (default parameter values are set according to the manuscript)
     double mu = ApplicationTools::getDoubleParameter("character_model.mu", traitRELAXParameters_->getParams(), 8, "", true, 2);
     double pi0 = ApplicationTools::getDoubleParameter("character_model.pi0", traitRELAXParameters_->getParams(), 0.5, "", true, 2);
 
     // create a binary model
-    const BinaryAlphabet* alphabet = new BinaryAlphabet();
-    TwoParameterBinarySubstitutionModel* charModel = new TwoParameterBinarySubstitutionModel(alphabet,mu, pi0); // second arguent stands for mu
-    DiscreteDistribution* rdist = new ConstantRateDistribution();
-    vector<string> seqNames = tree->getLeavesNames();
-    VectorSiteContainer charData(seqNames, alphabet);
+    if (!binaryAlphabet_)
+		binaryAlphabet_ = new BinaryAlphabet();
+    TwoParameterBinarySubstitutionModel* charModel = new TwoParameterBinarySubstitutionModel(binaryAlphabet_,mu, pi0); // second arguent stands for mu
+    if (!rDist_)
+		rDist_ = new ConstantRateDistribution();
+    vector<string> seqNames = tree_->getLeavesNames();
+    VectorSiteContainer charData(seqNames, binaryAlphabet_);
      
     // simulate character history using a simulator over a simple binary model
-    NonHomogeneousSequenceSimulator* charSimulator = new NonHomogeneousSequenceSimulator(charModel, rdist, tree);
+    NonHomogeneousSequenceSimulator* charSimulator = new NonHomogeneousSequenceSimulator(charModel, rDist_, tree_);
 
     RASiteSimulationResult* charResult = charSimulator->dSimulateSite();
     unique_ptr<Site> charSite(charResult->getSite(*charSimulator->getSubstitutionModelSet()->getModel(0)));
     charSite->setPosition(0);
     charData.addSite(*charSite, false);
-    Tree* traitHistory = extractMapping(charResult, tree);
+    Tree* traitHistory = extractMapping(charResult);
 
     // check if the true history is legal
-    checkMapping(traitHistory, tree);
+    checkMapping(traitHistory);
 
     // write the simulate character data
     map<string, string> writeParams;
@@ -1299,8 +1299,6 @@ Tree* TraitRELAXManager::simulateTraitEvolution(Tree* tree)
     writeMapping(traitHistory, unlabled_history_path, labeled_history_path);
 
     // free
-    delete alphabet;
-    delete rdist;
     delete charModel;
     delete charSimulator;
     delete charResult;
@@ -1312,7 +1310,7 @@ Tree* TraitRELAXManager::simulateTraitEvolution(Tree* tree)
 /* ################################################################## */
 
 //  sets the sequence model to simulate a partition of the sequence data with a specific omega
-SubstitutionModelSet* TraitRELAXManager::setSequenceSubModel(const VectorSiteContainer* codon_data, const CodonAlphabet* codonAlphabet, double omega, double k)
+SubstitutionModelSet* TraitRELAXManager::setSequenceSubModel(const VectorSiteContainer* codon_data, double omega, double k)
 {
   // process the other parameters to simulate with
   double kappa =  ApplicationTools::getDoubleParameter("sequence_model.kappa", traitRELAXParameters_->getParams(), 2, "", true, 0);
@@ -1348,29 +1346,28 @@ SubstitutionModelSet* TraitRELAXManager::setSequenceSubModel(const VectorSiteCon
   if (!gCode_)
   {
     string codeDesc = ApplicationTools::getStringParameter("genetic_code", traitRELAXParameters_->getParams(), "Standard", "", true, true);
-    gCode_ = SequenceApplicationTools::getGeneticCode(codonAlphabet->getNucleicAlphabet(), codeDesc);
+    gCode_ = SequenceApplicationTools::getGeneticCode(codonAlphabet_->getNucleicAlphabet(), codeDesc);
   }
-  SubstitutionModelSet* modelSet = dynamic_cast<SubstitutionModelSet*>(PhylogeneticsApplicationTools::getSubstitutionModelSet(codonAlphabet, gCode_, codon_data, traitRELAXParameters_->getParams()));
+  SubstitutionModelSet* modelSet = dynamic_cast<SubstitutionModelSet*>(PhylogeneticsApplicationTools::getSubstitutionModelSet(codonAlphabet_, gCode_, codon_data, traitRELAXParameters_->getParams()));
   return modelSet;
 }
 
 /* ################################################################## */
 
 // adjusts the absoluate rates of the three independent models  to be as if they construct a single mixed model together
-void TraitRELAXManager::homogenize(vector<SubstitutionModel*> models, vector<double>Probs, const CodonAlphabet* codonAlphabet)
+void TraitRELAXManager::homogenize(vector<SubstitutionModel*> models, vector<double>Probs)
 {
     // step 0: compute synto and synfrom as - the minimal indices i,j of synonymous transition for which Q matrices of model 1 and model 2 have rate > 0 (that is, Q(i,j) > 0)
     // unforetunatly, the roginial data memebers are protected and thus must be comptated from scratch rather than extracted
     // emulated from YNGP_M2.cpp lines 110-121
     vector<int> supportedChars = models[0]->getAlphabetStates();
-    GeneticCode* gc = SequenceApplicationTools::getGeneticCode(codonAlphabet->getNucleicAlphabet(), "Standard");
     size_t synfrom = 0;
-	  size_t synto = 0;
+	size_t synto = 0;
     for (synfrom = 1; synfrom < supportedChars.size(); ++synfrom)
     {
         for (synto = 0; synto < synfrom; ++synto)
         {
-        if (gc->areSynonymous(supportedChars[synfrom], supportedChars[synto])
+        if (gCode_->areSynonymous(supportedChars[synfrom], supportedChars[synto])
             && (models[0]->Qij(synfrom, synto) != 0)
             && (models[1]->Qij(synfrom, synto) != 0))
             break;
@@ -1405,13 +1402,12 @@ void TraitRELAXManager::homogenize(vector<SubstitutionModel*> models, vector<dou
         Rates[i] *= 1 / sum;
         models[i]->setRate(Rates[i]);
     }
-    delete gc;
 }
 
 /* ################################################################## */
 
 // simulate sequence evolution along the provided phylogeny, given the simulated trait evolution as partition, and write to output file the sequence data
-void TraitRELAXManager::simulateSequenceEvolution(Tree* tree)
+void TraitRELAXManager::simulateSequenceEvolution(Tree* mapping)
 {
     // extract simulation parameters
     size_t numOfSites = ApplicationTools::getIntParameter("sequence.num_of_sites", traitRELAXParameters_->getParams(), 300, "", true, 1);
@@ -1430,38 +1426,40 @@ void TraitRELAXManager::simulateSequenceEvolution(Tree* tree)
     
     
     // create auxiliary variables for model generation
-    TreeTemplate<Node>* ttree = dynamic_cast<TreeTemplate<Node>*>(tree);
-    DiscreteDistribution* rdist = new ConstantRateDistribution();
-    vector<string> seqNames = tree->getLeavesNames();
+    TreeTemplate<Node>* ttree = dynamic_cast<TreeTemplate<Node>*>(mapping);
+    if (!rDist_)
+		rDist_ = new ConstantRateDistribution();
+    vector<string> seqNames = mapping->getLeavesNames();
 
     // generate an empty dataset and use it to create RELAX
-    const CodonAlphabet* codonAlphabet = getCodonAlphabet();
-    VectorSiteContainer seqDataContainter(seqNames, codonAlphabet);
+    if (!codonAlphabet_)
+		setCodonAlphabet();
+    VectorSiteContainer seqDataContainter(seqNames, codonAlphabet_);
 
     // simulate a codon alignment according to RELAX model
     // RELAX is a mixture of 3 non homogenous models: one for each omega. Thus, to simulate under RELAX, we choose for each site the model to simulate it under, based on multimodel distrubution over the 3 models
     // create the 3 branch models: one per omega (site category)
-    SubstitutionModelSet* seqModel_1 = setSequenceSubModel(&seqDataContainter, codonAlphabet, omegas[0], k_value);
-    SubstitutionModelSet* seqModel_2 = setSequenceSubModel(&seqDataContainter, codonAlphabet, omegas[1], k_value);
-    SubstitutionModelSet* seqModel_3 = setSequenceSubModel(&seqDataContainter, codonAlphabet, omegas[2], k_value);
+    SubstitutionModelSet* seqModel_1 = setSequenceSubModel(&seqDataContainter, omegas[0], k_value);
+    SubstitutionModelSet* seqModel_2 = setSequenceSubModel(&seqDataContainter, omegas[1], k_value);
+    SubstitutionModelSet* seqModel_3 = setSequenceSubModel(&seqDataContainter, omegas[2], k_value);
 
     /* emulate homogenization */
     vector<SubstitutionModel*> bgModels;
     bgModels.push_back(dynamic_cast<SubstitutionModel*>(seqModel_1->getModel(0)));
     bgModels.push_back(dynamic_cast<SubstitutionModel*>(seqModel_2->getModel(0)));
     bgModels.push_back(dynamic_cast<SubstitutionModel*>(seqModel_3->getModel(0)));
-    homogenize(bgModels, omegaWeights, codonAlphabet);
+    homogenize(bgModels, omegaWeights);
     vector<SubstitutionModel*> fgModels;
     fgModels.push_back(dynamic_cast<SubstitutionModel*>(seqModel_1->getModel(1)));
     fgModels.push_back(dynamic_cast<SubstitutionModel*>(seqModel_2->getModel(1)));
     fgModels.push_back(dynamic_cast<SubstitutionModel*>(seqModel_3->getModel(1)));
-    homogenize(fgModels, omegaWeights, codonAlphabet);
+    homogenize(fgModels, omegaWeights);
 
     // simulate sites
-    NonHomogeneousSequenceSimulator* seqSimulator_1 = new NonHomogeneousSequenceSimulator(seqModel_1, rdist, ttree);
-    NonHomogeneousSequenceSimulator* seqSimulator_2 = new NonHomogeneousSequenceSimulator(seqModel_2, rdist, ttree);
-    NonHomogeneousSequenceSimulator* seqSimulator_3 = new NonHomogeneousSequenceSimulator(seqModel_3, rdist, ttree);
-    VectorSiteContainer* seqData = new VectorSiteContainer(seqNames, codonAlphabet);
+    NonHomogeneousSequenceSimulator* seqSimulator_1 = new NonHomogeneousSequenceSimulator(seqModel_1, rDist_, ttree);
+    NonHomogeneousSequenceSimulator* seqSimulator_2 = new NonHomogeneousSequenceSimulator(seqModel_2, rDist_, ttree);
+    NonHomogeneousSequenceSimulator* seqSimulator_3 = new NonHomogeneousSequenceSimulator(seqModel_3, rDist_, ttree);
+    VectorSiteContainer* seqData = new VectorSiteContainer(seqNames, codonAlphabet_);
     vector<size_t> omegaOrders;   // holds 1,2,3
 
     // for debugging purposes - track how many sites were simulated each omega category
@@ -1518,9 +1516,6 @@ void TraitRELAXManager::simulateSequenceEvolution(Tree* tree)
     SequenceApplicationTools::writeSequenceFile(*(dynamic_cast<SequenceContainer*>(seqData)), writeParams, "", false, 1);
 
     // free
-    delete codonAlphabet->getNucleicAlphabet();
-    delete codonAlphabet;
-    delete rdist;
     delete seqData;
     delete seqModel_1;
     delete seqModel_2;
@@ -1536,17 +1531,15 @@ void TraitRELAXManager::simulateSequenceEvolution(Tree* tree)
 void TraitRELAXManager::simulate()
 {
     // process the base tree
-    Tree* tree = processTree();
-    giveNamesToInternalNodes(tree);
+    setTree();
 
     // simulate trait evolution
-    Tree* traitHistory = simulateTraitEvolution(tree);
+    Tree* traitHistory = simulateTraitEvolution();
 
     // simulate sequence evolution based on the partition derived from the trait evolution (which is now available in simulationParams)
     simulateSequenceEvolution(traitHistory);
 
-    // free
-    delete tree;
+	// free
     delete traitHistory;
 }
 
