@@ -13,8 +13,6 @@ git clone https://github.com/BioPP/bpp-core.git
 git clone https://github.com/BioPP/bpp-seq.git
 git clone https://github.com/BioPP/bpp-phyl.git
 git clone https://github.com/BioPP/bpp-popgen.git
-cd $bpp_dir
-git clone https://github.com/BioPP/bppsuite.git
 cd $bpp_dir/sources/bpp-core
 mkdir build
 cd build
@@ -39,17 +37,11 @@ cd build
 cmake -DCMAKE_INSTALL_PREFIX=$bpp_dir -DCMAKE_INSTALL_RPATH_USE_LINK_PATH=TRUE ..
 make -j
 make install
-cd ../../../bppsuite
-mkdir build
-cd build
-cmake -DCMAKE_INSTALL_PREFIX=$bpp_dir -DCMAKE_INSTALL_RPATH_USE_LINK_PATH=TRUE ..
-make -j
-make install
 
 ## install traitrelax
 mkdir -p $traitrelax_dir
 cd $traitrelax_dir
-git clone https://github.com/halabikeren/traitrelax.git
+git clone https://github.com/halabikeren/TraitRELAX.git
 cd TraitRELAX
 cmake -DCMAKE_INSTALL_PREFIX=$bpp_dir -DCMAKE_INSTALL_RPATH_USE_LINK_PATH=TRUE .
 make -j
