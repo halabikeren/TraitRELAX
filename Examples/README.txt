@@ -3,7 +3,8 @@
 # The runs need to be carried out from the 'Examples' directory. Define:
 
 EXAMPLES_DIR="/your/path/to/Examples"
-TRAIT_RELAX_EXEC="/your/path/to/TraitRELAX/traitrelax"
+TRAIT_RELAX_EXEC="/your/path/to/TraitRELAX/TraitRELAX"
+SIMULATOR_EXEC = "/your/path/to/TraitRELAX/Simulator"
 
 # And run (change '1' to '2' for the second example):
 
@@ -67,3 +68,15 @@ p1=0.8
 k=0.000000000001
 
 Approximated running time with 4 cores is 5 minutes.
+
+### Simulation example
+
+This is a toy example for an execution of simulation under the TraitRELAX model. The parameters to simulate with are given in the parameters file simulate.bpp
+The simulation procedure will output the following files:
+
+character data file with the simulated states at the sip taxa (character.data_path)
+tree with the breakpoints determined by the simulated trait history (character.unlabeled_history_path)
+tree with the breakpoints and trait states determined by the simulated trait history (character.labeled_history_path)
+sequence data file with the simulated coding sequences (sequence.data_path)
+
+

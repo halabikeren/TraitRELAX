@@ -7,7 +7,7 @@ if __name__ == '__main__':
         description='Unit test for runs with fixed seed, which compares base results to dynamically generated ones by absolute diff')
     parser.add_argument('--run_directory', '-r', help='directory cd should be cded to upon running', required=False, default = os.getcwd() + "/Examples/")
     parser.add_argument('--traitrelax_program_path', '-t', help='full path to ',
-                        required=False, default = os.getcwd() + "/TraitRELAX/traitrelax")
+                        required=False, default = os.getcwd() + "/TraitRELAX/TraitRELAX")
     parser.add_argument('--parameter_file_path', '-p', help='path to input parameter file for the program',
                         required=True)
     parser.add_argument('--output_directory', '-o', help='directory that holds the base files and the output files that should be compared to them', required=False, default="")
