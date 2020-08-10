@@ -68,13 +68,18 @@ output.infos = <path_to_log_likelihood_scores_by_sequence_sites> # set to 'none'
 
 joint.likelihood.debug = <bool>       # set to 'true' for getting the strcuture of the expected and stochasting trait mappings as output
 output.debug.dir = <path_to_mappings> # the directory to which the respective mappings will be written
-output.tree.format = Newick           # the format in which the mappings will be written (the newick format corresponds to the input format of labeled trees given as partitions to RELAX)
+output.tree.format = Newick           # the format in which the mappings will be written (the newick format corresponds to the input format 
+                                      # of labeled trees given as partitions to RELAX)
 
 # ----------------------------------------------------------------------------------------
 #                                    Statistical test
 # ----------------------------------------------------------------------------------------
 
-statisical.test = <test_type>                           # can be either traditional LRT or parametric boostrap
+statisical.test = <test_type>                           # can be either "traditional LRT" or "parametric boostrap"
+                                                        # in the case of parametric boostrap, only the null simulations will be generated
+                                                        # the user will execute TraitRELAX on the simulations independently, 
+                                                        # and may parse their results to obtain a test result using the script ./utils/parametricBootstrapParser.py
+                                                        # for additional documentation, use "python ./utils/parametricBootstrapParser.py -h"
 output.simulations = <output_to_null_simulations>       # the directory ot which the simulated datasets will be written in case of paramtertic bootstrap 
 simulations.number_of_replicates = <number_of_datasets> # the number of simulated datasets based on which the null likelihood ratio distribution will be set in the case of paramtertic bootstrap
 
