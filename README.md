@@ -50,7 +50,6 @@ cd $bpp_dir/sources
 git clone https://github.com/BioPP/bpp-core.git
 git clone https://github.com/BioPP/bpp-seq.git
 git clone -b kerenDevel https://github.com/halabikeren/bpp-phyl.git
-git clone https://github.com/BioPP/bpp-popgen.git
 ```
 
 #### Compiling and installing Bio++
@@ -71,12 +70,6 @@ cd ../../bpp-phyl
 mkdir build
 cd build
 cmake -DCMAKE_INSTALL_PREFIX=$bpp_dir -DCMAKE_INSTALL_RPATH_USE_LINK_PATH=TRUE OMP_NUM_THREADS=<required_number_of_cores> ..
-make -j
-make install
-cd ../../bpp-popgen
-mkdir build
-cd build
-cmake -DCMAKE_INSTALL_PREFIX=$bpp_dir -DCMAKE_INSTALL_RPATH_USE_LINK_PATH=TRUE ..
 make -j
 make install
 ```
