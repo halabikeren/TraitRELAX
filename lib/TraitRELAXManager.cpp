@@ -219,9 +219,10 @@ void TraitRELAXManager::setSequenceModel(DRTreeParsimonyScore *mpData)
   // likelihood approach 3 (TraitRELAX default) - set likelihood computation to restrict the same selective regime for each branch along the phylogeny with respect to each site
   if (LLApproach == 3)
   {
-    traitRELAXParameters_->getParam("site.number_of_paths") = "2";                               // the 3rd path mapping omega3 in the branches under chatacter states 0 and 1 is imlied by the other two paths
+    traitRELAXParameters_->getParam("site.number_of_paths") = "3";                               // the 3rd path mapping omega3 in the branches under chatacter states 0 and 1 is imlied by the other two paths
     traitRELAXParameters_->getParam("site.path1") = "model1[YN98.omega_1]&model2[YN98.omega_1]"; // map omega1 in the branches under character state 0 (=model1) to omega1 in the branches under character state 1 (=model2)
     traitRELAXParameters_->getParam("site.path2") = "model1[YN98.omega_2]&model2[YN98.omega_2]"; // do the same for omega2
+	traitRELAXParameters_->getParam("site.path3") = "model1[YN98.omega_3]&model2[YN98.omega_3]"; // do the same for omega3
   }
   // likelihood approach 2 (Bio++ default, no need to set) - set likelihood computation to enable shifts in the selective regime between branches in the phylogeny with respect to each site only upon transition from FG to BG category
 
