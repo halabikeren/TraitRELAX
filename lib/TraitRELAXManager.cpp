@@ -861,13 +861,6 @@ map<string, double> TraitRELAXManager::optimizeAlternativeModel()
     } while (currentAlternativeOverallLogL - previousAlternativeOverallLogL > tolerance);
 
   // report the optimal log likelihood and parameters of the alternative model
-  for (map<string, double>::iterator it = bestModelParameters.begin(); it != bestModelParameters.end(); it++)
-  {
-    if ((it->first.find("Log likelihood") == std::string::npos))
-    {
-      ApplicationTools::displayResult(it->first, TextTools::toString(it->second, 15));
-    }
-  }
   reportParameters(bestModelParameters);
   traitRELAXParameters_->startTimer();
   ApplicationTools::displayResult("Number of optimization cycles", TextTools::toString(optimizationCyclesNum));
