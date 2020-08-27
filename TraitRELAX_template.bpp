@@ -57,6 +57,7 @@ optimization = FullD(derivatives=Newton,nstep=10)
 optimization.final = powell
 optimization.ignore_parameters = RELAX.k_1,BrLen
 optimization.advanced = 1 # 1 for advanced optimization procedure with sequential iterations with decreasing starting points to increase changes of convergence into global maxima (recommended)
+optimization.scale.tree = 0 # 1 to optimize the tree scale with respect to the sequence model, 0 to leave as is
 
 # ----------------------------------------------------------------------------------------
 #                                    Output files 
