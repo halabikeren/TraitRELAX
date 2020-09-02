@@ -36,17 +36,17 @@ k=0.2
 
 TraitRELAX detects a significant (p-value=0.0336) trait-related relaxation with parameter estimates:
 
-mu=3.25541190565717
+mu=3.21897523031373
 pi0=0.05
-kappa=1.87347952238339
-omega0=0.00490177859
-omega1=0.490177859225133
-omega2=1.20269784121443
-p0=0.0380727606300336
-p1=0.961927239
-k=0.258846591077448
+kappa=1.86419774314806
+omega0=0.000496807647
+omega1=0.496807646912068
+omega2=1.12939644838683
+p0=0.0407751756273637
+p1=0.959224824
+k=0.254850
 
-When using 16 cores, the estimated runtime is 2.5 hours.
+When using 1 COU with 4 cores, the estimated runtime is one hour.
 You can compare your output files to those provided in "${EXAMPLES_DIR}"/data/example1/
 
 ### Example 2
