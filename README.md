@@ -33,7 +33,11 @@ path/to/TraitRELAX/traitrelax param=<path_to_control_file>
 
 ### ...by using an installation script
 
-An installation script is available at **install.sh**. To install, modify lines 4,5 to include the desired installation directories of Bio++ and TraitRELAX.
+An installation script is available at **install.sh**. To install, run on the command line:
+```
+sh install.sh <path_to_prgram>
+```
+Once the installation is complete, the progeam will be available in ```<path_to_prgram>/TraitRELAX/TraitRELAX/TraitRELAX```
 
 ### ...by shell commands
 
