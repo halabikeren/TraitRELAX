@@ -1,8 +1,8 @@
 #! /bin/sh
 
 #### replace with your desired installation directories
-bpp_dir=BIOPP_INSTALLATION_DIRECTORY
-traitrelax_dir=TRAITRELAX_INSTALLATION_DIRECTORY
+bpp_dir=$1
+traitrelax_dir=$bpp_dir
 
 #### leave as is
 
@@ -11,24 +11,24 @@ mkdir -p $bpp_dir/sources/
 cd $bpp_dir/sources
 git clone https://github.com/BioPP/bpp-core.git
 git clone https://github.com/BioPP/bpp-seq.git
-git clone https://github.com/BioPP/bpp-phyl.git
+git clone -b kerenDevel https://github.com/halabikeren/bpp-phyl.git
 cd $bpp_dir/sources/bpp-core
 mkdir build
 cd build
 cmake -DCMAKE_INSTALL_PREFIX=$bpp_dir -DCMAKE_INSTALL_RPATH_USE_LINK_PATH=TRUE ..
-make -j
+make
 make install
 cd ../../bpp-seq
 mkdir build
 cd build
 cmake -DCMAKE_INSTALL_PREFIX=$bpp_dir -DCMAKE_INSTALL_RPATH_USE_LINK_PATH=TRUE ..
-make -j
+make
 make install
 cd ../../bpp-phyl
 mkdir build
 cd build
 cmake -DCMAKE_INSTALL_PREFIX=$bpp_dir -DCMAKE_INSTALL_RPATH_USE_LINK_PATH=TRUE ..
-make -j
+make
 make install
 
 ## install traitrelax
@@ -37,6 +37,5 @@ cd $traitrelax_dir
 git clone https://github.com/halabikeren/TraitRELAX.git
 cd TraitRELAX
 cmake -DCMAKE_INSTALL_PREFIX=$bpp_dir -DCMAKE_INSTALL_RPATH_USE_LINK_PATH=TRUE .
-make -j
+make
 make install
-
