@@ -68,6 +68,7 @@ git clone -b kerenDevel https://github.com/halabikeren/bpp-phyl.git
 ```
 
 #### Compiling and installing Bio++
+
 ```
 cd $bpp_dir/sources/bpp-core
 mkdir build
@@ -103,4 +104,11 @@ cd $traitrelax_dir/TraitRELAX/
 cmake -DCMAKE_INSTALL_PREFIX=$bpp_dir -DCMAKE_INSTALL_RPATH_USE_LINK_PATH=TRUE .
 make -j
 make install
+```
+
+#### Running TraitRELAX with Parallelization
+
+To run TraitRELAX with multiple threads, you should state the number of required cores in the cmake command of the complication of the Bio++ bpp-phyl library:
+```
+OMP_NUM_THREADS=<required_number_of_cores>
 ```
