@@ -2,7 +2,7 @@
 
 [ ![Codeship Status for halabikeren/TraitRELAX](https://app.codeship.com/projects/1108cd20-6cd5-0138-bfdb-1e3b1ab831af/status?branch=master)](https://app.codeship.com/projects/394727)
 
-TraitRELAX is an open-source software for the joint analysis of binary traits and coding sequence data that allows testing for association of the trait with changes in selection intensity at the codon level across a phylogeny. TraitRELAX is implemented in the C++ library [Bio++](https://github.com/BioPP) (see also: [Bio++ documentation](http://biopp.univ-montp2.fr/)).
+TraitRELAX is an open-source software for the joint analysis of binary traits and coding sequence data that allows testing for association of the trait with changes in selection intensity at the codon level across a phylogeny. TraitRELAX is implemented in the C++ library [Bio++](https://github.com/BioPP) (see also: [Bio++ documentation](http://biopp.univ-montp2.fr/)). 
 
 ## Publication
 
@@ -112,3 +112,13 @@ To run TraitRELAX with multiple threads, you should state the number of required
 ```
 OMP_NUM_THREADS=<required_number_of_cores>
 ```
+
+#### Distinction from the RELAX method
+
+TraitRELAX varies from The RELAX basic method in several aspects:
+
+1. TraitRELAX does not require a prior partition of the branches into two categories.
+2. TraitRELAX uses a fixed effect likelihood approach for the selective categories, and as such constrains the selective category of each site to remain consistent across branches. That being said, the selection value of a site can change upon relaxation or intensification based on the inferred evolutionary history of the examined trait.
+3. TraitRELAX uses a different optimization approach that limits the search space of the selection intenisty parameter to (0,10] in aim of avoiding extreme estimates.
+
+Due to these differences, estimation of the parameters shared between the two methods may be inconsistent with one another.
