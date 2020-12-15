@@ -33,7 +33,7 @@ path/to/TraitRELAX/traitrelax param=<path_to_control_file>
 
 Rather than installing the program from scratch, you can pull a docker image with the pre-compiled program. To do so, first install [Docker](https://docs.docker.com/get-docker/) on your machine and then run on the command line:
 ```
-docker pull halabikeren/traitrelax:version1.0.0
+docker pull halabikeren/traitrelax:version1.0.1
 ```
 To run the program, first create on your machine a directory with the input for traitrelax, including the input data and a control file (see the Examples folder for more details). Then, run the following on the command line:
 ```
