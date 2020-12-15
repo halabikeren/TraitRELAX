@@ -59,7 +59,7 @@ bpp_dir=BIOPP_INSTALLATION_DIRECTORY
 mkdir -p $bpp_dir/sources/
 ```
 
-#### Downloading the 4 Bio++ libraries
+#### Downloading Bio++ libraries
 ```
 cd $bpp_dir/sources
 git clone https://github.com/BioPP/bpp-core.git
