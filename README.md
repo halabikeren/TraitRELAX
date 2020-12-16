@@ -73,7 +73,7 @@ git clone -b kerenDevel https://github.com/halabikeren/bpp-phyl.git
 cd $bpp_dir/sources/bpp-core
 mkdir build
 cd build
-cmake -DCMAKE_INSTALL_PREFIX=$bpp_dir -DCMAKE_INSTALL_RPATH_USE_LINK_PATH=TRUE ..
+cmake -DCMAKE_INSTALL_PREFIX=$bpp_dir -DCMAKE_INSTALL_RPATH_USE_LINK_PATH=TRUE -DBUILD_STATIC=YES ..
 make -j
 make install
 cd ../../bpp-seq
