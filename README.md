@@ -2,6 +2,10 @@
 
 [ ![Codeship Status for halabikeren/TraitRELAX](https://app.codeship.com/projects/1108cd20-6cd5-0138-bfdb-1e3b1ab831af/status?branch=master)](https://app.codeship.com/projects/394727)
 
+[![https://img.shields.io/docker/pulls/halabikeren/traitrelax.svg](https://img.shields.io/docker/pulls/halabikeren/traitrelax.svg)](https://hub.docker.com/repository/docker/halabikeren/traitrelax)
+ 
+[![https://www.singularity-hub.org/static/img/hosted-singularity--hub-%23e32929.svg](https://www.singularity-hub.org/static/img/hosted-singularity--hub-%23e32929.svg)](https://singularity-hub.org/collections/5051)
+ 
 TraitRELAX is an open-source software for the joint analysis of binary traits and coding sequence data that allows testing for association of the trait with changes in selection intensity at the codon level across a phylogeny. TraitRELAX is implemented in the C++ library [Bio++](https://github.com/BioPP) (see also: [Bio++ documentation](http://biopp.univ-montp2.fr/)). 
 
 ## Publication
@@ -39,6 +43,19 @@ To run the program, first create on your machine a directory with the input for 
 ```
 docker run -v <path_to_input_directory>:/traitrelax/exec/ -it traitrelax param=<name_of_control_file>
 ```
+
+## Installing via singularity
+
+If you are using HPC, an alternative for docker is singularity. Similar to docker, you can pull a singularity image with the pre-compiled program. To do so, you should have [Singularity](https://singularity.lbl.gov/docs-hpc) installed on your cluster and then run on the command line:
+
+```
+singularity pull --name TraitRELAX.sif shub://halabikeren/TraitRELAX
+```
+To run the program, first create on your machine a directory with the input for traitrelax, including the input data and a control file (see the Examples folder for more details). Then, run the following on the command line:
+```
+singularity run --bind <path_to_input_directory>:/traitrelax/exec/ TraitRELAX.sif <name_of_control_file>
+```
+
 
 ## Building from source...
 
