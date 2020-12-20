@@ -5,7 +5,8 @@ From: ubuntu:20.04
 TraitRELAX pre-copiled program version ${version}
 
 %post
-	ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo America/Los_Angeles > /etc/timezone
+	export TZ=America/Los_Angeles
+	ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 	apt-get update 
 	apt-get install -y build-essential
 	apt-get install -y tzdata
