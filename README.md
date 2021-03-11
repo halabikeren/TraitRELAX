@@ -10,7 +10,7 @@ TraitRELAX is an open-source software for the joint analysis of binary traits an
 
 ## Publication
 
-Halabi K, Levy Karin E, Guéguen L, and Mayrose I. TraitRELAX - A codon model for associating phenotypic traits with altered selective patterns of sequence evolution. 2020. DOI:10.1093/sysbio/syaa087
+Halabi K, Levy Karin E, Guéguen L, and Mayrose I. TraitRELAX - A codon model for associating phenotypic traits with altered selective patterns of sequence evolution. 2020. [DOI:10.1093/sysbio/syaa087](https://academic.oup.com/sysbio/advance-article/doi/10.1093/sysbio/syaa087/6012374)
 
 ## Input
 
